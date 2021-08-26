@@ -148,7 +148,11 @@
   }
  ],
  "links": [],
+<<<<<<< HEAD
  "modified": "2021-12-10 15:24:15.794477",
+=======
+ "modified": "2021-08-13 10:53:44.205774",
+>>>>>>> 16eed07a0f (fix: use Stripe's Price API for plan-price information (#26107))
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Subscription Plan",
