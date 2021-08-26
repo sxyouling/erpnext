@@ -536,6 +536,7 @@ class BOM(WebsiteGenerator):
 			check_list.append(m)
 
 	def check_recursion(self, bom_list=None):
+<<<<<<< HEAD
 		"""Check whether recursion occurs in any bom"""
 
 		def _throw_error(bom_name):
@@ -560,6 +561,29 @@ class BOM(WebsiteGenerator):
 				_throw_error(item.bom_no)
 
 		if self.name in {d.bom_no for d in self.items}:
+=======
+		""" Check whether recursion occurs in any bom"""
+		def _throw_error(bom_name):
+			frappe.throw(_("BOM recursion: {0} cannot be parent or child of {0}").format(bom_name))
+
+		bom_list = self.traverse_tree()
+		child_items = frappe.get_all('BOM Item', fields=["bom_no", "item_code"],
+			filters={'parent': ('in', bom_list), 'parenttype': 'BOM'}) or []
+
+		child_bom = {d.bom_no for d in child_items}
+		child_items_codes = {d.item_code for d in child_items}
+
+		if self.name in child_bom:
+			_throw_error(self.name)
+
+		if self.item in child_items_codes:
+			_throw_error(self.item)
+
+		bom_nos = frappe.get_all('BOM Item', fields=["parent"],
+			filters={'bom_no': self.name, 'parenttype': 'BOM'}) or []
+
+		if self.name in {d.parent for d in bom_nos}:
+>>>>>>> c07dce940e (fix: don't allow BOM's item code at any level of child items (#27157))
 			_throw_error(self.name)
 
 	def traverse_tree(self, bom_list=None):
