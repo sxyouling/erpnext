@@ -307,9 +307,15 @@ erpnext.patches.v13_0.remove_bad_selling_defaults
 erpnext.patches.v13_0.trim_whitespace_from_serial_nos  # 16-01-2022
 erpnext.patches.v13_0.migrate_stripe_api
 erpnext.patches.v13_0.reset_clearance_date_for_intracompany_payment_entries
+<<<<<<< HEAD
 execute:frappe.reload_doc("erpnext_integrations", "doctype", "TaxJar Settings")
 execute:frappe.reload_doc("erpnext_integrations", "doctype", "Product Tax Category")
 erpnext.patches.v13_0.custom_fields_for_taxjar_integration          #08-11-2021
+=======
+erpnext.patches.v13_0.einvoicing_deprecation_warning
+erpnext.patches.v13_0.custom_fields_for_taxjar_integration
+erpnext.patches.v14_0.delete_einvoicing_doctypes
+>>>>>>> 7004944cc0 (feat: Taxjar Integration update (#27143))
 erpnext.patches.v13_0.set_operation_time_based_on_operating_cost
 erpnext.patches.v13_0.create_website_items #30-09-2021
 erpnext.patches.v13_0.populate_e_commerce_settings
