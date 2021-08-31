@@ -53,7 +53,12 @@ def get_data(filters, period_list, partner_doctype):
 		if d.item_group not in item_groups:
 			item_groups.append(d.item_group)
 
+<<<<<<< HEAD
 	date_field = "transaction_date" if filters.get("doctype") == "Sales Order" else "posting_date"
+=======
+	date_field = ("transaction_date"
+		if filters.get('doctype') == "Sales Order" else "posting_date")
+>>>>>>> 763450dcf8 (Revert "fix: add child item groups into the filters (#26997)" (#27266))
 
 	actual_data = get_actual_data(filters, item_groups, sales_users, date_field, sales_field)
 
