@@ -2617,6 +2617,7 @@ class TestSalesInvoice(IntegrationTestCase):
 		self.assertEqual(target_doc.company, "_Test Company 1")
 		self.assertEqual(target_doc.supplier, "_Test Internal Supplier")
 
+<<<<<<< HEAD
 	def test_inter_company_transaction_without_default_warehouse(self):
 		"Check mapping (expense account) of inter company SI to PI in absence of default warehouse."
 		# setup
@@ -2671,6 +2672,8 @@ class TestSalesInvoice(IntegrationTestCase):
 		frappe.local.enable_perpetual_inventory["_Test Company 1"] = old_perpetual_inventory
 		frappe.db.set_single_value("Stock Settings", "allow_negative_stock", old_negative_stock)
 
+=======
+>>>>>>> df1f8fddf6 (fix: using DN for transfer w/o internal customer (#27798))
 	def test_sle_for_target_warehouse(self):
 		se = make_stock_entry(
 			item_code="138-CMS Shoe",
