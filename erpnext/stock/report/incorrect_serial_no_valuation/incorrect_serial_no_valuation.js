@@ -22,14 +22,24 @@ frappe.query_reports["Incorrect Serial No Valuation"] = {
 			fieldtype: "Date",
 			fieldname: "from_date",
 			reqd: 1,
+<<<<<<< HEAD
 			default: erpnext.utils.get_fiscal_year(frappe.datetime.get_today(), true)[1],
+=======
+			default: erpnext.utils.get_fiscal_year(frappe.datetime.get_today(), with_dates=true)[1],
+>>>>>>> 4496a6760e (fix: Default year start and end dates in reports)
 		},
 		{
 			label: __("To Date"),
 			fieldtype: "Date",
 			fieldname: "to_date",
 			reqd: 1,
+<<<<<<< HEAD
 			default: erpnext.utils.get_fiscal_year(frappe.datetime.get_today(), true)[2],
 		},
 	],
+=======
+			default: erpnext.utils.get_fiscal_year(frappe.datetime.get_today(), with_dates=true)[2],
+		}
+	]
+>>>>>>> 4496a6760e (fix: Default year start and end dates in reports)
 };

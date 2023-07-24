@@ -103,6 +103,7 @@ frappe.ui.form.on("Account", {
 				__("View")
 			);
 
+<<<<<<< HEAD
 			frm.add_custom_button(
 				__("Convert to Group"),
 				function () {
@@ -116,6 +117,29 @@ frappe.ui.form.on("Account", {
 				},
 				__("Actions")
 			);
+=======
+		} else if (cint(frm.doc.is_group) == 0
+			&& frappe.boot.user.can_read.indexOf("GL Entry") !== -1) {
+			frm.add_custom_button(__('General Ledger'), function () {
+				frappe.route_options = {
+					"account": frm.doc.name,
+					"from_date": erpnext.utils.get_fiscal_year(frappe.datetime.get_today(), with_dates=true)[1],
+					"to_date": erpnext.utils.get_fiscal_year(frappe.datetime.get_today(), with_dates=true)[2],
+					"company": frm.doc.company
+				};
+				frappe.set_route("query-report", "General Ledger");
+			}, __('View'));
+
+			frm.add_custom_button(__('Convert to Group'), function () {
+				return frappe.call({
+					doc: frm.doc,
+					method: 'convert_ledger_to_group',
+					callback: function() {
+						frm.refresh();
+					}
+				});
+			}, __('Actions'));
+>>>>>>> 4496a6760e (fix: Default year start and end dates in reports)
 		}
 	},
 

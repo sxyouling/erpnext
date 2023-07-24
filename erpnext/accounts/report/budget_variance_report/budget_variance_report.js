@@ -44,7 +44,11 @@ function get_filters() {
 			fieldtype: "Link",
 			options: "Fiscal Year",
 			default: erpnext.utils.get_fiscal_year(frappe.datetime.get_today()),
+<<<<<<< HEAD
 			reqd: 1,
+=======
+			reqd: 1
+>>>>>>> 4496a6760e (fix: Default year start and end dates in reports)
 		},
 		{
 			fieldname: "to_fiscal_year",
@@ -52,7 +56,11 @@ function get_filters() {
 			fieldtype: "Link",
 			options: "Fiscal Year",
 			default: erpnext.utils.get_fiscal_year(frappe.datetime.get_today()),
+<<<<<<< HEAD
 			reqd: 1,
+=======
+			reqd: 1
+>>>>>>> 4496a6760e (fix: Default year start and end dates in reports)
 		},
 		{
 			fieldname: "period",

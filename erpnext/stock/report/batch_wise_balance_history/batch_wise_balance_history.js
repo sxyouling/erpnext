@@ -12,12 +12,21 @@ frappe.query_reports["Batch-Wise Balance History"] = {
 			reqd: 1,
 		},
 		{
+<<<<<<< HEAD
 			fieldname: "from_date",
 			label: __("From Date"),
 			fieldtype: "Date",
 			width: "80",
 			default: frappe.sys_defaults.year_start_date,
 			reqd: 1,
+=======
+			"fieldname":"from_date",
+			"label": __("From Date"),
+			"fieldtype": "Date",
+			"width": "80",
+			"default": erpnext.utils.get_fiscal_year(frappe.datetime.get_today(), with_dates=true)[1],
+			"reqd": 1
+>>>>>>> 4496a6760e (fix: Default year start and end dates in reports)
 		},
 		{
 			fieldname: "to_date",

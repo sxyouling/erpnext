@@ -16,7 +16,11 @@ frappe.query_reports["Territory Target Variance Based On Item Group"] = {
 			label: __("Fiscal Year"),
 			fieldtype: "Link",
 			options: "Fiscal Year",
+<<<<<<< HEAD
 			default: erpnext.utils.get_fiscal_year(frappe.datetime.get_today()),
+=======
+			default: erpnext.utils.get_fiscal_year(frappe.datetime.get_today())
+>>>>>>> 4496a6760e (fix: Default year start and end dates in reports)
 		},
 		{
 			fieldname: "doctype",

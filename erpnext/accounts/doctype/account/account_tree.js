@@ -278,11 +278,18 @@ frappe.treeview_settings["Account"] = {
 			label: __("View Ledger"),
 			click: function (node, btn) {
 				frappe.route_options = {
+<<<<<<< HEAD
 					account: node.label,
 					from_date: frappe.sys_defaults.year_start_date,
 					to_date: frappe.sys_defaults.year_end_date,
 					company:
 						frappe.treeview_settings["Account"].treeview.page.fields_dict.company.get_value(),
+=======
+					"account": node.label,
+					"from_date": erpnext.utils.get_fiscal_year(frappe.datetime.get_today(), with_dates=true)[1],
+					"to_date": erpnext.utils.get_fiscal_year(frappe.datetime.get_today(), with_dates=true)[2],
+					"company": frappe.treeview_settings['Account'].treeview.page.fields_dict.company.get_value()
+>>>>>>> 4496a6760e (fix: Default year start and end dates in reports)
 				};
 				frappe.set_route("query-report", "General Ledger");
 			},
