@@ -16,10 +16,14 @@ frappe.query_reports["Payment Period Based On Invoice Date"] = {
 			label: __("From Date"),
 			fieldtype: "Date",
 <<<<<<< HEAD
+<<<<<<< HEAD
 			default: erpnext.utils.get_fiscal_year(frappe.datetime.get_today(), true)[1],
 =======
 			default: erpnext.utils.get_fiscal_year(frappe.datetime.get_today(), with_dates=true)[1],
 >>>>>>> 4496a6760e (fix: Default year start and end dates in reports)
+=======
+			default: erpnext.utils.get_fiscal_year(frappe.datetime.get_today(), true)[1],
+>>>>>>> 2341061852 (fix: Default year start and end date in reports)
 		},
 		{
 			fieldname: "to_date",

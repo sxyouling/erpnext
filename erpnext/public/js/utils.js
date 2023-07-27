@@ -436,7 +436,7 @@ $.extend(erpnext.utils, {
 		});
 	},
 
-	get_fiscal_year: function(date, with_dates) {
+	get_fiscal_year: function(date, with_dates=false) {
 		if(!date) {
 >>>>>>> 4496a6760e (fix: Default year start and end dates in reports)
 			date = frappe.datetime.get_today();
