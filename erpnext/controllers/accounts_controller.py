@@ -981,6 +981,36 @@ class AccountsController(TransactionBase):
 
 		return gl_dict
 
+<<<<<<< HEAD
+=======
+	def get_voucher_subtype(self):
+		voucher_subtypes = {
+			"Journal Entry": "voucher_type",
+			"Payment Entry": "payment_type",
+			"Stock Entry": "stock_entry_type",
+			"Asset Capitalization": "entry_type",
+		}
+		if self.doctype in voucher_subtypes:
+			return self.get(voucher_subtypes[self.doctype])
+		elif self.doctype == "Purchase Receipt" and self.is_return:
+			return "Purchase Return"
+		elif self.doctype == "Delivery Note" and self.is_return:
+			return "Sales Return"
+		elif self.doctype == "Sales Invoice" and self.is_return:
+			return "Credit Note"
+		elif self.doctype == "Sales Invoice" and self.is_debit_note:
+			return "Debit Note"
+		elif self.doctype == "Purchase Invoice" and self.is_return:
+			return "Debit Note"
+		return self.doctype
+
+	def get_value_in_transaction_currency(self, account_currency, gl_dict, field):
+		if account_currency == self.get("currency"):
+			return gl_dict.get(field + "_in_account_currency")
+		else:
+			return flt(gl_dict.get(field, 0) / self.get("conversion_rate", 1))
+
+>>>>>>> 00eee16190 (fix: improved the conditions for determining voucher subtypes)
 	def validate_zero_qty_for_return_invoices_with_stock(self):
 		rows = []
 		for item in self.items:
