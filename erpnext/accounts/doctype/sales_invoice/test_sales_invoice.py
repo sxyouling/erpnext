@@ -3761,6 +3761,7 @@ class TestSalesInvoice(FrappeTestCase):
 		self.assertEqual(jv[0], si.grand_total)
 
 
+<<<<<<< HEAD
 def check_gl_entries(doc, voucher_no, expected_gle, posting_date):
 	gl_entries = frappe.db.sql(
 		"""select account, debit, credit, posting_date
@@ -3770,6 +3771,36 @@ def check_gl_entries(doc, voucher_no, expected_gle, posting_date):
 		order by posting_date asc, account asc""",
 		(voucher_no, posting_date),
 		as_dict=1,
+=======
+	def test_gl_voucher_subtype(self):
+		si = create_sales_invoice()
+		gl_entries = frappe.get_all(
+			"GL Entry",
+			filters={"voucher_type": "Sales Invoice", "voucher_no": si.name},
+			pluck="voucher_subtype",
+		)
+
+		self.assertTrue(all([x == "Sales Invoice" for x in gl_entries]))
+
+		si = create_sales_invoice(is_return=1, qty=-1)
+		gl_entries = frappe.get_all(
+			"GL Entry",
+			filters={"voucher_type": "Sales Invoice", "voucher_no": si.name},
+			pluck="voucher_subtype",
+		)
+
+		self.assertTrue(all([x == "Credit Note" for x in gl_entries]))
+
+
+def set_advance_flag(company, flag, default_account):
+	frappe.db.set_value(
+		"Company",
+		company,
+		{
+			"book_advance_payments_in_separate_party_account": flag,
+			"default_advance_received_account": default_account,
+		},
+>>>>>>> ad6cc352f1 (test: test voucher subtype for sales invoice)
 	)
 
 	for i, gle in enumerate(gl_entries):
