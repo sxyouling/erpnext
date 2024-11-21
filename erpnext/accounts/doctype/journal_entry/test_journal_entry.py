@@ -421,6 +421,180 @@ class TestJournalEntry(unittest.TestCase):
 		account_balance = get_balance_on(account="_Test Bank - _TC", cost_center=cost_center)
 		self.assertEqual(expected_account_balance, account_balance)
 
+<<<<<<< HEAD
+=======
+	def test_repost_accounting_entries(self):
+		from erpnext.accounts.doctype.cost_center.test_cost_center import create_cost_center
+
+		# Configure Repost Accounting Ledger for JVs
+		settings = frappe.get_doc("Repost Accounting Ledger Settings")
+		if not [x for x in settings.allowed_types if x.document_type == "Journal Entry"]:
+			settings.append("allowed_types", {"document_type": "Journal Entry", "allowed": True})
+		settings.save()
+
+		# Create JV with defaut cost center - _Test Cost Center
+		jv = make_journal_entry("_Test Cash - _TC", "_Test Bank - _TC", 100, save=False)
+		jv.multi_currency = 0
+		jv.submit()
+
+		# Check GL entries before reposting
+		self.voucher_no = jv.name
+
+		self.fields = [
+			"account",
+			"debit_in_account_currency",
+			"credit_in_account_currency",
+			"cost_center",
+		]
+
+		self.expected_gle = [
+			{
+				"account": "_Test Bank - _TC",
+				"debit_in_account_currency": 0,
+				"credit_in_account_currency": 100,
+				"cost_center": "_Test Cost Center - _TC",
+			},
+			{
+				"account": "_Test Cash - _TC",
+				"debit_in_account_currency": 100,
+				"credit_in_account_currency": 0,
+				"cost_center": "_Test Cost Center - _TC",
+			},
+		]
+
+		self.check_gl_entries()
+
+		# Change cost center for bank account - _Test Cost Center for BS Account
+		create_cost_center(cost_center_name="_Test Cost Center for BS Account", company="_Test Company")
+		jv.accounts[1].cost_center = "_Test Cost Center for BS Account - _TC"
+		# Ledger reposted implicitly upon 'Update After Submit'
+		jv.save()
+
+		# Check GL entries after reposting
+		jv.load_from_db()
+		self.expected_gle[0]["cost_center"] = "_Test Cost Center for BS Account - _TC"
+		self.check_gl_entries()
+
+	def check_gl_entries(self):
+		gl = frappe.qb.DocType("GL Entry")
+		query = frappe.qb.from_(gl)
+		for field in self.fields:
+			query = query.select(gl[field])
+
+		query = query.where(
+			(gl.voucher_type == "Journal Entry") & (gl.voucher_no == self.voucher_no) & (gl.is_cancelled == 0)
+		).orderby(gl.account)
+
+		gl_entries = query.run(as_dict=True)
+
+		for i in range(len(self.expected_gle)):
+			for field in self.fields:
+				self.assertEqual(self.expected_gle[i][field], gl_entries[i][field])
+
+	def test_negative_debit_and_credit_with_same_account_head(self):
+		from erpnext.accounts.general_ledger import process_gl_map
+
+		# Create JV with defaut cost center - _Test Cost Center
+		frappe.db.set_single_value("Accounts Settings", "merge_similar_account_heads", 0)
+
+		jv = make_journal_entry("_Test Bank - _TC", "_Test Bank - _TC", 100 * -1, save=True)
+		jv.append(
+			"accounts",
+			{
+				"account": "_Test Cash - _TC",
+				"debit": 100 * -1,
+				"credit": 100 * -1,
+				"debit_in_account_currency": 100 * -1,
+				"credit_in_account_currency": 100 * -1,
+				"exchange_rate": 1,
+			},
+		)
+		jv.flags.ignore_validate = True
+		jv.save()
+
+		self.assertEqual(len(jv.accounts), 3)
+
+		gl_map = jv.build_gl_map()
+
+		for row in gl_map:
+			if row.account == "_Test Cash - _TC":
+				self.assertEqual(row.debit_in_account_currency, 100 * -1)
+				self.assertEqual(row.credit_in_account_currency, 100 * -1)
+
+		gl_map = process_gl_map(gl_map, False)
+
+		for row in gl_map:
+			if row.account == "_Test Cash - _TC":
+				self.assertEqual(row.debit_in_account_currency, 100)
+				self.assertEqual(row.credit_in_account_currency, 100)
+
+	def test_toggle_debit_credit_if_negative(self):
+		from erpnext.accounts.general_ledger import process_gl_map
+
+		# Create JV with defaut cost center - _Test Cost Center
+		frappe.db.set_single_value("Accounts Settings", "merge_similar_account_heads", 0)
+
+		jv = frappe.new_doc("Journal Entry")
+		jv.posting_date = nowdate()
+		jv.company = "_Test Company"
+		jv.user_remark = "test"
+		jv.extend(
+			"accounts",
+			[
+				{
+					"account": "_Test Cash - _TC",
+					"debit": 100 * -1,
+					"debit_in_account_currency": 100 * -1,
+					"exchange_rate": 1,
+				},
+				{
+					"account": "_Test Bank - _TC",
+					"credit": 100 * -1,
+					"credit_in_account_currency": 100 * -1,
+					"exchange_rate": 1,
+				},
+			],
+		)
+
+		jv.flags.ignore_validate = True
+		jv.save()
+
+		self.assertEqual(len(jv.accounts), 2)
+
+		gl_map = jv.build_gl_map()
+
+		for row in gl_map:
+			if row.account == "_Test Cash - _TC":
+				self.assertEqual(row.debit, 100 * -1)
+				self.assertEqual(row.debit_in_account_currency, 100 * -1)
+				self.assertEqual(row.debit_in_transaction_currency, 100 * -1)
+
+		gl_map = process_gl_map(gl_map, False)
+
+		for row in gl_map:
+			if row.account == "_Test Cash - _TC":
+				self.assertEqual(row.credit, 100)
+				self.assertEqual(row.credit_in_account_currency, 100)
+				self.assertEqual(row.credit_in_transaction_currency, 100)
+
+	def test_transaction_exchange_rate_on_journals(self):
+		jv = make_journal_entry("_Test Bank - _TC", "_Test Receivable USD - _TC", 100, save=False)
+		jv.accounts[0].update({"debit_in_account_currency": 8500, "exchange_rate": 1})
+		jv.accounts[1].update({"party_type": "Customer", "party": "_Test Customer USD", "exchange_rate": 85})
+		jv.submit()
+		actual = frappe.db.get_all(
+			"GL Entry",
+			filters={"voucher_no": jv.name, "is_cancelled": 0},
+			fields=["account", "transaction_exchange_rate"],
+			order_by="account",
+		)
+		expected = [
+			{"account": "_Test Bank - _TC", "transaction_exchange_rate": 1.0},
+			{"account": "_Test Receivable USD - _TC", "transaction_exchange_rate": 85.0},
+		]
+		self.assertEqual(expected, actual)
+
+>>>>>>> a10e175bc9 (test: test case for toggling debit and credit if negative)
 
 def make_journal_entry(
 	account1,
