@@ -312,11 +312,6 @@ def toggle_debit_credit_if_negative(gl_map):
 
 	for entry in gl_map:
 		# toggle debit, credit if negative entry
-<<<<<<< HEAD
-		if flt(entry.debit) < 0:
-			entry.credit = flt(entry.credit) - flt(entry.debit)
-			entry.debit = 0.0
-=======
 		for debit_field, credit_field in debit_credit_field_map.items():
 			debit = flt(entry.get(debit_field))
 			credit = flt(entry.get(credit_field))
@@ -328,7 +323,6 @@ def toggle_debit_credit_if_negative(gl_map):
 			if debit < 0:
 				credit = credit - debit
 				debit = 0.0
->>>>>>> 8e759c32c4 (fix: toggle debit credit amounts for transaction currency too; minor refactor)
 
 			if credit < 0:
 				debit = debit - credit
