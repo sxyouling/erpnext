@@ -62,8 +62,16 @@ frappe.ui.form.on("Purchase Order", {
 	get_materials_from_supplier: function(frm) {
 		let po_details = [];
 
+<<<<<<< HEAD
 		if (frm.doc.supplied_items && (frm.doc.per_received == 100 || frm.doc.status === 'Closed')) {
 			frm.doc.supplied_items.forEach(d => {
+=======
+		if (
+			frm.doc.supplied_items &&
+			(flt(frm.doc.per_received, precision("per_received")) == 100 || frm.doc.status === "Closed")
+		) {
+			frm.doc.supplied_items.forEach((d) => {
+>>>>>>> 1a1e2c7e01 (fix: use field precision instead of hardcoded precision in so and po)
 				if (d.total_supplied_qty && d.total_supplied_qty != d.consumed_qty) {
 					po_details.push(d.name)
 				}
@@ -180,11 +188,22 @@ erpnext.buying.PurchaseOrderController = class PurchaseOrderController extends e
 				this.frm.fields_dict.items_section.wrapper.removeClass("hide-border");
 			}
 
+<<<<<<< HEAD
 			if(!["Closed", "Delivered"].includes(doc.status)) {
 				if(this.frm.doc.status !== 'Closed' && flt(this.frm.doc.per_received) < 100 && flt(this.frm.doc.per_billed) < 100) {
 					// Don't add Update Items button if the PO is following the new subcontracting flow.
 					if (!(this.frm.doc.is_subcontracted && !this.frm.doc.is_old_subcontracting_flow)) {
 						this.frm.add_custom_button(__('Update Items'), () => {
+=======
+			if (!["Closed", "Delivered"].includes(doc.status)) {
+				if (
+					this.frm.doc.status !== "Closed" &&
+					flt(this.frm.doc.per_received, precision("per_received")) < 100 &&
+					flt(this.frm.doc.per_billed, precision("per_billed")) < 100
+				) {
+					if (!this.frm.doc.__onload || this.frm.doc.__onload.can_update_items) {
+						this.frm.add_custom_button(__("Update Items"), () => {
+>>>>>>> 1a1e2c7e01 (fix: use field precision instead of hardcoded precision in so and po)
 							erpnext.utils.update_child_items({
 								frm: this.frm,
 								child_docname: "items",
@@ -195,7 +214,14 @@ erpnext.buying.PurchaseOrderController = class PurchaseOrderController extends e
 					}
 				}
 				if (this.frm.has_perm("submit")) {
+<<<<<<< HEAD
 					if(flt(doc.per_billed, 6) < 100 || flt(doc.per_received, 6) < 100) {
+=======
+					if (
+						flt(doc.per_billed, precision("per_billed")) < 100 ||
+						flt(doc.per_received, precision("per_received")) < 100
+					) {
+>>>>>>> 1a1e2c7e01 (fix: use field precision instead of hardcoded precision in so and po)
 						if (doc.status != "On Hold") {
 							this.frm.add_custom_button(__('Hold'), () => this.hold_purchase_order(), __("Status"));
 						} else{
@@ -218,8 +244,19 @@ erpnext.buying.PurchaseOrderController = class PurchaseOrderController extends e
 			}
 			if(doc.status != "Closed") {
 				if (doc.status != "On Hold") {
+<<<<<<< HEAD
 					if(flt(doc.per_received) < 100 && allow_receipt) {
 						cur_frm.add_custom_button(__('Purchase Receipt'), this.make_purchase_receipt, __('Create'));
+=======
+					if (flt(doc.per_received, precision("per_received")) < 100 && allow_receipt) {
+						this.frm.add_custom_button(
+							__("Purchase Receipt"),
+							() => {
+								me.make_purchase_receipt();
+							},
+							__("Create")
+						);
+>>>>>>> 1a1e2c7e01 (fix: use field precision instead of hardcoded precision in so and po)
 						if (doc.is_subcontracted) {
 							if (doc.is_old_subcontracting_flow) {
 								if (me.has_unsupplied_items()) {
@@ -231,11 +268,25 @@ erpnext.buying.PurchaseOrderController = class PurchaseOrderController extends e
 							}
 						}
 					}
+<<<<<<< HEAD
 					if(flt(doc.per_billed) < 100)
 						cur_frm.add_custom_button(__('Purchase Invoice'),
 							this.make_purchase_invoice, __('Create'));
 
 					if(flt(doc.per_billed) < 100 && doc.status != "Delivered") {
+=======
+					// Please do not add precision in the below flt function
+					if (flt(doc.per_billed, precision("per_billed")) < 100)
+						this.frm.add_custom_button(
+							__("Purchase Invoice"),
+							() => {
+								me.make_purchase_invoice();
+							},
+							__("Create")
+						);
+
+					if (flt(doc.per_billed, precision("per_billed")) < 100 && doc.status != "Delivered") {
+>>>>>>> 1a1e2c7e01 (fix: use field precision instead of hardcoded precision in so and po)
 						this.frm.add_custom_button(
 							__('Payment'),
 							() => this.make_payment_entry(),
@@ -243,6 +294,7 @@ erpnext.buying.PurchaseOrderController = class PurchaseOrderController extends e
 						);
 					}
 
+<<<<<<< HEAD
 					if(flt(doc.per_billed) < 100) {
 						this.frm.add_custom_button(__('Payment Request'),
 							function() { me.make_payment_request() }, __('Create'));
@@ -252,6 +304,16 @@ erpnext.buying.PurchaseOrderController = class PurchaseOrderController extends e
 						cur_frm.add_custom_button(__('Subscription'), function() {
 							erpnext.utils.make_subscription(doc.doctype, doc.name)
 						}, __('Create'))
+=======
+					if (flt(doc.per_billed, precision("per_billed")) < 100) {
+						this.frm.add_custom_button(
+							__("Payment Request"),
+							function () {
+								me.make_payment_request();
+							},
+							__("Create")
+						);
+>>>>>>> 1a1e2c7e01 (fix: use field precision instead of hardcoded precision in so and po)
 					}
 
 					if (doc.docstatus === 1 && !doc.inter_company_order_reference) {

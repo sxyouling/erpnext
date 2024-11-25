@@ -47,6 +47,7 @@ frappe.ui.form.on("Sales Order", {
 		frm.set_df_property('packed_items', 'cannot_add_rows', true);
 		frm.set_df_property('packed_items', 'cannot_delete_rows', true);
 	},
+<<<<<<< HEAD
 	refresh: function(frm) {
 		if(
 			frm.doc.docstatus === 1
@@ -62,6 +63,63 @@ frappe.ui.form.on("Sales Order", {
 					child_doctype: "Sales Order Detail",
 					cannot_add_row: false,
 				})
+=======
+
+	refresh: function (frm) {
+		if (frm.doc.docstatus === 1) {
+			if (
+				frm.doc.status !== "Closed" &&
+				flt(frm.doc.per_delivered, precision("per_delivered")) < 100 &&
+				flt(frm.doc.per_billed, precision("per_billed")) < 100 &&
+				frm.has_perm("write")
+			) {
+				frm.add_custom_button(__("Update Items"), () => {
+					erpnext.utils.update_child_items({
+						frm: frm,
+						child_docname: "items",
+						child_doctype: "Sales Order Detail",
+						cannot_add_row: false,
+						has_reserved_stock: frm.doc.__onload && frm.doc.__onload.has_reserved_stock,
+					});
+				});
+
+				// Stock Reservation > Reserve button should only be visible if the SO has unreserved stock and no Pick List is created against the SO.
+				if (
+					frm.doc.__onload &&
+					frm.doc.__onload.has_unreserved_stock &&
+					flt(frm.doc.per_picked, precision("per_picked")) === 0
+				) {
+					frm.add_custom_button(
+						__("Reserve"),
+						() => frm.events.create_stock_reservation_entries(frm),
+						__("Stock Reservation")
+					);
+				}
+			}
+
+			// Stock Reservation > Unreserve button will be only visible if the SO has un-delivered reserved stock.
+			if (
+				frm.doc.__onload &&
+				frm.doc.__onload.has_reserved_stock &&
+				frappe.model.can_cancel("Stock Reservation Entry")
+			) {
+				frm.add_custom_button(
+					__("Unreserve"),
+					() => frm.events.cancel_stock_reservation_entries(frm),
+					__("Stock Reservation")
+				);
+			}
+
+			frm.doc.items.forEach((item) => {
+				if (flt(item.stock_reserved_qty) > 0 && frappe.model.can_read("Stock Reservation Entry")) {
+					frm.add_custom_button(
+						__("Reserved Stock"),
+						() => frm.events.show_reserved_stock(frm),
+						__("Stock Reservation")
+					);
+					return;
+				}
+>>>>>>> 1a1e2c7e01 (fix: use field precision instead of hardcoded precision in so and po)
 			});
 		}
 
@@ -203,6 +261,7 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 
 		if (doc.docstatus==1) {
 
+<<<<<<< HEAD
 			if(this.frm.has_perm("submit")) {
 				if(doc.status === 'On Hold') {
 				   // un-hold
@@ -214,6 +273,24 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 					   // close
 					   this.frm.add_custom_button(__('Close'), () => this.close_sales_order(), __("Status"))
 				   }
+=======
+					if (
+						flt(doc.per_delivered, precision("per_delivered")) < 100 ||
+						flt(doc.per_billed, precision("per_billed")) < 100
+					) {
+						// close
+						this.frm.add_custom_button(__("Close"), () => this.close_sales_order(), __("Status"));
+					}
+				} else if (doc.status === "Closed") {
+					// un-close
+					this.frm.add_custom_button(
+						__("Re-open"),
+						function () {
+							me.frm.cscript.update_status("Re-open", "Draft");
+						},
+						__("Status")
+					);
+>>>>>>> 1a1e2c7e01 (fix: use field precision instead of hardcoded precision in so and po)
 				}
 			   	else if(doc.status === 'Closed') {
 				   // un-close
@@ -228,7 +305,14 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 						&& !this.frm.doc.skip_delivery_note
 
 					if (this.frm.has_perm("submit")) {
+<<<<<<< HEAD
 						if(flt(doc.per_delivered, 6) < 100 || flt(doc.per_billed) < 100) {
+=======
+						if (
+							flt(doc.per_delivered, precision("per_delivered")) < 100 ||
+							flt(doc.per_billed, precision("per_billed")) < 100
+						) {
+>>>>>>> 1a1e2c7e01 (fix: use field precision instead of hardcoded precision in so and po)
 							// hold
 							this.frm.add_custom_button(__('Hold'), () => this.hold_sales_order(), __("Status"))
 							// close
@@ -237,9 +321,16 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 					}
 
 					if (
+<<<<<<< HEAD
 						flt(doc.per_picked, 6) < 100
 						&& flt(doc.per_delivered, 6) < 100
 						&& frappe.model.can_create("Pick List")
+=======
+						(!doc.__onload || !doc.__onload.has_reserved_stock) &&
+						flt(doc.per_picked, precision("per_picked")) < 100 &&
+						flt(doc.per_delivered, precision("per_delivered")) < 100 &&
+						frappe.model.can_create("Pick List")
+>>>>>>> 1a1e2c7e01 (fix: use field precision instead of hardcoded precision in so and po)
 					) {
 						this.frm.add_custom_button(__('Pick List'), () => this.create_pick_list(), __('Create'));
 					}
@@ -250,10 +341,17 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 					const order_is_a_custom_sale = ["Sales", "Shopping Cart", "Maintenance"].indexOf(doc.order_type) === -1;
 
 					// delivery note
+<<<<<<< HEAD
 					if(
 						flt(doc.per_delivered, 6) < 100
 						&& (order_is_a_sale || order_is_a_custom_sale)
 						&& allow_delivery
+=======
+					if (
+						flt(doc.per_delivered, precision("per_delivered")) < 100 &&
+						(order_is_a_sale || order_is_a_custom_sale) &&
+						allow_delivery
+>>>>>>> 1a1e2c7e01 (fix: use field precision instead of hardcoded precision in so and po)
 					) {
 						if (frappe.model.can_create("Delivery Note")) {
 							this.frm.add_custom_button(
@@ -272,7 +370,14 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 					}
 
 					// sales invoice
+<<<<<<< HEAD
 					if(flt(doc.per_billed, 6) < 100 && frappe.model.can_create("Sales Invoice")) {
+=======
+					if (
+						flt(doc.per_billed, precision("per_billed")) < 100 &&
+						frappe.model.can_create("Sales Invoice")
+					) {
+>>>>>>> 1a1e2c7e01 (fix: use field precision instead of hardcoded precision in so and po)
 						this.frm.add_custom_button(
 							__("Sales Invoice"),
 							() => me.make_sales_invoice(),
@@ -282,12 +387,19 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 
 					// material request
 					if (
+<<<<<<< HEAD
 						(
 							!doc.order_type
 							|| (order_is_a_sale || order_is_a_custom_sale)
 							&& flt(doc.per_delivered, 6) < 100
 						)
 						&& frappe.model.can_create("Material Request")
+=======
+						(!doc.order_type ||
+							((order_is_a_sale || order_is_a_custom_sale) &&
+								flt(doc.per_delivered, precision("per_delivered")) < 100)) &&
+						frappe.model.can_create("Material Request")
+>>>>>>> 1a1e2c7e01 (fix: use field precision instead of hardcoded precision in so and po)
 					) {
 						this.frm.add_custom_button(
 							__('Material Request'),
@@ -311,8 +423,16 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 					}
 
 					// maintenance
+<<<<<<< HEAD
 					if(flt(doc.per_delivered, 2) < 100 && (order_is_maintenance || order_is_a_custom_sale)) {
 						if(frappe.model.can_create("Maintenance Visit")) {
+=======
+					if (
+						flt(doc.per_delivered, precision("per_delivered")) < 100 &&
+						(order_is_maintenance || order_is_a_custom_sale)
+					) {
+						if (frappe.model.can_create("Maintenance Visit")) {
+>>>>>>> 1a1e2c7e01 (fix: use field precision instead of hardcoded precision in so and po)
 							this.frm.add_custom_button(
 								__('Maintenance Visit'),
 								() => this.make_maintenance_visit(),
@@ -330,6 +450,7 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 					}
 
 					// project
+<<<<<<< HEAD
 					if(flt(doc.per_delivered, 2) < 100 && frappe.model.can_create("Project")) {
 							this.frm.add_custom_button(__('Project'), () => this.make_project(), __('Create'));
 					}
@@ -342,6 +463,13 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 							},
 							__('Create')
 						);
+=======
+					if (
+						flt(doc.per_delivered, precision("per_delivered")) < 100 &&
+						frappe.model.can_create("Project")
+					) {
+						this.frm.add_custom_button(__("Project"), () => this.make_project(), __("Create"));
+>>>>>>> 1a1e2c7e01 (fix: use field precision instead of hardcoded precision in so and po)
 					}
 
 					if (
