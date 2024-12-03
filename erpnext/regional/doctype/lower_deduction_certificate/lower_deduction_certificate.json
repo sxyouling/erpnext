@@ -64,7 +64,11 @@
   {
    "fieldname": "valid_upto",
    "fieldtype": "Date",
+<<<<<<< HEAD
    "label": "Valid Upto",
+=======
+   "label": "Valid Up To",
+>>>>>>> 329d14957b (fix: validate negative qty)
    "reqd": 1
   },
   {

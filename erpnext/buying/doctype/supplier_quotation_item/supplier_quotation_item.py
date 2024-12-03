@@ -26,6 +26,10 @@ class SupplierQuotationItem(Document):
 		description: DF.TextEditor | None
 		discount_amount: DF.Currency
 		discount_percentage: DF.Percent
+<<<<<<< HEAD
+=======
+		distributed_discount_amount: DF.Currency
+>>>>>>> 329d14957b (fix: validate negative qty)
 		expected_delivery_date: DF.Date | None
 		image: DF.Attach | None
 		is_free_item: DF.Check

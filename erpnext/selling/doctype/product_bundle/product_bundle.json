@@ -77,7 +77,11 @@
  "icon": "fa fa-sitemap",
  "idx": 1,
  "links": [],
+<<<<<<< HEAD
  "modified": "2024-01-30 13:57:04.951788",
+=======
+ "modified": "2024-03-27 13:10:19.599302",
+>>>>>>> 329d14957b (fix: validate negative qty)
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Product Bundle",
@@ -113,7 +117,11 @@
    "write": 1
   }
  ],
+<<<<<<< HEAD
  "sort_field": "modified",
+=======
+ "sort_field": "creation",
+>>>>>>> 329d14957b (fix: validate negative qty)
  "sort_order": "ASC",
  "states": []
 }

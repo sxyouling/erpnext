@@ -13,7 +13,10 @@ frappe.ui.form.on("Task", {
 				}),
 		};
 	},
+<<<<<<< HEAD
 
+=======
+>>>>>>> 329d14957b (fix: validate negative qty)
 	onload: function (frm) {
 		frm.set_query("task", "depends_on", function () {
 			let filters = {

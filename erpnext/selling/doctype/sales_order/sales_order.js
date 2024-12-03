@@ -146,7 +146,11 @@ frappe.ui.form.on("Sales Order", {
 					target: frm,
 					setters: [
 						{
+<<<<<<< HEAD
 							label: __("Supplier"),
+=======
+							label: "Supplier",
+>>>>>>> 329d14957b (fix: validate negative qty)
 							fieldname: "supplier",
 							fieldtype: "Link",
 							options: "Supplier",
@@ -783,7 +787,11 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 						target: me.frm,
 						setters: [
 							{
+<<<<<<< HEAD
 								label: __("Customer"),
+=======
+								label: "Customer",
+>>>>>>> 329d14957b (fix: validate negative qty)
 								fieldname: "party_name",
 								fieldtype: "Link",
 								options: "Customer",
@@ -796,6 +804,7 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 							status: ["!=", "Lost"],
 						},
 					});
+<<<<<<< HEAD
 
 					setTimeout(() => {
 						d.$parent.append(`
@@ -804,6 +813,8 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 							</span>
 					`);
 					}, 200);
+=======
+>>>>>>> 329d14957b (fix: validate negative qty)
 				},
 				__("Get Items From")
 			);
@@ -838,7 +849,11 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 				} else {
 					const fields = [
 						{
+<<<<<<< HEAD
 							label: __("Items"),
+=======
+							label: "Items",
+>>>>>>> 329d14957b (fix: validate negative qty)
 							fieldtype: "Table",
 							fieldname: "items",
 							description: __("Select BOM and Qty for Production"),
@@ -1068,6 +1083,11 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 		var delivery_dates = this.frm.doc.items.map((i) => i.delivery_date);
 		delivery_dates = [...new Set(delivery_dates)];
 
+<<<<<<< HEAD
+=======
+		var today = new Date();
+
+>>>>>>> 329d14957b (fix: validate negative qty)
 		var item_grid = this.frm.fields_dict["items"].grid;
 		if (!item_grid.get_selected().length && delivery_dates.length > 1) {
 			var dialog = new frappe.ui.Dialog({
@@ -1088,7 +1108,15 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 						<div class="list-item">
 							<div class="list-item__content list-item__content--flex-2">
 								<label>
+<<<<<<< HEAD
 								<input type="checkbox" data-date="${date}" checked="checked"/>
+=======
+								<input
+									type="checkbox"
+									data-date="${date}"
+									${frappe.datetime.get_day_diff(new Date(date), today) > 0 ? "" : 'checked="checked"'}
+								/>
+>>>>>>> 329d14957b (fix: validate negative qty)
 								${frappe.datetime.str_to_user(date)}
 								</label>
 							</div>
@@ -1193,7 +1221,11 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 				{
 					fieldname: "items_for_po",
 					fieldtype: "Table",
+<<<<<<< HEAD
 					label: __("Select Items"),
+=======
+					label: "Select Items",
+>>>>>>> 329d14957b (fix: validate negative qty)
 					fields: [
 						{
 							fieldtype: "Data",

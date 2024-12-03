@@ -28,7 +28,10 @@ class SubcontractingReceiptItem(Document):
 		is_scrap_item: DF.Check
 		item_code: DF.Link
 		item_name: DF.Data | None
+<<<<<<< HEAD
 		job_card: DF.Link | None
+=======
+>>>>>>> 329d14957b (fix: validate negative qty)
 		manufacturer: DF.Link | None
 		manufacturer_part_no: DF.Data | None
 		page_break: DF.Check

@@ -370,13 +370,21 @@ frappe.ui.form.on("Payment Entry", {
 			"references"
 		);
 
+<<<<<<< HEAD
 		cur_frm.set_df_property(
+=======
+		frm.set_df_property(
+>>>>>>> 329d14957b (fix: validate negative qty)
 			"source_exchange_rate",
 			"description",
 			"1 " + frm.doc.paid_from_account_currency + " = [?] " + company_currency
 		);
 
+<<<<<<< HEAD
 		cur_frm.set_df_property(
+=======
+		frm.set_df_property(
+>>>>>>> 329d14957b (fix: validate negative qty)
 			"target_exchange_rate",
 			"description",
 			"1 " + frm.doc.paid_to_account_currency + " = [?] " + company_currency

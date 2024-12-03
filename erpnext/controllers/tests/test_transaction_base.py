@@ -1,9 +1,16 @@
 import unittest
 
 import frappe
+<<<<<<< HEAD
 
 
 class TestUtils(unittest.TestCase):
+=======
+from frappe.tests import IntegrationTestCase
+
+
+class TestUtils(IntegrationTestCase):
+>>>>>>> 329d14957b (fix: validate negative qty)
 	def test_reset_default_field_value(self):
 		doc = frappe.get_doc(
 			{

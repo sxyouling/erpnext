@@ -18,7 +18,11 @@
 					{% if doc.status == "Open" %}
 						{{ doc.priority }}
 					{% else %}
+<<<<<<< HEAD
 						{{ _(doc.status) }}
+=======
+						{{ doc.status }}
+>>>>>>> 329d14957b (fix: validate negative qty)
 					{%- endif -%}
 				</span>
 			</div>

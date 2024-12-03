@@ -99,7 +99,11 @@ def get_subcontracting_boms_for_finished_goods(fg_items: str | list) -> dict:
 			else:
 				return subcontracting_boms[0]
 
+<<<<<<< HEAD
 	return {}
+=======
+	return frappe._dict({})
+>>>>>>> 329d14957b (fix: validate negative qty)
 
 
 @frappe.whitelist()

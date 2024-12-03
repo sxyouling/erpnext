@@ -243,7 +243,11 @@
    "depends_on": "eval:!doc.__islocal",
    "fieldname": "download_materials_required",
    "fieldtype": "Button",
+<<<<<<< HEAD
    "label": "Download Required Materials"
+=======
+   "label": "Download Materials Request Plan"
+>>>>>>> 329d14957b (fix: validate negative qty)
   },
   {
    "fieldname": "get_items_for_mr",
@@ -398,7 +402,11 @@
    "collapsible": 1,
    "fieldname": "download_materials_request_plan_section_section",
    "fieldtype": "Section Break",
+<<<<<<< HEAD
    "label": "Preview Required Materials"
+=======
+   "label": "Download Materials Request Plan Section"
+>>>>>>> 329d14957b (fix: validate negative qty)
   },
   {
    "default": "0",
@@ -439,7 +447,11 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
+<<<<<<< HEAD
  "modified": "2024-12-04 11:55:03.108971",
+=======
+ "modified": "2024-03-27 13:10:19.928403",
+>>>>>>> 329d14957b (fix: validate negative qty)
  "modified_by": "Administrator",
  "module": "Manufacturing",
  "name": "Production Plan",
@@ -460,7 +472,14 @@
    "write": 1
   }
  ],
+<<<<<<< HEAD
  "sort_field": "modified",
  "sort_order": "ASC",
  "states": []
 }
+=======
+ "sort_field": "creation",
+ "sort_order": "ASC",
+ "states": []
+}
+>>>>>>> 329d14957b (fix: validate negative qty)

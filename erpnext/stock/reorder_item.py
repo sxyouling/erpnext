@@ -18,7 +18,11 @@ def reorder_item():
 	if not (frappe.db.a_row_exists("Company") and frappe.db.a_row_exists("Fiscal Year")):
 		return
 
+<<<<<<< HEAD
 	if cint(frappe.db.get_value("Stock Settings", None, "auto_indent")):
+=======
+	if cint(frappe.db.get_single_value("Stock Settings", "auto_indent")):
+>>>>>>> 329d14957b (fix: validate negative qty)
 		return _reorder_item()
 
 
@@ -98,7 +102,10 @@ def _reorder_item():
 						"description": d.description,
 						"stock_uom": d.stock_uom,
 						"purchase_uom": d.purchase_uom,
+<<<<<<< HEAD
 						"lead_time_days": d.lead_time_days,
+=======
+>>>>>>> 329d14957b (fix: validate negative qty)
 					}
 				),
 			)
@@ -130,7 +137,10 @@ def get_items_for_reorder() -> dict[str, list]:
 			item_table.brand,
 			item_table.variant_of,
 			item_table.has_variants,
+<<<<<<< HEAD
 			item_table.lead_time_days,
+=======
+>>>>>>> 329d14957b (fix: validate negative qty)
 		)
 		.where(
 			(item_table.disabled == 0)
@@ -303,7 +313,11 @@ def create_material_request(material_requests):
 	if company_wise_mr:
 		if getattr(frappe.local, "reorder_email_notify", None) is None:
 			frappe.local.reorder_email_notify = cint(
+<<<<<<< HEAD
 				frappe.db.get_value("Stock Settings", None, "reorder_email_notify")
+=======
+				frappe.db.get_single_value("Stock Settings", "reorder_email_notify")
+>>>>>>> 329d14957b (fix: validate negative qty)
 			)
 
 		if frappe.local.reorder_email_notify:
@@ -376,7 +390,11 @@ def notify_errors(exceptions_list):
 		_("Dear System Manager,")
 		+ "<br>"
 		+ _(
+<<<<<<< HEAD
 			"An error occured for certain Items while creating Material Requests based on Re-order level. Please rectify these issues :"
+=======
+			"An error occurred for certain Items while creating Material Requests based on Re-order level. Please rectify these issues :"
+>>>>>>> 329d14957b (fix: validate negative qty)
 		)
 		+ "<br>"
 	)

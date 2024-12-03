@@ -4,7 +4,11 @@
 frappe.listview_settings["Pick List"] = {
 	get_indicator: function (doc) {
 		const status_colors = {
+<<<<<<< HEAD
 			Draft: "red",
+=======
+			Draft: "grey",
+>>>>>>> 329d14957b (fix: validate negative qty)
 			Open: "orange",
 			Completed: "green",
 			Cancelled: "red",

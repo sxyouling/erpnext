@@ -139,7 +139,11 @@
   }
  ],
  "show_name_in_global_search": 1,
+<<<<<<< HEAD
  "sort_field": "modified",
+=======
+ "sort_field": "creation",
+>>>>>>> 329d14957b (fix: validate negative qty)
  "sort_order": "ASC",
  "states": []
 }

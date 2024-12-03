@@ -142,7 +142,11 @@ class SalesPipelineAnalytics:
 		conditions = []
 
 		if self.filters.get("opportunity_source"):
+<<<<<<< HEAD
 			conditions.append({"source": self.filters.get("opportunity_source")})
+=======
+			conditions.append({"utm_source": self.filters.get("opportunity_source")})
+>>>>>>> 329d14957b (fix: validate negative qty)
 
 		if self.filters.get("opportunity_type"):
 			conditions.append({"opportunity_type": self.filters.get("opportunity_type")})

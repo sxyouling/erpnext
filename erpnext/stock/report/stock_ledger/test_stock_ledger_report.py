@@ -2,7 +2,11 @@
 # See license.txt
 
 import frappe
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> 329d14957b (fix: validate negative qty)
 from frappe.utils import add_days, today
 
 from erpnext.maintenance.doctype.maintenance_schedule.test_maintenance_schedule import (
@@ -10,9 +14,15 @@ from erpnext.maintenance.doctype.maintenance_schedule.test_maintenance_schedule 
 )
 
 
+<<<<<<< HEAD
 class TestStockLedgerReeport(FrappeTestCase):
 	def setUp(self) -> None:
 		make_serial_item_with_serial("_Test Stock Report Serial Item")
+=======
+class TestStockLedgerReeport(IntegrationTestCase):
+	def setUp(self) -> None:
+		make_serial_item_with_serial(self, "_Test Stock Report Serial Item")
+>>>>>>> 329d14957b (fix: validate negative qty)
 		self.filters = frappe._dict(
 			company="_Test Company",
 			from_date=today(),

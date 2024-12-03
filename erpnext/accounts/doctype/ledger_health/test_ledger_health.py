@@ -3,14 +3,22 @@
 
 import frappe
 from frappe import qb
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> 329d14957b (fix: validate negative qty)
 from frappe.utils import nowdate
 
 from erpnext.accounts.test.accounts_mixin import AccountsTestMixin
 from erpnext.accounts.utils import run_ledger_health_checks
 
 
+<<<<<<< HEAD
 class TestLedgerHealth(AccountsTestMixin, FrappeTestCase):
+=======
+class TestLedgerHealth(AccountsTestMixin, IntegrationTestCase):
+>>>>>>> 329d14957b (fix: validate negative qty)
 	def setUp(self):
 		self.create_company()
 		self.create_customer()

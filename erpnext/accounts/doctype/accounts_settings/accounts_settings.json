@@ -521,7 +521,11 @@
   }
  ],
  "quick_entry": 1,
+<<<<<<< HEAD
  "sort_field": "modified",
+=======
+ "sort_field": "creation",
+>>>>>>> 329d14957b (fix: validate negative qty)
  "sort_order": "ASC",
  "states": [],
  "track_changes": 1

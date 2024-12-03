@@ -36,6 +36,10 @@ class PurchaseReceiptItem(Document):
 		description: DF.TextEditor | None
 		discount_amount: DF.Currency
 		discount_percentage: DF.Percent
+<<<<<<< HEAD
+=======
+		distributed_discount_amount: DF.Currency
+>>>>>>> 329d14957b (fix: validate negative qty)
 		expense_account: DF.Link | None
 		from_warehouse: DF.Link | None
 		has_item_scanned: DF.Check

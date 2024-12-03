@@ -660,8 +660,13 @@ def get_product_discount_rule(pricing_rule, item_details, args=None, doc=None):
 				and row.pricing_rules == args.pricing_rules
 			]
 		)
+<<<<<<< HEAD
 		transaction_qty = (transaction_qty or doc.total_qty) - pricing_rule.apply_recursion_over
 		if transaction_qty:
+=======
+		transaction_qty = transaction_qty - pricing_rule.apply_recursion_over
+		if transaction_qty and transaction_qty > 0:
+>>>>>>> 329d14957b (fix: validate negative qty)
 			qty = flt(transaction_qty) * qty / pricing_rule.recurse_for
 			if pricing_rule.round_free_qty:
 				qty = (flt(transaction_qty) // pricing_rule.recurse_for) * (pricing_rule.free_qty or 1)
@@ -749,7 +754,14 @@ def update_coupon_code_count(coupon_name, transaction_type):
 	coupon = frappe.get_doc("Coupon Code", coupon_name)
 	if coupon:
 		if transaction_type == "used":
+<<<<<<< HEAD
 			if coupon.used < coupon.maximum_use:
+=======
+			if not coupon.maximum_use:
+				coupon.used = coupon.used + 1
+				coupon.save(ignore_permissions=True)
+			elif coupon.used < coupon.maximum_use:
+>>>>>>> 329d14957b (fix: validate negative qty)
 				coupon.used = coupon.used + 1
 				coupon.save(ignore_permissions=True)
 			else:

@@ -3,15 +3,32 @@
 
 
 import frappe
+<<<<<<< HEAD
 
 test_records = frappe.get_test_records("Item Attribute")
 
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase, UnitTestCase
+>>>>>>> 329d14957b (fix: validate negative qty)
 
 from erpnext.stock.doctype.item_attribute.item_attribute import ItemAttributeIncrementError
 
 
+<<<<<<< HEAD
 class TestItemAttribute(FrappeTestCase):
+=======
+class UnitTestItemAttribute(UnitTestCase):
+	"""
+	Unit tests for ItemAttribute.
+	Use this class for testing individual functions and methods.
+	"""
+
+	pass
+
+
+class TestItemAttribute(IntegrationTestCase):
+>>>>>>> 329d14957b (fix: validate negative qty)
 	def setUp(self):
 		super().setUp()
 		if frappe.db.exists("Item Attribute", "_Test_Length"):

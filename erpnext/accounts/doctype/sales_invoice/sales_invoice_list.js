@@ -15,7 +15,11 @@ frappe.listview_settings["Sales Invoice"] = {
 	],
 	get_indicator: function (doc) {
 		const status_colors = {
+<<<<<<< HEAD
 			Draft: "red",
+=======
+			Draft: "grey",
+>>>>>>> 329d14957b (fix: validate negative qty)
 			Unpaid: "orange",
 			Paid: "green",
 			Return: "gray",

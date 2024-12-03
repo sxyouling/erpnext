@@ -58,10 +58,17 @@ frappe.ui.form.on("Timesheet", {
 		}
 
 		if (frm.doc.docstatus < 1) {
+<<<<<<< HEAD
 			let button = __("Start Timer");
 			$.each(frm.doc.time_logs || [], function (i, row) {
 				if (row.from_time <= frappe.datetime.now_datetime() && !row.completed) {
 					button = __("Resume Timer");
+=======
+			let button = "Start Timer";
+			$.each(frm.doc.time_logs || [], function (i, row) {
+				if (row.from_time <= frappe.datetime.now_datetime() && !row.completed) {
+					button = "Resume Timer";
+>>>>>>> 329d14957b (fix: validate negative qty)
 				}
 			});
 
@@ -296,6 +303,10 @@ frappe.ui.form.on("Timesheet Detail", {
 
 	hours: function (frm, cdt, cdn) {
 		calculate_end_time(frm, cdt, cdn);
+<<<<<<< HEAD
+=======
+		update_billing_hours(frm, cdt, cdn);
+>>>>>>> 329d14957b (fix: validate negative qty)
 		calculate_billing_costing_amount(frm, cdt, cdn);
 		calculate_time_and_amount(frm);
 	},

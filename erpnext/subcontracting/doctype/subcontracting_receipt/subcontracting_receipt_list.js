@@ -4,7 +4,11 @@
 frappe.listview_settings["Subcontracting Receipt"] = {
 	get_indicator: function (doc) {
 		const status_colors = {
+<<<<<<< HEAD
 			Draft: "red",
+=======
+			Draft: "grey",
+>>>>>>> 329d14957b (fix: validate negative qty)
 			Return: "gray",
 			"Return Issued": "grey",
 			Completed: "green",

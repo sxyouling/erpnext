@@ -1,5 +1,6 @@
 # Copyright (c) 2019, Frappe Technologies Pvt. Ltd. and Contributors
 # See license.txt
+<<<<<<< HEAD
 
 import unittest
 
@@ -7,6 +8,15 @@ import frappe
 
 
 class TestIssuePriority(unittest.TestCase):
+=======
+import unittest
+
+import frappe
+from frappe.tests import IntegrationTestCase
+
+
+class TestIssuePriority(IntegrationTestCase):
+>>>>>>> 329d14957b (fix: validate negative qty)
 	def test_priorities(self):
 		make_priorities()
 		priorities = frappe.get_list("Issue Priority")

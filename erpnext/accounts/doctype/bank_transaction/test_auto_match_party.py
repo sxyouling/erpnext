@@ -2,13 +2,30 @@
 # License: GNU General Public License v3. See license.txt
 
 import frappe
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase, UnitTestCase
+>>>>>>> 329d14957b (fix: validate negative qty)
 from frappe.utils import nowdate
 
 from erpnext.accounts.doctype.bank_transaction.test_bank_transaction import create_bank_account
 
 
+<<<<<<< HEAD
 class TestAutoMatchParty(FrappeTestCase):
+=======
+class UnitTestBankTransaction(UnitTestCase):
+	"""
+	Unit tests for BankTransaction.
+	Use this class for testing individual functions and methods.
+	"""
+
+	pass
+
+
+class TestAutoMatchParty(IntegrationTestCase):
+>>>>>>> 329d14957b (fix: validate negative qty)
 	@classmethod
 	def setUpClass(cls):
 		create_bank_account()

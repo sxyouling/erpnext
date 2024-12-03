@@ -36,8 +36,11 @@ def before_tests():
 			}
 		)
 
+<<<<<<< HEAD
 	frappe.db.sql("delete from `tabItem Price`")
 
+=======
+>>>>>>> 329d14957b (fix: validate negative qty)
 	_enable_all_roles_for_admin()
 
 	set_defaults_for_tests()

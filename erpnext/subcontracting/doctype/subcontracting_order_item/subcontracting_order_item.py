@@ -26,11 +26,16 @@ class SubcontractingOrderItem(Document):
 		include_exploded_items: DF.Check
 		item_code: DF.Link
 		item_name: DF.Data
+<<<<<<< HEAD
 		job_card: DF.Link | None
 		manufacturer: DF.Link | None
 		manufacturer_part_no: DF.Data | None
 		material_request: DF.Link | None
 		material_request_item: DF.Data | None
+=======
+		manufacturer: DF.Link | None
+		manufacturer_part_no: DF.Data | None
+>>>>>>> 329d14957b (fix: validate negative qty)
 		page_break: DF.Check
 		parent: DF.Data
 		parentfield: DF.Data

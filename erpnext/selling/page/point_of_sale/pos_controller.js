@@ -30,7 +30,11 @@ erpnext.PointOfSale.Controller = class {
 				fieldname: "mode_of_payment",
 				fieldtype: "Link",
 				in_list_view: 1,
+<<<<<<< HEAD
 				label: __("Mode of Payment"),
+=======
+				label: "Mode of Payment",
+>>>>>>> 329d14957b (fix: validate negative qty)
 				options: "Mode of Payment",
 				reqd: 1,
 			},
@@ -38,7 +42,11 @@ erpnext.PointOfSale.Controller = class {
 				fieldname: "opening_amount",
 				fieldtype: "Currency",
 				in_list_view: 1,
+<<<<<<< HEAD
 				label: __("Opening Amount"),
+=======
+				label: "Opening Amount",
+>>>>>>> 329d14957b (fix: validate negative qty)
 				options: "company:company_currency",
 				change: function () {
 					dialog.fields_dict.balance_details.df.data.some((d) => {
@@ -87,7 +95,11 @@ erpnext.PointOfSale.Controller = class {
 				{
 					fieldname: "balance_details",
 					fieldtype: "Table",
+<<<<<<< HEAD
 					label: __("Opening Balance Details"),
+=======
+					label: "Opening Balance Details",
+>>>>>>> 329d14957b (fix: validate negative qty)
 					cannot_add_rows: false,
 					in_place_edit: true,
 					reqd: 1,
@@ -389,7 +401,11 @@ erpnext.PointOfSale.Controller = class {
 						this.order_summary.load_summary_of(this.frm.doc, true);
 						frappe.show_alert({
 							indicator: "green",
+<<<<<<< HEAD
 							message: __("POS invoice {0} created succesfully", [r.doc.name]),
+=======
+							message: __("POS invoice {0} created successfully", [r.doc.name]),
+>>>>>>> 329d14957b (fix: validate negative qty)
 						});
 					});
 				},
@@ -578,6 +594,17 @@ erpnext.PointOfSale.Controller = class {
 
 				if (!item_code) return;
 
+<<<<<<< HEAD
+=======
+				if (rate == undefined || rate == 0) {
+					frappe.show_alert({
+						message: __("Price is not set for the item."),
+						indicator: "orange",
+					});
+					frappe.utils.play_sound("error");
+					return;
+				}
+>>>>>>> 329d14957b (fix: validate negative qty)
 				const new_item = { item_code, batch_no, rate, uom, [field]: value };
 
 				if (serial_no) {

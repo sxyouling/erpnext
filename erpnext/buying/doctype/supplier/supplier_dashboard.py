@@ -5,6 +5,10 @@ def get_data():
 	return {
 		"fieldname": "supplier",
 		"non_standard_fieldnames": {"Payment Entry": "party", "Bank Account": "party"},
+<<<<<<< HEAD
+=======
+		"dynamic_links": {"party": ["Supplier", "party_type"]},
+>>>>>>> 329d14957b (fix: validate negative qty)
 		"transactions": [
 			{"label": _("Procurement"), "items": ["Request for Quotation", "Supplier Quotation"]},
 			{"label": _("Orders"), "items": ["Purchase Order", "Purchase Receipt", "Purchase Invoice"]},

@@ -1,7 +1,11 @@
 const INDICATORS = {
 	"Partially Paid": "orange",
 	Cancelled: "red",
+<<<<<<< HEAD
 	Draft: "red",
+=======
+	Draft: "gray",
+>>>>>>> 329d14957b (fix: validate negative qty)
 	Failed: "red",
 	Initiated: "green",
 	Paid: "blue",

@@ -10,7 +10,11 @@ URL_PREFIXES = ("http://", "https://")
 
 @frappe.whitelist()
 def import_genericode():
+<<<<<<< HEAD
 	doctype = "Code List"
+=======
+	doctype = frappe.form_dict.doctype
+>>>>>>> 329d14957b (fix: validate negative qty)
 	docname = frappe.form_dict.docname
 	content = frappe.local.uploaded_file
 

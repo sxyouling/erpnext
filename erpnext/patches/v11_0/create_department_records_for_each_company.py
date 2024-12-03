@@ -35,7 +35,11 @@ def execute():
 			# append list of new department for each company
 			comp_dict[company.name][department.name] = copy_doc.name
 
+<<<<<<< HEAD
 	rebuild_tree("Department", "parent_department")
+=======
+	rebuild_tree("Department")
+>>>>>>> 329d14957b (fix: validate negative qty)
 	doctypes = ["Asset", "Employee", "Payroll Entry", "Staffing Plan", "Job Opening"]
 
 	for d in doctypes:

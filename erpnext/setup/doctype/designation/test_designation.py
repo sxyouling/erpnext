@@ -3,8 +3,11 @@
 
 import frappe
 
+<<<<<<< HEAD
 # test_records = frappe.get_test_records('Designation')
 
+=======
+>>>>>>> 329d14957b (fix: validate negative qty)
 
 def create_designation(**args):
 	args = frappe._dict(args)

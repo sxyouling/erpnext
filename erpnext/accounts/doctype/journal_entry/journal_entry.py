@@ -127,6 +127,12 @@ class JournalEntry(AccountsController):
 		self.set_amounts_in_company_currency()
 		self.validate_debit_credit_amount()
 		self.set_total_debit_credit()
+<<<<<<< HEAD
+=======
+		# Do not validate while importing via data import
+		if not frappe.flags.in_import:
+			self.validate_total_debit_and_credit()
+>>>>>>> 329d14957b (fix: validate negative qty)
 
 		if not frappe.flags.is_reverse_depr_entry:
 			self.validate_against_jv()
@@ -181,11 +187,14 @@ class JournalEntry(AccountsController):
 		else:
 			return self._cancel()
 
+<<<<<<< HEAD
 	def before_submit(self):
 		# Do not validate while importing via data import
 		if not frappe.flags.in_import:
 			self.validate_total_debit_and_credit()
 
+=======
+>>>>>>> 329d14957b (fix: validate negative qty)
 	def on_submit(self):
 		self.validate_cheque_info()
 		self.check_credit_limit()
@@ -238,9 +247,18 @@ class JournalEntry(AccountsController):
 
 	def update_advance_paid(self):
 		advance_paid = frappe._dict()
+<<<<<<< HEAD
 		for d in self.get("accounts"):
 			if d.is_advance:
 				if d.reference_type in frappe.get_hooks("advance_payment_doctypes"):
+=======
+		advance_payment_doctypes = frappe.get_hooks("advance_payment_receivable_doctypes") + frappe.get_hooks(
+			"advance_payment_payable_doctypes"
+		)
+		for d in self.get("accounts"):
+			if d.is_advance:
+				if d.reference_type in advance_payment_doctypes:
+>>>>>>> 329d14957b (fix: validate negative qty)
 					advance_paid.setdefault(d.reference_type, []).append(d.reference_name)
 
 		for voucher_type, order_list in advance_paid.items():
@@ -1232,7 +1250,13 @@ class JournalEntry(AccountsController):
 
 
 @frappe.whitelist()
+<<<<<<< HEAD
 def get_default_bank_cash_account(company, account_type=None, mode_of_payment=None, account=None):
+=======
+def get_default_bank_cash_account(
+	company, account_type=None, mode_of_payment=None, account=None, ignore_permissions=False
+):
+>>>>>>> 329d14957b (fix: validate negative qty)
 	from erpnext.accounts.doctype.sales_invoice.sales_invoice import get_bank_cash_account
 
 	if mode_of_payment:
@@ -1270,7 +1294,11 @@ def get_default_bank_cash_account(company, account_type=None, mode_of_payment=No
 		return frappe._dict(
 			{
 				"account": account,
+<<<<<<< HEAD
 				"balance": get_balance_on(account),
+=======
+				"balance": get_balance_on(account, ignore_account_permission=ignore_permissions),
+>>>>>>> 329d14957b (fix: validate negative qty)
 				"account_currency": account_details.account_currency,
 				"account_type": account_details.account_type,
 			}

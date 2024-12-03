@@ -3,13 +3,21 @@
 
 
 import frappe
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> 329d14957b (fix: validate negative qty)
 
 from erpnext.selling.doctype.sales_order.test_sales_order import make_sales_order
 from erpnext.selling.report.sales_analytics.sales_analytics import execute
 
 
+<<<<<<< HEAD
 class TestAnalytics(FrappeTestCase):
+=======
+class TestAnalytics(IntegrationTestCase):
+>>>>>>> 329d14957b (fix: validate negative qty)
 	def test_sales_analytics(self):
 		frappe.db.sql("delete from `tabSales Order` where company='_Test Company 2'")
 

@@ -966,15 +966,23 @@ erpnext.PointOfSale.ItemCart = class {
 
 				if (!res.length) {
 					transaction_container.html(
+<<<<<<< HEAD
 						`<div class="no-transactions-placeholder">${__("No recent transactions found")}</div>`
+=======
+						`<div class="no-transactions-placeholder">No recent transactions found</div>`
+>>>>>>> 329d14957b (fix: validate negative qty)
 					);
 					return;
 				}
 
 				const elapsed_time = moment(res[0].posting_date + " " + res[0].posting_time).fromNow();
+<<<<<<< HEAD
 				this.$customer_section
 					.find(".customer-desc")
 					.html(`${__("Last transacted")} ${__(elapsed_time)}`);
+=======
+				this.$customer_section.find(".customer-desc").html(`Last transacted ${elapsed_time}`);
+>>>>>>> 329d14957b (fix: validate negative qty)
 
 				res.forEach((invoice) => {
 					const posting_datetime = moment(invoice.posting_date + " " + invoice.posting_time).format(
@@ -999,7 +1007,11 @@ erpnext.PointOfSale.ItemCart = class {
 							</div>
 							<div class="invoice-status">
 								<span class="indicator-pill whitespace-nowrap ${indicator_color[invoice.status]}">
+<<<<<<< HEAD
 									<span>${__(invoice.status)}</span>
+=======
+									<span>${invoice.status}</span>
+>>>>>>> 329d14957b (fix: validate negative qty)
 								</span>
 							</div>
 						</div>

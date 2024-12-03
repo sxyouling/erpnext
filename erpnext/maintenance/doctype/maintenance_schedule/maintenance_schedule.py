@@ -26,7 +26,11 @@ class MaintenanceSchedule(TransactionBase):
 			MaintenanceScheduleItem,
 		)
 
+<<<<<<< HEAD
 		address_display: DF.SmallText | None
+=======
+		address_display: DF.TextEditor | None
+>>>>>>> 329d14957b (fix: validate negative qty)
 		amended_from: DF.Link | None
 		company: DF.Link
 		contact_display: DF.SmallText | None
@@ -221,7 +225,11 @@ class MaintenanceSchedule(TransactionBase):
 
 	def validate_maintenance_detail(self):
 		if not self.get("items"):
+<<<<<<< HEAD
 			throw(_("Please enter Maintaince Details first"))
+=======
+			throw(_("Please enter Maintenance Details first"))
+>>>>>>> 329d14957b (fix: validate negative qty)
 
 		for d in self.get("items"):
 			if not d.item_code:

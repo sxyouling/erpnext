@@ -46,7 +46,11 @@
  "icon": "fa fa-bar-chart",
  "idx": 1,
  "links": [],
+<<<<<<< HEAD
  "modified": "2024-01-30 13:57:55.802744",
+=======
+ "modified": "2024-03-27 13:10:05.873547",
+>>>>>>> 329d14957b (fix: validate negative qty)
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Monthly Distribution",
@@ -71,7 +75,11 @@
    "role": "Accounts Manager"
   }
  ],
+<<<<<<< HEAD
  "sort_field": "modified",
+=======
+ "sort_field": "creation",
+>>>>>>> 329d14957b (fix: validate negative qty)
  "sort_order": "DESC",
  "states": []
 }
