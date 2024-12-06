@@ -109,8 +109,17 @@ class BOM(WebsiteGenerator):
 	def autoname(self):
 		# ignore amended documents while calculating current index
 		existing_boms = frappe.get_all(
+<<<<<<< HEAD
 			"BOM", filters={"item": self.item, "amended_from": ["is", "not set"]}, pluck="name"
+=======
+			"BOM", filters={"name": search_key, "amended_from": ["is", "not set"]}, pluck="name"
+>>>>>>> b7a3c6b6ca (fix: BOM name issue (#44575))
 		)
+
+		if not existing_boms:
+			existing_boms = frappe.get_all(
+				"BOM", filters={"name": ("like", search_key), "amended_from": ["is", "not set"]}, pluck="name"
+			)
 
 		if existing_boms:
 			index = self.get_next_version_index(existing_boms)
