@@ -84,7 +84,13 @@ class UnreconcilePayment(Document):
 			update_voucher_outstanding(
 				alloc.reference_doctype, alloc.reference_name, alloc.account, alloc.party_type, alloc.party
 			)
+<<<<<<< HEAD
 			if doc.doctype in frappe.get_hooks("advance_payment_doctypes"):
+=======
+			if doc.doctype in frappe.get_hooks("advance_payment_payable_doctypes") + frappe.get_hooks(
+				"advance_payment_receivable_doctypes"
+			):
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 				doc.set_total_advance_paid()
 
 			frappe.db.set_value("Unreconcile Payment Entries", alloc.name, "unlinked", True)

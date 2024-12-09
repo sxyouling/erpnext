@@ -3,7 +3,11 @@
 
 
 import frappe
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase, UnitTestCase
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 from frappe.utils import getdate
 
 from erpnext.accounts.doctype.bank_transaction.test_bank_transaction import (
@@ -17,7 +21,20 @@ from erpnext.accounts.doctype.payment_entry.payment_entry import (
 from erpnext.accounts.doctype.purchase_invoice.test_purchase_invoice import make_purchase_invoice
 
 
+<<<<<<< HEAD
 class TestPaymentOrder(FrappeTestCase):
+=======
+class UnitTestPaymentOrder(UnitTestCase):
+	"""
+	Unit tests for PaymentOrder.
+	Use this class for testing individual functions and methods.
+	"""
+
+	pass
+
+
+class TestPaymentOrder(IntegrationTestCase):
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 	def setUp(self):
 		# generate and use a uniq hash identifier for 'Bank Account' and it's linked GL 'Account' to avoid validation error
 		uniq_identifier = frappe.generate_hash(length=10)

@@ -266,6 +266,10 @@ def get_account_type_based_data(account_type, companies, fiscal_year, filters):
 	filters.end_date = fiscal_year.year_end_date
 
 	for company in companies:
+<<<<<<< HEAD
+=======
+		filters.company = company
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 		amount = get_account_type_based_gl_data(company, filters)
 
 		if amount and account_type == "Depreciation":

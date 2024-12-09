@@ -18,4 +18,8 @@ max_line_length = 110
 [{*.json}]
 insert_final_newline = false
 indent_style = space
+<<<<<<< HEAD
 indent_size = 2
+=======
+indent_size = 1
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)

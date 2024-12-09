@@ -2,7 +2,11 @@ import datetime
 
 import frappe
 from frappe import _dict
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 from frappe.utils.data import add_to_date, getdate
 
 from erpnext.accounts.utils import get_fiscal_year
@@ -16,7 +20,11 @@ def stock_analytics(filters):
 	return col, data
 
 
+<<<<<<< HEAD
 class TestStockAnalyticsReport(FrappeTestCase):
+=======
+class TestStockAnalyticsReport(IntegrationTestCase):
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 	def setUp(self) -> None:
 		self.item = make_item().name
 		self.warehouse = "_Test Warehouse - _TC"

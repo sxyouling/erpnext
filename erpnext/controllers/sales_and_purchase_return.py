@@ -156,7 +156,11 @@ def validate_returned_items(doc):
 			items_returned = True
 
 	if not items_returned:
+<<<<<<< HEAD
 		frappe.throw(_("Atleast one item should be entered with negative quantity in return document"))
+=======
+		frappe.throw(_("At least one item should be entered with negative quantity in return document"))
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 
 
 def validate_quantity(doc, args, ref, valid_items, already_returned_items):

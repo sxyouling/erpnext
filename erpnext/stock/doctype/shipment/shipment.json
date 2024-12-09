@@ -433,7 +433,11 @@
  ],
  "is_submittable": 1,
  "links": [],
+<<<<<<< HEAD
  "modified": "2022-11-17 17:23:27.025802",
+=======
+ "modified": "2024-03-27 13:10:41.030764",
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Shipment",
@@ -469,7 +473,11 @@
    "write": 1
   }
  ],
+<<<<<<< HEAD
  "sort_field": "modified",
+=======
+ "sort_field": "creation",
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
  "sort_order": "DESC",
  "states": [],
  "track_changes": 1

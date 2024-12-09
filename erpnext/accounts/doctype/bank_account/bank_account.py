@@ -70,7 +70,11 @@ class BankAccount(Document):
 
 	def validate_company(self):
 		if self.is_company_account and not self.company:
+<<<<<<< HEAD
 			frappe.throw(_("Company is manadatory for company account"))
+=======
+			frappe.throw(_("Company is mandatory for company account"))
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 
 	def validate_iban(self):
 		"""

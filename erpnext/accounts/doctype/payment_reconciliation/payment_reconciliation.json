@@ -41,6 +41,10 @@
   {
    "fieldname": "company",
    "fieldtype": "Link",
+<<<<<<< HEAD
+=======
+   "ignore_user_permissions": 1,
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
    "label": "Company",
    "options": "Company",
    "reqd": 1
@@ -254,7 +258,11 @@
    "write": 1
   }
  ],
+<<<<<<< HEAD
  "sort_field": "modified",
+=======
+ "sort_field": "creation",
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
  "sort_order": "DESC",
  "states": []
 }

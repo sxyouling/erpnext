@@ -139,7 +139,11 @@
   }
  ],
  "show_name_in_global_search": 1,
+<<<<<<< HEAD
  "sort_field": "modified",
+=======
+ "sort_field": "creation",
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
  "sort_order": "ASC",
  "states": []
 }

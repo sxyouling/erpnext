@@ -17,9 +17,13 @@ class CustomerGroup(NestedSet):
 		from frappe.types import DF
 
 		from erpnext.accounts.doctype.party_account.party_account import PartyAccount
+<<<<<<< HEAD
 		from erpnext.selling.doctype.customer_credit_limit.customer_credit_limit import (
 			CustomerCreditLimit,
 		)
+=======
+		from erpnext.selling.doctype.customer_credit_limit.customer_credit_limit import CustomerCreditLimit
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 
 		accounts: DF.Table[PartyAccount]
 		credit_limits: DF.Table[CustomerCreditLimit]

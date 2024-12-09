@@ -1,6 +1,10 @@
 {
     "country_code": "ni", 
+<<<<<<< HEAD
     "name": "Nicaragua - Catalogo de Cuentas", 
+=======
+    "name": "Nicaragua - Catálogo de Cuentas", 
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
     "tree": {
         "Activo": {
             "Activo Corriente": {
@@ -491,4 +495,8 @@
             "root_type": "Liability"
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)

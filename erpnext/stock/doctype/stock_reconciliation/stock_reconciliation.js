@@ -207,7 +207,10 @@ frappe.ui.form.on("Stock Reconciliation", {
 					posting_time: frm.doc.posting_time,
 					batch_no: d.batch_no,
 					row: d,
+<<<<<<< HEAD
 					company: frm.doc.company,
+=======
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 				},
 				callback: function (r) {
 					const row = frappe.model.get_doc(cdt, cdn);

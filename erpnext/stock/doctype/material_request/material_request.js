@@ -44,6 +44,17 @@ frappe.ui.form.on("Material Request", {
 		});
 	},
 
+<<<<<<< HEAD
+=======
+	schedule_date(frm) {
+		if (frm.doc.schedule_date) {
+			frm.doc.items.forEach((d) => {
+				frappe.model.set_value(d.doctype, d.name, "schedule_date", frm.doc.schedule_date);
+			});
+		}
+	},
+
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 	onload: function (frm) {
 		// add item, if previous view was item
 		erpnext.utils.add_item(frm);
@@ -236,7 +247,11 @@ frappe.ui.form.on("Material Request", {
 		frappe.call({
 			method: "erpnext.stock.get_item_details.get_item_details",
 			args: {
+<<<<<<< HEAD
 				args: {
+=======
+				ctx: {
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 					item_code: item.item_code,
 					from_warehouse: item.from_warehouse,
 					warehouse: item.warehouse,

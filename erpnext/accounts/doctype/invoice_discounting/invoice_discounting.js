@@ -156,7 +156,11 @@ frappe.ui.form.on("Invoice Discounting", {
 					},
 				});
 			},
+<<<<<<< HEAD
 			primary_action_label: __("Get Invocies"),
+=======
+			primary_action_label: __("Get Invoices"),
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 		});
 		d.show();
 	},
@@ -189,7 +193,11 @@ frappe.ui.form.on("Invoice Discounting", {
 
 	show_general_ledger: (frm) => {
 		if (frm.doc.docstatus > 0) {
+<<<<<<< HEAD
 			cur_frm.add_custom_button(
+=======
+			frm.add_custom_button(
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 				__("Accounting Ledger"),
 				function () {
 					frappe.route_options = {

@@ -368,6 +368,14 @@ def make_default_records():
 			"variable_label": "Total Ordered",
 			"path": "get_ordered_qty",
 		},
+<<<<<<< HEAD
+=======
+		{
+			"param_name": "total_invoiced",
+			"variable_label": "Total Invoiced",
+			"path": "get_invoiced_qty",
+		},
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 	]
 	install_standing_docs = [
 		{

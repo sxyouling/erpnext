@@ -166,7 +166,11 @@ def set_total(node, value, complete_list, totals):
 	totals[node["account"]] += value
 
 	parent = node["parent_account"]
+<<<<<<< HEAD
 	if not parent == "":
+=======
+	if parent != "":
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 		return set_total(
 			next(item for item in complete_list if item["account"] == parent), value, complete_list, totals
 		)

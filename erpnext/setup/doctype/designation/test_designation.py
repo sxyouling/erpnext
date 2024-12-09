@@ -3,8 +3,11 @@
 
 import frappe
 
+<<<<<<< HEAD
 # test_records = frappe.get_test_records('Designation')
 
+=======
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 
 def create_designation(**args):
 	args = frappe._dict(args)

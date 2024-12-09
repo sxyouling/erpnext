@@ -7,7 +7,11 @@
 		</div>
 	{% else %}
 		<div class="col-xs-5 {%- if doc.align_labels_right %} text-right{%- endif -%}">
+<<<<<<< HEAD
 			<label>{{ _(df.label) }}</label></div>
+=======
+			<label>{{ _(df.label, context=df.parent) }}</label></div>
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 		<div class="col-xs-7 text-right value">
 			{{ doc.get_formatted("total", doc) }}
 		</div>

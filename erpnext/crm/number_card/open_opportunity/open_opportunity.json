@@ -4,13 +4,21 @@
  "doctype": "Number Card",
  "document_type": "Opportunity",
  "dynamic_filters_json": "[[\"Opportunity\",\"company\",\"=\",\"frappe.defaults.get_user_default(\\\"Company\\\")\"]]",
+<<<<<<< HEAD
  "filters_json": "[[\"Opportunity\",\"company\",\"=\",null,false]]",
+=======
+ "filters_json": "[[\"Opportunity\",\"company\",\"=\",null]]",
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
  "function": "Count",
  "idx": 0,
  "is_public": 1,
  "is_standard": 1,
  "label": "Open Opportunity",
+<<<<<<< HEAD
  "modified": "2020-07-22 16:16:16.420446",
+=======
+ "modified": "2024-12-05 12:00:00.000000",
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "Open Opportunity",

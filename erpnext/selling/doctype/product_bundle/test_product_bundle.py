@@ -3,8 +3,11 @@
 
 import frappe
 
+<<<<<<< HEAD
 test_records = frappe.get_test_records("Product Bundle")
 
+=======
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 
 def make_product_bundle(parent, items, qty=None):
 	if frappe.db.exists("Product Bundle", parent):

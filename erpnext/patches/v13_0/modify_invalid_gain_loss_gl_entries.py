@@ -45,7 +45,11 @@ def execute():
 			message=json.dumps(purchase_invoices + sales_invoices, indent=2),
 		)
 
+<<<<<<< HEAD
 	acc_frozen_upto = frappe.db.get_value("Accounts Settings", None, "acc_frozen_upto")
+=======
+	acc_frozen_upto = frappe.db.get_single_value("Accounts Settings", "acc_frozen_upto")
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 	if acc_frozen_upto:
 		frappe.db.set_single_value("Accounts Settings", "acc_frozen_upto", None)
 

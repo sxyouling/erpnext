@@ -5,13 +5,21 @@
  "doctype": "Number Card",
  "document_type": "Purchase Invoice",
  "dynamic_filters_json": "[[\"Purchase Invoice\",\"company\",\"=\",\" frappe.defaults.get_user_default(\\\"Company\\\")\"]]",
+<<<<<<< HEAD
  "filters_json": "[[\"Purchase Invoice\",\"docstatus\",\"=\",\"1\",false],[\"Purchase Invoice\",\"posting_date\",\"Timespan\",\"this year\",false]]",
+=======
+ "filters_json": "[[\"Purchase Invoice\",\"docstatus\",\"=\",\"1\"],[\"Purchase Invoice\",\"posting_date\",\"Timespan\",\"this year\"]]",
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
  "function": "Sum",
  "idx": 0,
  "is_public": 1,
  "is_standard": 1,
  "label": "Total Incoming Bills",
+<<<<<<< HEAD
  "modified": "2024-11-20 19:08:37.043777",
+=======
+ "modified": "2024-12-05 12:00:00.000000",
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Total Incoming Bills",

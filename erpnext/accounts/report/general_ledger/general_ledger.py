@@ -35,6 +35,12 @@ def execute(filters=None):
 	if filters.get("party"):
 		filters.party = frappe.parse_json(filters.get("party"))
 
+<<<<<<< HEAD
+=======
+	if filters.get("voucher_no") and not filters.get("group_by"):
+		filters.group_by = "Group by Voucher (Consolidated)"
+
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 	validate_filters(filters, account_details)
 
 	validate_party(filters)
@@ -370,14 +376,19 @@ def get_data_with_opening_closing(filters, account_details, accounting_dimension
 			if acc_dict.entries:
 				# opening
 				data.append({"debit_in_transaction_currency": None, "credit_in_transaction_currency": None})
+<<<<<<< HEAD
 				if (not filters.get("group_by") and not filters.get("voucher_no")) or (
 					filters.get("group_by") and filters.get("group_by") != "Group by Voucher"
 				):
+=======
+				if filters.get("group_by") != "Group by Voucher":
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 					data.append(acc_dict.totals.opening)
 
 				data += acc_dict.entries
 
 				# totals
+<<<<<<< HEAD
 				if filters.get("group_by") or not filters.voucher_no:
 					data.append(acc_dict.totals.total)
 
@@ -385,6 +396,12 @@ def get_data_with_opening_closing(filters, account_details, accounting_dimension
 				if (not filters.get("group_by") and not filters.get("voucher_no")) or (
 					filters.get("group_by") and filters.get("group_by") != "Group by Voucher"
 				):
+=======
+				data.append(acc_dict.totals.total)
+
+				# closing
+				if filters.get("group_by") != "Group by Voucher":
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 					data.append(acc_dict.totals.closing)
 
 		data.append({"debit_in_transaction_currency": None, "credit_in_transaction_currency": None})
@@ -488,7 +505,14 @@ def get_accountwise_gle(filters, accounting_dimensions, gl_entries, gle_map, tot
 
 	for gle in gl_entries:
 		group_by_value = gle.get(group_by)
+<<<<<<< HEAD
 		gle.voucher_type = gle.voucher_type
+=======
+		gle.voucher_subtype = _(gle.voucher_subtype)
+		gle.against_voucher_type = _(gle.against_voucher_type)
+		gle.remarks = _(gle.remarks)
+		gle.party_type = _(gle.party_type)
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 
 		if gle.posting_date < from_date or (cstr(gle.is_opening) == "Yes" and not show_opening_entries):
 			if not group_by_voucher_consolidated:

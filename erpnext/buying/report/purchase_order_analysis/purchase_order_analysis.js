@@ -53,7 +53,11 @@ frappe.query_reports["Purchase Order Analysis"] = {
 			fieldtype: "MultiSelectList",
 			width: "80",
 			get_data: function (txt) {
+<<<<<<< HEAD
 				let status = ["To Bill", "To Receive", "To Receive and Bill", "Completed"];
+=======
+				let status = ["To Pay", "To Bill", "To Receive", "To Receive and Bill", "Completed"];
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 				let options = [];
 				for (let option of status) {
 					options.push({

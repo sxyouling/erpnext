@@ -10,7 +10,11 @@ URL_PREFIXES = ("http://", "https://")
 
 @frappe.whitelist()
 def import_genericode():
+<<<<<<< HEAD
 	doctype = "Code List"
+=======
+	doctype = frappe.form_dict.doctype
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 	docname = frappe.form_dict.docname
 	content = frappe.local.uploaded_file
 

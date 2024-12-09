@@ -18,7 +18,11 @@ class WarrantyClaim(TransactionBase):
 	if TYPE_CHECKING:
 		from frappe.types import DF
 
+<<<<<<< HEAD
 		address_display: DF.SmallText | None
+=======
+		address_display: DF.TextEditor | None
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 		amc_expiry_date: DF.Date | None
 		amended_from: DF.Link | None
 		company: DF.Link

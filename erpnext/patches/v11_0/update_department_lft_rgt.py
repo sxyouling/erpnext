@@ -16,4 +16,8 @@ def execute():
 		where is_group = 0""".format(_("All Departments"))
 	)
 
+<<<<<<< HEAD
 	rebuild_tree("Department", "parent_department")
+=======
+	rebuild_tree("Department")
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
