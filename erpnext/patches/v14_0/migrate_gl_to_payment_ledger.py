@@ -189,4 +189,8 @@ def execute():
 						raise err
 				else:
 					break
+<<<<<<< HEAD
 			print(f"{processed} records have been sucessfully migrated")
+=======
+			print(f"{processed} records have been successfully migrated")
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)

@@ -1,7 +1,11 @@
 # Copyright (c) 2017, Frappe Technologies Pvt. Ltd. and contributors
 # For license information, please see license.txt
 
+<<<<<<< HEAD
 
+=======
+import frappe
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 from frappe.model.document import Document
 
 
@@ -31,4 +35,10 @@ class Driver(Document):
 		transporter: DF.Link | None
 	# end: auto-generated types
 
+<<<<<<< HEAD
 	pass
+=======
+	def validate(self):
+		if self.employee:
+			self.user = frappe.get_value("Employee", self.employee, "user_id")
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)

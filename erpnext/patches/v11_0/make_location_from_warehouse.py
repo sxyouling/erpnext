@@ -27,7 +27,11 @@ def execute():
 		except frappe.DuplicateEntryError:
 			continue
 
+<<<<<<< HEAD
 	rebuild_tree("Location", "parent_location")
+=======
+	rebuild_tree("Location")
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 
 
 def get_parent_warehouse_name(warehouse):

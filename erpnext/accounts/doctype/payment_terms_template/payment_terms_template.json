@@ -88,7 +88,13 @@
    "share": 1
   }
  ],
+<<<<<<< HEAD
  "sort_field": "modified",
  "sort_order": "DESC",
+=======
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
  "track_changes": 1
 }

@@ -2,7 +2,10 @@
 *.py~
 .DS_Store
 conf.py
+<<<<<<< HEAD
 locale
+=======
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 latest_updates.json
 .wnf-lang-status
 *.egg-info
@@ -15,5 +18,13 @@ __pycache__
 *~
 .idea/
 .vscode/
+<<<<<<< HEAD
 node_modules/
 .backportrc.json
+=======
+.helix/
+node_modules/
+.backportrc.json
+# Aider AI Chat
+.aider*
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)

@@ -59,7 +59,11 @@ def get_warehouse_account(warehouse, warehouse_account=None):
 			else:
 				from frappe.utils.nestedset import rebuild_tree
 
+<<<<<<< HEAD
 				rebuild_tree("Warehouse", "parent_warehouse")
+=======
+				rebuild_tree("Warehouse")
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 		else:
 			account = frappe.db.sql(
 				"""

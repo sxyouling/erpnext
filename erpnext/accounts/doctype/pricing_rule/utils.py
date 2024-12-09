@@ -651,6 +651,7 @@ def get_product_discount_rule(pricing_rule, item_details, args=None, doc=None):
 
 	qty = pricing_rule.free_qty or 1
 	if pricing_rule.is_recursive:
+<<<<<<< HEAD
 		transaction_qty = sum(
 			[
 				row.qty
@@ -662,6 +663,10 @@ def get_product_discount_rule(pricing_rule, item_details, args=None, doc=None):
 		)
 		transaction_qty = transaction_qty - pricing_rule.apply_recursion_over
 		if transaction_qty and transaction_qty > 0:
+=======
+		transaction_qty = (args.get("qty") if args else doc.total_qty) - pricing_rule.apply_recursion_over
+		if transaction_qty:
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 			qty = flt(transaction_qty) * qty / pricing_rule.recurse_for
 			if pricing_rule.round_free_qty:
 				qty = (flt(transaction_qty) // pricing_rule.recurse_for) * (pricing_rule.free_qty or 1)
@@ -749,7 +754,14 @@ def update_coupon_code_count(coupon_name, transaction_type):
 	coupon = frappe.get_doc("Coupon Code", coupon_name)
 	if coupon:
 		if transaction_type == "used":
+<<<<<<< HEAD
 			if coupon.used < coupon.maximum_use:
+=======
+			if not coupon.maximum_use:
+				coupon.used = coupon.used + 1
+				coupon.save(ignore_permissions=True)
+			elif coupon.used < coupon.maximum_use:
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 				coupon.used = coupon.used + 1
 				coupon.save(ignore_permissions=True)
 			else:

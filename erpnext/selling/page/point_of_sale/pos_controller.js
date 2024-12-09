@@ -389,7 +389,11 @@ erpnext.PointOfSale.Controller = class {
 						this.order_summary.load_summary_of(this.frm.doc, true);
 						frappe.show_alert({
 							indicator: "green",
+<<<<<<< HEAD
 							message: __("POS invoice {0} created succesfully", [r.doc.name]),
+=======
+							message: __("POS invoice {0} created successfully", [r.doc.name]),
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 						});
 					});
 				},
@@ -578,6 +582,17 @@ erpnext.PointOfSale.Controller = class {
 
 				if (!item_code) return;
 
+<<<<<<< HEAD
+=======
+				if (rate == undefined || rate == 0) {
+					frappe.show_alert({
+						message: __("Price is not set for the item."),
+						indicator: "orange",
+					});
+					frappe.utils.play_sound("error");
+					return;
+				}
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 				const new_item = { item_code, batch_no, rate, uom, [field]: value };
 
 				if (serial_no) {

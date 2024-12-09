@@ -1,14 +1,24 @@
 # Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 # MIT License. See license.txt
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 import unittest
 
 import frappe
 from frappe.desk import notifications
+<<<<<<< HEAD
 
 
 class TestNotifications(unittest.TestCase):
+=======
+from frappe.tests import IntegrationTestCase
+
+
+class TestNotifications(IntegrationTestCase):
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 	def test_get_notifications_for_targets(self):
 		"""
 		Test notification config entries for targets as percentages

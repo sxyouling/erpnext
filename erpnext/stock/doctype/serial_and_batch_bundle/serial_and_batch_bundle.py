@@ -252,8 +252,13 @@ class SerialandBatchBundle(Document):
 		]:
 			return
 
+<<<<<<< HEAD
 		if return_against := self.get_return_against(parent=parent):
 			self.set_valuation_rate_for_return_entry(return_against, save)
+=======
+		if return_aginst := self.get_return_aginst(parent=parent):
+			self.set_valuation_rate_for_return_entry(return_aginst, save)
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 		elif self.type_of_transaction == "Outward":
 			self.set_incoming_rate_for_outward_transaction(
 				row, save, allow_negative_stock=allow_negative_stock
@@ -261,12 +266,18 @@ class SerialandBatchBundle(Document):
 		else:
 			self.set_incoming_rate_for_inward_transaction(row, save)
 
+<<<<<<< HEAD
 	def set_valuation_rate_for_return_entry(self, return_against, save=False):
 		if valuation_details := self.get_valuation_rate_for_return_entry(return_against):
 			for row in self.entries:
 				if valuation_details:
 					self.validate_returned_serial_batch_no(return_against, row, valuation_details)
 
+=======
+	def set_valuation_rate_for_return_entry(self, return_aginst, save=False):
+		if valuation_details := self.get_valuation_rate_for_return_entry(return_aginst):
+			for row in self.entries:
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 				if row.serial_no:
 					valuation_rate = valuation_details["serial_nos"].get(row.serial_no)
 				else:
@@ -283,6 +294,7 @@ class SerialandBatchBundle(Document):
 						}
 					)
 
+<<<<<<< HEAD
 	def validate_returned_serial_batch_no(self, return_against, row, original_inv_details):
 		if row.serial_no and row.serial_no not in original_inv_details["serial_nos"]:
 			self.throw_error_message(
@@ -299,6 +311,9 @@ class SerialandBatchBundle(Document):
 			)
 
 	def get_valuation_rate_for_return_entry(self, return_against):
+=======
+	def get_valuation_rate_for_return_entry(self, return_aginst):
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 		valuation_details = frappe._dict(
 			{
 				"serial_nos": defaultdict(float),
@@ -314,7 +329,11 @@ class SerialandBatchBundle(Document):
 				"`tabSerial and Batch Entry`.`incoming_rate`",
 			],
 			filters=[
+<<<<<<< HEAD
 				["Serial and Batch Bundle", "voucher_no", "=", return_against],
+=======
+				["Serial and Batch Bundle", "voucher_no", "=", return_aginst],
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 				["Serial and Batch Entry", "docstatus", "=", 1],
 				["Serial and Batch Bundle", "is_cancelled", "=", 0],
 				["Serial and Batch Bundle", "item_code", "=", self.item_code],
@@ -448,8 +467,13 @@ class SerialandBatchBundle(Document):
 
 		return sle
 
+<<<<<<< HEAD
 	def get_return_against(self, parent=None):
 		return_against = None
+=======
+	def get_return_aginst(self, parent=None):
+		return_aginst = None
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 
 		if parent and parent.get("is_return") and parent.get("return_against"):
 			return parent.get("return_against")
@@ -473,7 +497,11 @@ class SerialandBatchBundle(Document):
 			if voucher_details and voucher_details.get("is_return") and voucher_details.get("return_against"):
 				return voucher_details.get("return_against")
 
+<<<<<<< HEAD
 		return return_against
+=======
+		return return_aginst
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 
 	def set_incoming_rate_for_inward_transaction(self, row=None, save=False):
 		valuation_field = "valuation_rate"

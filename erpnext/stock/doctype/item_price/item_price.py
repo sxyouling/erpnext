@@ -55,6 +55,14 @@ class ItemPrice(Document):
 		if not frappe.db.exists("Item", self.item_code):
 			frappe.throw(_("Item {0} not found.").format(self.item_code))
 
+<<<<<<< HEAD
+=======
+		if self.uom and not frappe.db.exists(
+			"UOM Conversion Detail", {"parenttype": "Item", "parent": self.item_code, "uom": self.uom}
+		):
+			frappe.throw(_("UOM {0} not found in Item {1}").format(self.uom, self.item_code))
+
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 	def update_price_list_details(self):
 		if self.price_list:
 			price_list_details = frappe.db.get_value(

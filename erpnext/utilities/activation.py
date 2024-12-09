@@ -122,7 +122,11 @@ def get_help_messages():
 			doctype="Timesheet",
 			title=_("Add Timesheets"),
 			description=_(
+<<<<<<< HEAD
 				"Timesheets help keep track of time, cost and billing for activites done by your team"
+=======
+				"Timesheets help keep track of time, cost and billing for activities done by your team"
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 			),
 			action=_("Create Timesheet"),
 			route="List/Timesheet",

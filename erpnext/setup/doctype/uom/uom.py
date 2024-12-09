@@ -14,8 +14,16 @@ class UOM(Document):
 	if TYPE_CHECKING:
 		from frappe.types import DF
 
+<<<<<<< HEAD
 		enabled: DF.Check
 		must_be_whole_number: DF.Check
+=======
+		common_code: DF.Data | None
+		description: DF.SmallText | None
+		enabled: DF.Check
+		must_be_whole_number: DF.Check
+		symbol: DF.Data | None
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 		uom_name: DF.Data
 	# end: auto-generated types
 

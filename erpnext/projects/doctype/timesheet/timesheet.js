@@ -296,6 +296,10 @@ frappe.ui.form.on("Timesheet Detail", {
 
 	hours: function (frm, cdt, cdn) {
 		calculate_end_time(frm, cdt, cdn);
+<<<<<<< HEAD
+=======
+		update_billing_hours(frm, cdt, cdn);
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 		calculate_billing_costing_amount(frm, cdt, cdn);
 		calculate_time_and_amount(frm);
 	},

@@ -1,18 +1,30 @@
 # Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 # License: GNU General Public License v3. See license.txt
+<<<<<<< HEAD
 
+=======
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 import unittest
 
 import frappe
 import frappe.utils
+<<<<<<< HEAD
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 
 import erpnext
 from erpnext.setup.doctype.employee.employee import InactiveEmployeeStatusError
 
+<<<<<<< HEAD
 test_records = frappe.get_test_records("Employee")
 
 
 class TestEmployee(unittest.TestCase):
+=======
+
+class TestEmployee(IntegrationTestCase):
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 	def test_employee_status_left(self):
 		employee1 = make_employee("test_employee_1@company.com")
 		employee2 = make_employee("test_employee_2@company.com")

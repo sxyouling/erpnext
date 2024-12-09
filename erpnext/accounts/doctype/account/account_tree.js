@@ -81,7 +81,11 @@ frappe.treeview_settings["Account"] = {
 
 						// show Dr if positive since balance is calculated as debit - credit else show Cr
 						const balance = account.balance_in_account_currency || account.balance;
+<<<<<<< HEAD
 						const dr_or_cr = balance > 0 ? "Dr" : "Cr";
+=======
+						const dr_or_cr = balance > 0 ? __("Dr") : __("Cr");
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 						const format = (value, currency) => format_currency(Math.abs(value), currency);
 
 						if (account.balance !== undefined) {

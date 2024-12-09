@@ -156,7 +156,11 @@
  "owner": "Administrator",
  "permissions": [],
  "quick_entry": 1,
+<<<<<<< HEAD
  "sort_field": "modified",
+=======
+ "sort_field": "creation",
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
  "sort_order": "DESC",
  "states": [],
  "track_changes": 1

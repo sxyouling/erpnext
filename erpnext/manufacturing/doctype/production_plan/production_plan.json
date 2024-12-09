@@ -460,7 +460,14 @@
    "write": 1
   }
  ],
+<<<<<<< HEAD
  "sort_field": "modified",
  "sort_order": "ASC",
  "states": []
 }
+=======
+ "sort_field": "creation",
+ "sort_order": "ASC",
+ "states": []
+}
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)

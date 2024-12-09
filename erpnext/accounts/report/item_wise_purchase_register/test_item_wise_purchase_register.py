@@ -1,5 +1,9 @@
 import frappe
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 from frappe.utils import getdate, today
 
 from erpnext.accounts.doctype.purchase_invoice.test_purchase_invoice import make_purchase_invoice
@@ -7,7 +11,11 @@ from erpnext.accounts.report.item_wise_purchase_register.item_wise_purchase_regi
 from erpnext.accounts.test.accounts_mixin import AccountsTestMixin
 
 
+<<<<<<< HEAD
 class TestItemWisePurchaseRegister(AccountsTestMixin, FrappeTestCase):
+=======
+class TestItemWisePurchaseRegister(AccountsTestMixin, IntegrationTestCase):
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 	def setUp(self):
 		self.create_company()
 		self.create_supplier()

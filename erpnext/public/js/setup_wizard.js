@@ -24,7 +24,10 @@ erpnext.setup.slides_settings = [
 				fieldtype: "Data",
 				reqd: 1,
 			},
+<<<<<<< HEAD
 			{ fieldtype: "Column Break" },
+=======
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 			{
 				fieldname: "company_abbr",
 				label: __("Company Abbreviation"),

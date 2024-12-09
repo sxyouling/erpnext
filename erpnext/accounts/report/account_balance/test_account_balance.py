@@ -1,13 +1,21 @@
 import unittest
 
 import frappe
+<<<<<<< HEAD
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 from frappe.utils import getdate
 
 from erpnext.accounts.doctype.sales_invoice.test_sales_invoice import create_sales_invoice
 from erpnext.accounts.report.account_balance.account_balance import execute
 
 
+<<<<<<< HEAD
 class TestAccountBalance(unittest.TestCase):
+=======
+class TestAccountBalance(IntegrationTestCase):
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 	def test_account_balance(self):
 		frappe.db.sql("delete from `tabSales Invoice` where company='_Test Company 2'")
 		frappe.db.sql("delete from `tabGL Entry` where company='_Test Company 2'")

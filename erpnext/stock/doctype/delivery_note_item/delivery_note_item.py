@@ -37,6 +37,10 @@ class DeliveryNoteItem(Document):
 		description: DF.TextEditor | None
 		discount_amount: DF.Currency
 		discount_percentage: DF.Float
+<<<<<<< HEAD
+=======
+		distributed_discount_amount: DF.Currency
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 		dn_detail: DF.Data | None
 		expense_account: DF.Link | None
 		grant_commission: DF.Check

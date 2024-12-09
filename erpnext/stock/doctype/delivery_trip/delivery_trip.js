@@ -61,7 +61,10 @@ frappe.ui.form.on("Delivery Trip", {
 							customer: null,
 						},
 						get_query_filters: {
+<<<<<<< HEAD
 							docstatus: 1,
+=======
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 							company: frm.doc.company,
 							status: ["Not In", ["Completed", "Cancelled"]],
 						},

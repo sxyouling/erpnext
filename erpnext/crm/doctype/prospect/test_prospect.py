@@ -1,16 +1,27 @@
 # Copyright (c) 2021, Frappe Technologies Pvt. Ltd. and Contributors
 # See license.txt
+<<<<<<< HEAD
 
 import unittest
 
 import frappe
+=======
+import unittest
+
+import frappe
+from frappe.tests import IntegrationTestCase
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 from frappe.utils import random_string
 
 from erpnext.crm.doctype.lead.lead import add_lead_to_prospect
 from erpnext.crm.doctype.lead.test_lead import make_lead
 
 
+<<<<<<< HEAD
 class TestProspect(unittest.TestCase):
+=======
+class TestProspect(IntegrationTestCase):
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 	def test_add_lead_to_prospect_and_address_linking(self):
 		lead_doc = make_lead()
 		address_doc = make_address(address_title=lead_doc.name)

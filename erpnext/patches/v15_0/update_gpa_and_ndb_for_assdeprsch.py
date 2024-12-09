@@ -3,7 +3,10 @@ import frappe
 
 def execute():
 	# not using frappe.qb because https://github.com/frappe/frappe/issues/20292
+<<<<<<< HEAD
 	# nosemgrep
+=======
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 	frappe.db.sql(
 		"""UPDATE `tabAsset Depreciation Schedule`
         JOIN `tabAsset`

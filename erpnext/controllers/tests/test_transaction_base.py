@@ -1,9 +1,16 @@
 import unittest
 
 import frappe
+<<<<<<< HEAD
 
 
 class TestUtils(unittest.TestCase):
+=======
+from frappe.tests import IntegrationTestCase
+
+
+class TestUtils(IntegrationTestCase):
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 	def test_reset_default_field_value(self):
 		doc = frappe.get_doc(
 			{

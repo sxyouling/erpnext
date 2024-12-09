@@ -18,7 +18,11 @@ def validate_webhooks_request(doctype, hmac_key, secret_key="secret"):
 				).digest()
 			)
 
+<<<<<<< HEAD
 			if frappe.request.data and not sig == bytes(frappe.get_request_header(hmac_key).encode()):
+=======
+			if frappe.request.data and sig != bytes(frappe.get_request_header(hmac_key).encode()):
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 				frappe.throw(_("Unverified Webhook Data"))
 			frappe.set_user(settings.modified_by)
 

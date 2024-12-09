@@ -50,7 +50,11 @@ def create_customer_or_supplier():
 	party = frappe.new_doc(doctype)
 	fullname = frappe.utils.get_fullname(user)
 
+<<<<<<< HEAD
 	if not doctype == "Customer":
+=======
+	if doctype != "Customer":
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 		party.update(
 			{
 				"supplier_name": fullname,

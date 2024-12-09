@@ -1,5 +1,18 @@
 frappe.listview_settings["Item"] = {
+<<<<<<< HEAD
 	add_fields: ["item_name", "stock_uom", "item_group", "image", "has_variants", "end_of_life", "disabled"],
+=======
+	add_fields: [
+		"item_name",
+		"stock_uom",
+		"item_group",
+		"image",
+		"has_variants",
+		"end_of_life",
+		"disabled",
+		"variant_of",
+	],
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 	filters: [["disabled", "=", "0"]],
 
 	get_indicator: function (doc) {

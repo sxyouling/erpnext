@@ -92,7 +92,14 @@
  "name": "Item Variant Attribute",
  "owner": "Administrator",
  "permissions": [],
+<<<<<<< HEAD
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []
 }
+=======
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)

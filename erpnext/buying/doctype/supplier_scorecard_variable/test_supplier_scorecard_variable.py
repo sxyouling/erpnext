@@ -3,14 +3,31 @@
 
 
 import frappe
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase, UnitTestCase
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 
 from erpnext.buying.doctype.supplier_scorecard_variable.supplier_scorecard_variable import (
 	VariablePathNotFound,
 )
 
 
+<<<<<<< HEAD
 class TestSupplierScorecardVariable(FrappeTestCase):
+=======
+class UnitTestSupplierScorecardVariable(UnitTestCase):
+	"""
+	Unit tests for SupplierScorecardVariable.
+	Use this class for testing individual functions and methods.
+	"""
+
+	pass
+
+
+class TestSupplierScorecardVariable(IntegrationTestCase):
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 	def test_variable_exist(self):
 		for d in test_existing_variables:
 			my_doc = frappe.get_doc("Supplier Scorecard Variable", d.get("name"))

@@ -228,9 +228,13 @@ def set_status(name, status):
 
 def auto_close_tickets():
 	"""Auto-close replied support tickets after 7 days"""
+<<<<<<< HEAD
 	auto_close_after_days = (
 		frappe.db.get_value("Support Settings", "Support Settings", "close_issue_after_days") or 7
 	)
+=======
+	auto_close_after_days = frappe.db.get_single_value("Support Settings", "close_issue_after_days") or 7
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 
 	table = frappe.qb.DocType("Issue")
 	issues = (

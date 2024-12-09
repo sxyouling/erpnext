@@ -37,6 +37,10 @@ class PurchaseOrderItem(Document):
 		description: DF.TextEditor | None
 		discount_amount: DF.Currency
 		discount_percentage: DF.Percent
+<<<<<<< HEAD
+=======
+		distributed_discount_amount: DF.Currency
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 		expected_delivery_date: DF.Date | None
 		expense_account: DF.Link | None
 		fg_item: DF.Link | None

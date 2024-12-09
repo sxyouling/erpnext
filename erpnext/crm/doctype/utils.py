@@ -27,7 +27,11 @@ def get_last_interaction(contact=None, lead=None):
 				FROM `tabCommunication`
 				WHERE `sent_or_received`='Received'
 				AND ({query_condition})
+<<<<<<< HEAD
 				ORDER BY `modified`
+=======
+				ORDER BY `creation`
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 				LIMIT 1
 			""",
 				values,

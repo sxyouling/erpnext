@@ -36,8 +36,11 @@ def before_tests():
 			}
 		)
 
+<<<<<<< HEAD
 	frappe.db.sql("delete from `tabItem Price`")
 
+=======
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 	_enable_all_roles_for_admin()
 
 	set_defaults_for_tests()

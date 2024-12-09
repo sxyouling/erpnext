@@ -1,6 +1,7 @@
 import unittest
 
 import frappe
+<<<<<<< HEAD
 
 from erpnext import encode_company_abbr
 
@@ -8,6 +9,16 @@ test_records = frappe.get_test_records("Company")
 
 
 class TestInit(unittest.TestCase):
+=======
+from frappe.tests import IntegrationTestCase
+
+from erpnext import encode_company_abbr
+
+EXTRA_TEST_RECORD_DEPENDENCIES = ["Company"]
+
+
+class TestInit(IntegrationTestCase):
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 	def test_encode_company_abbr(self):
 		abbr = "NFECT"
 

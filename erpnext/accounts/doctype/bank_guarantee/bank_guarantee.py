@@ -48,11 +48,19 @@ class BankGuarantee(Document):
 
 	def on_submit(self):
 		if not self.bank_guarantee_number:
+<<<<<<< HEAD
 			frappe.throw(_("Enter the Bank Guarantee Number before submittting."))
 		if not self.name_of_beneficiary:
 			frappe.throw(_("Enter the name of the Beneficiary before submittting."))
 		if not self.bank:
 			frappe.throw(_("Enter the name of the bank or lending institution before submittting."))
+=======
+			frappe.throw(_("Enter the Bank Guarantee Number before submitting."))
+		if not self.name_of_beneficiary:
+			frappe.throw(_("Enter the name of the Beneficiary before submitting."))
+		if not self.bank:
+			frappe.throw(_("Enter the name of the bank or lending institution before submitting."))
+>>>>>>> 94d7e5964b (fix: add doc.status to translation from POS)
 
 
 @frappe.whitelist()
