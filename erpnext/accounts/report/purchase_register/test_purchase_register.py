@@ -2,13 +2,21 @@
 # MIT License. See license.txt
 
 import frappe
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 from frappe.utils import add_months, today
 
 from erpnext.accounts.report.purchase_register.purchase_register import execute
 
 
+<<<<<<< HEAD
 class TestPurchaseRegister(FrappeTestCase):
+=======
+class TestPurchaseRegister(IntegrationTestCase):
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 	def test_purchase_register(self):
 		frappe.db.sql("delete from `tabPurchase Invoice` where company='_Test Company 6'")
 		frappe.db.sql("delete from `tabGL Entry` where company='_Test Company 6'")

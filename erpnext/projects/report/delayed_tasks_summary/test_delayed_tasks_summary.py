@@ -1,13 +1,21 @@
 import unittest
 
 import frappe
+<<<<<<< HEAD
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 from frappe.utils import add_days, add_months, nowdate
 
 from erpnext.projects.doctype.task.test_task import create_task
 from erpnext.projects.report.delayed_tasks_summary.delayed_tasks_summary import execute
 
 
+<<<<<<< HEAD
 class TestDelayedTasksSummary(unittest.TestCase):
+=======
+class TestDelayedTasksSummary(IntegrationTestCase):
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 	@classmethod
 	def setUp(self):
 		task1 = create_task("_Test Task 98", add_days(nowdate(), -10), nowdate())

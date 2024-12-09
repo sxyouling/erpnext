@@ -740,7 +740,14 @@ def update_coupon_code_count(coupon_name, transaction_type):
 	coupon = frappe.get_doc("Coupon Code", coupon_name)
 	if coupon:
 		if transaction_type == "used":
+<<<<<<< HEAD
 			if coupon.used < coupon.maximum_use:
+=======
+			if not coupon.maximum_use:
+				coupon.used = coupon.used + 1
+				coupon.save(ignore_permissions=True)
+			elif coupon.used < coupon.maximum_use:
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 				coupon.used = coupon.used + 1
 				coupon.save(ignore_permissions=True)
 			else:

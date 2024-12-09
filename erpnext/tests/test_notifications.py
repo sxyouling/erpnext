@@ -1,14 +1,24 @@
 # Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 # MIT License. See license.txt
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 import unittest
 
 import frappe
 from frappe.desk import notifications
+<<<<<<< HEAD
 
 
 class TestNotifications(unittest.TestCase):
+=======
+from frappe.tests import IntegrationTestCase
+
+
+class TestNotifications(IntegrationTestCase):
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 	def test_get_notifications_for_targets(self):
 		"""
 		Test notification config entries for targets as percentages

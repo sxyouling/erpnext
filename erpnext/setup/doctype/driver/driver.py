@@ -1,7 +1,11 @@
 # Copyright (c) 2017, Frappe Technologies Pvt. Ltd. and contributors
 # For license information, please see license.txt
 
+<<<<<<< HEAD
 
+=======
+import frappe
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 from frappe.model.document import Document
 
 
@@ -31,4 +35,10 @@ class Driver(Document):
 		transporter: DF.Link | None
 	# end: auto-generated types
 
+<<<<<<< HEAD
 	pass
+=======
+	def validate(self):
+		if self.employee:
+			self.user = frappe.get_value("Employee", self.employee, "user_id")
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)

@@ -228,7 +228,11 @@
   },
   {
    "fieldname": "address_display",
+<<<<<<< HEAD
    "fieldtype": "Small Text",
+=======
+   "fieldtype": "Text Editor",
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
    "label": "Address",
    "read_only": 1
   },
@@ -860,12 +864,21 @@
    "print_hide": 1
   },
   {
+<<<<<<< HEAD
     "fieldname": "column_break_zjaq",
     "fieldtype": "Column Break"
   },
   {
    "fieldname": "shipping_address_display",
    "fieldtype": "Small Text",
+=======
+   "fieldname": "column_break_zjaq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "shipping_address_display",
+   "fieldtype": "Text Editor",
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
    "label": "Shipping Address Details",
    "print_hide": 1,
    "read_only": 1
@@ -897,7 +910,11 @@
   },
   {
    "fieldname": "billing_address_display",
+<<<<<<< HEAD
    "fieldtype": "Small Text",
+=======
+   "fieldtype": "Text Editor",
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
    "label": "Billing Address Details",
    "read_only": 1
   },
@@ -991,9 +1008,17 @@
  ],
  "search_fields": "status, transaction_date, supplier,grand_total",
  "show_name_in_global_search": 1,
+<<<<<<< HEAD
  "sort_field": "modified",
+=======
+ "sort_field": "creation",
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
  "sort_order": "DESC",
  "states": [],
  "timeline_field": "supplier",
  "title_field": "title"
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)

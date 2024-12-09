@@ -18,7 +18,11 @@
 					{% if doc.status == "Open" %}
 						{{ doc.priority }}
 					{% else %}
+<<<<<<< HEAD
 						{{ _(doc.status) }}
+=======
+						{{ doc.status }}
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 					{%- endif -%}
 				</span>
 			</div>

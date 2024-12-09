@@ -2,7 +2,11 @@
 # See license.txt
 
 import frappe
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase, UnitTestCase
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 from frappe.utils import flt
 
 from erpnext.controllers.subcontracting_controller import make_rm_stock_entry
@@ -26,7 +30,20 @@ from erpnext.subcontracting.doctype.subcontracting_order.subcontracting_order im
 )
 
 
+<<<<<<< HEAD
 class TestItemAlternative(FrappeTestCase):
+=======
+class UnitTestItemAlternative(UnitTestCase):
+	"""
+	Unit tests for ItemAlternative.
+	Use this class for testing individual functions and methods.
+	"""
+
+	pass
+
+
+class TestItemAlternative(IntegrationTestCase):
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 	def setUp(self):
 		super().setUp()
 		make_items()

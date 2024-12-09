@@ -36,8 +36,11 @@ def before_tests():
 			}
 		)
 
+<<<<<<< HEAD
 	frappe.db.sql("delete from `tabItem Price`")
 
+=======
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 	_enable_all_roles_for_admin()
 
 	set_defaults_for_tests()

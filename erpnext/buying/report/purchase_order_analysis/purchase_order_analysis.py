@@ -180,7 +180,11 @@ def prepare_data(data, filters):
 
 
 def prepare_chart_data(pending, completed):
+<<<<<<< HEAD
 	labels = [_("Amount to Bill"), _("Billed Amount")]
+=======
+	labels = ["Amount to Bill", "Billed Amount"]
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 
 	return {
 		"data": {"labels": labels, "datasets": [{"values": [pending, completed]}]},

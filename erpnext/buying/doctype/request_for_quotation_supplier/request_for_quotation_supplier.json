@@ -87,13 +87,23 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
+<<<<<<< HEAD
  "modified": "2020-11-04 22:01:43.832942",
+=======
+ "modified": "2024-03-27 13:10:33.435013",
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Request for Quotation Supplier",
  "owner": "Administrator",
  "permissions": [],
+<<<<<<< HEAD
  "sort_field": "modified",
  "sort_order": "DESC",
+=======
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
  "track_changes": 1
 }

@@ -1,5 +1,6 @@
 # Copyright (c) 2019, Frappe Technologies Pvt. Ltd. and Contributors
 # See license.txt
+<<<<<<< HEAD
 
 import unittest
 
@@ -7,6 +8,15 @@ import frappe
 
 
 class TestQualityFeedback(unittest.TestCase):
+=======
+import unittest
+
+import frappe
+from frappe.tests import IntegrationTestCase
+
+
+class TestQualityFeedback(IntegrationTestCase):
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 	def test_quality_feedback(self):
 		template = frappe.get_doc(
 			dict(

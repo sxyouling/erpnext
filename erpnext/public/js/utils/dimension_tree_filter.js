@@ -22,6 +22,10 @@ erpnext.accounts.dimensions = {
 				});
 				me.default_dimensions = r.message[1];
 				me.setup_filters(frm, doctype);
+<<<<<<< HEAD
+=======
+				me.update_dimension(frm, doctype);
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 			},
 		});
 	},

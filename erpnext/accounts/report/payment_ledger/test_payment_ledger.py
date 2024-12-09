@@ -1,13 +1,21 @@
 import frappe
 from frappe import qb
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 
 from erpnext.accounts.doctype.payment_entry.payment_entry import get_payment_entry
 from erpnext.accounts.doctype.sales_invoice.test_sales_invoice import create_sales_invoice
 from erpnext.accounts.report.payment_ledger.payment_ledger import execute
 
 
+<<<<<<< HEAD
 class TestPaymentLedger(FrappeTestCase):
+=======
+class TestPaymentLedger(IntegrationTestCase):
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 	def setUp(self):
 		self.create_company()
 		self.cleanup()

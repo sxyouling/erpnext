@@ -1,17 +1,28 @@
 # Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 # License: GNU General Public License v3. See license.txt
+<<<<<<< HEAD
 
+=======
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 import unittest
 from contextlib import contextmanager
 from datetime import date, timedelta
 
 import frappe
+<<<<<<< HEAD
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 from frappe.utils import getdate
 
 from erpnext.setup.doctype.holiday_list.holiday_list import local_country_name
 
 
+<<<<<<< HEAD
 class TestHolidayList(unittest.TestCase):
+=======
+class TestHolidayList(IntegrationTestCase):
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 	def test_holiday_list(self):
 		today_date = getdate()
 		test_holiday_dates = [today_date - timedelta(days=5), today_date - timedelta(days=4)]

@@ -370,13 +370,21 @@ frappe.ui.form.on("Payment Entry", {
 			"references"
 		);
 
+<<<<<<< HEAD
 		cur_frm.set_df_property(
+=======
+		frm.set_df_property(
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 			"source_exchange_rate",
 			"description",
 			"1 " + frm.doc.paid_from_account_currency + " = [?] " + company_currency
 		);
 
+<<<<<<< HEAD
 		cur_frm.set_df_property(
+=======
+		frm.set_df_property(
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 			"target_exchange_rate",
 			"description",
 			"1 " + frm.doc.paid_to_account_currency + " = [?] " + company_currency

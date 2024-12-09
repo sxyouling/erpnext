@@ -195,7 +195,11 @@
   {
    "fieldname": "valid_upto",
    "fieldtype": "Date",
+<<<<<<< HEAD
    "label": "Valid Upto"
+=======
+   "label": "Valid Up To"
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
   },
   {
    "fieldname": "section_break_24",
@@ -259,7 +263,11 @@
   }
  ],
  "quick_entry": 1,
+<<<<<<< HEAD
  "sort_field": "modified",
+=======
+ "sort_field": "creation",
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
  "sort_order": "ASC",
  "states": [],
  "title_field": "item_name",

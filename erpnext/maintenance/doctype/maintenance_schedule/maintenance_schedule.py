@@ -26,7 +26,11 @@ class MaintenanceSchedule(TransactionBase):
 			MaintenanceScheduleItem,
 		)
 
+<<<<<<< HEAD
 		address_display: DF.SmallText | None
+=======
+		address_display: DF.TextEditor | None
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 		amended_from: DF.Link | None
 		company: DF.Link
 		contact_display: DF.SmallText | None
@@ -221,7 +225,11 @@ class MaintenanceSchedule(TransactionBase):
 
 	def validate_maintenance_detail(self):
 		if not self.get("items"):
+<<<<<<< HEAD
 			throw(_("Please enter Maintaince Details first"))
+=======
+			throw(_("Please enter Maintenance Details first"))
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 
 		for d in self.get("items"):
 			if not d.item_code:

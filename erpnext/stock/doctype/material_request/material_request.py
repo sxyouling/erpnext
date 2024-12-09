@@ -378,9 +378,13 @@ def set_missing_values(source, target_doc):
 
 def update_item(obj, target, source_parent):
 	target.conversion_factor = obj.conversion_factor
+<<<<<<< HEAD
 
 	qty = obj.received_qty or obj.ordered_qty
 	target.qty = flt(flt(obj.stock_qty) - flt(qty)) / target.conversion_factor
+=======
+	target.qty = flt(flt(obj.stock_qty) - flt(obj.ordered_qty)) / target.conversion_factor
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 	target.stock_qty = target.qty * target.conversion_factor
 	if getdate(target.schedule_date) < getdate(nowdate()):
 		target.schedule_date = None
@@ -432,9 +436,13 @@ def make_purchase_order(source_name, target_doc=None, args=None):
 		filtered_items = args.get("filtered_children", [])
 		child_filter = d.name in filtered_items if filtered_items else True
 
+<<<<<<< HEAD
 		qty = d.received_qty or d.ordered_qty
 
 		return qty < d.stock_qty and child_filter
+=======
+		return d.ordered_qty < d.stock_qty and child_filter
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 
 	doclist = get_mapped_doc(
 		"Material Request",
@@ -788,7 +796,13 @@ def raise_work_orders(material_request):
 			)
 		else:
 			msgprint(
+<<<<<<< HEAD
 				_("The {0} {1} created sucessfully").format(frappe.bold(_("Work Order")), work_orders_list[0])
+=======
+				_("The {0} {1} created successfully").format(
+					frappe.bold(_("Work Order")), work_orders_list[0]
+				)
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 			)
 
 	if errors:

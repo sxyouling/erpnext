@@ -199,7 +199,11 @@
  "name": "Promotional Scheme Product Discount",
  "owner": "Administrator",
  "permissions": [],
+<<<<<<< HEAD
  "sort_field": "modified",
+=======
+ "sort_field": "creation",
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
  "sort_order": "DESC",
  "states": []
 }

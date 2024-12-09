@@ -1,5 +1,18 @@
 frappe.listview_settings["Item"] = {
+<<<<<<< HEAD
 	add_fields: ["item_name", "stock_uom", "item_group", "image", "has_variants", "end_of_life", "disabled"],
+=======
+	add_fields: [
+		"item_name",
+		"stock_uom",
+		"item_group",
+		"image",
+		"has_variants",
+		"end_of_life",
+		"disabled",
+		"variant_of",
+	],
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 	filters: [["disabled", "=", "0"]],
 
 	get_indicator: function (doc) {

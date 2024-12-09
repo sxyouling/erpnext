@@ -28,7 +28,10 @@ class POSProfile(Document):
 		applicable_for_users: DF.Table[POSProfileUser]
 		apply_discount_on: DF.Literal["Grand Total", "Net Total"]
 		auto_add_item_to_cart: DF.Check
+<<<<<<< HEAD
 		campaign: DF.Link | None
+=======
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 		company: DF.Link
 		company_address: DF.Link | None
 		cost_center: DF.Link | None
@@ -53,6 +56,12 @@ class POSProfile(Document):
 		taxes_and_charges: DF.Link | None
 		tc_name: DF.Link | None
 		update_stock: DF.Check
+<<<<<<< HEAD
+=======
+		utm_campaign: DF.Link | None
+		utm_medium: DF.Link | None
+		utm_source: DF.Link | None
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 		validate_stock_on_save: DF.Check
 		warehouse: DF.Link
 		write_off_account: DF.Link
@@ -132,7 +141,11 @@ class POSProfile(Document):
 
 		if len(customer_groups) != len(set(customer_groups)):
 			frappe.throw(
+<<<<<<< HEAD
 				_("Duplicate customer group found in the cutomer group table"),
+=======
+				_("Duplicate customer group found in the customer group table"),
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 				title=_("Duplicate Customer Group"),
 			)
 

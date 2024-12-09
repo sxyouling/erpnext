@@ -4,12 +4,29 @@
 from datetime import date, timedelta
 
 import frappe
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase, UnitTestCase
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 
 from erpnext.stock.doctype.delivery_note.delivery_note import make_shipment
 
 
+<<<<<<< HEAD
 class TestShipment(FrappeTestCase):
+=======
+class UnitTestShipment(UnitTestCase):
+	"""
+	Unit tests for Shipment.
+	Use this class for testing individual functions and methods.
+	"""
+
+	pass
+
+
+class TestShipment(IntegrationTestCase):
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 	def test_shipment_from_delivery_note(self):
 		delivery_note = create_test_delivery_note()
 		delivery_note.submit()

@@ -3,10 +3,26 @@
 
 
 import frappe
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
 
 
 class TestSupplierScorecardCriteria(FrappeTestCase):
+=======
+from frappe.tests import IntegrationTestCase, UnitTestCase
+
+
+class UnitTestSupplierScorecardCriteria(UnitTestCase):
+	"""
+	Unit tests for SupplierScorecardCriteria.
+	Use this class for testing individual functions and methods.
+	"""
+
+	pass
+
+
+class TestSupplierScorecardCriteria(IntegrationTestCase):
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 	def test_variables_exist(self):
 		delete_test_scorecards()
 		for d in test_good_criteria:

@@ -24,7 +24,10 @@ erpnext.setup.slides_settings = [
 				fieldtype: "Data",
 				reqd: 1,
 			},
+<<<<<<< HEAD
 			{ fieldtype: "Column Break" },
+=======
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 			{
 				fieldname: "company_abbr",
 				label: __("Company Abbreviation"),

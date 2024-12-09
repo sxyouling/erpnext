@@ -53,7 +53,11 @@ frappe.query_reports["Purchase Order Analysis"] = {
 			fieldtype: "MultiSelectList",
 			width: "80",
 			get_data: function (txt) {
+<<<<<<< HEAD
 				let status = ["To Bill", "To Receive", "To Receive and Bill", "Completed"];
+=======
+				let status = ["To Pay", "To Bill", "To Receive", "To Receive and Bill", "Completed"];
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 				let options = [];
 				for (let option of status) {
 					options.push({

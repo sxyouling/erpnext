@@ -1,17 +1,28 @@
 # Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 # License: GNU General Public License v3. See license.txt
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 import unittest
 
 import frappe
 from frappe.model.naming import parse_naming_series
+<<<<<<< HEAD
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 
 from erpnext.accounts.doctype.gl_entry.gl_entry import rename_gle_sle_docs
 from erpnext.accounts.doctype.journal_entry.test_journal_entry import make_journal_entry
 
 
+<<<<<<< HEAD
 class TestGLEntry(unittest.TestCase):
+=======
+class TestGLEntry(IntegrationTestCase):
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 	def test_round_off_entry(self):
 		frappe.db.set_value("Company", "_Test Company", "round_off_account", "_Test Write Off - _TC")
 		frappe.db.set_value("Company", "_Test Company", "round_off_cost_center", "_Test Cost Center - _TC")

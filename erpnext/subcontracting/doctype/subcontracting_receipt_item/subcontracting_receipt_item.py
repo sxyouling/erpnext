@@ -28,7 +28,10 @@ class SubcontractingReceiptItem(Document):
 		is_scrap_item: DF.Check
 		item_code: DF.Link
 		item_name: DF.Data | None
+<<<<<<< HEAD
 		job_card: DF.Link | None
+=======
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 		manufacturer: DF.Link | None
 		manufacturer_part_no: DF.Data | None
 		page_break: DF.Check

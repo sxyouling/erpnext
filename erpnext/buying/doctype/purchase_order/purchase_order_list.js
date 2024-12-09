@@ -8,6 +8,10 @@ frappe.listview_settings["Purchase Order"] = {
 		"per_received",
 		"per_billed",
 		"status",
+<<<<<<< HEAD
+=======
+		"advance_payment_status",
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 	],
 	get_indicator: function (doc) {
 		// Please do not add precision in the flt function
@@ -17,6 +21,11 @@ frappe.listview_settings["Purchase Order"] = {
 			return [__("On Hold"), "orange", "status,=,On Hold"];
 		} else if (doc.status === "Delivered") {
 			return [__("Delivered"), "green", "status,=,Closed"];
+<<<<<<< HEAD
+=======
+		} else if (doc.advance_payment_status == "Initiated") {
+			return [__("To Pay"), "gray", "advance_payment_status,=,Initiated"];
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 		} else if (flt(doc.per_received) < 100 && doc.status !== "Closed") {
 			if (flt(doc.per_billed) < 100) {
 				return [

@@ -13,7 +13,10 @@ frappe.ui.form.on("Task", {
 				}),
 		};
 	},
+<<<<<<< HEAD
 
+=======
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 	onload: function (frm) {
 		frm.set_query("task", "depends_on", function () {
 			let filters = {

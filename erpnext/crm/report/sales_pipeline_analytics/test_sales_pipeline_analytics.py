@@ -1,14 +1,23 @@
 import unittest
 
 import frappe
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 
 from erpnext.crm.report.sales_pipeline_analytics.sales_pipeline_analytics import execute
 
 
+<<<<<<< HEAD
 class TestSalesPipelineAnalytics(FrappeTestCase):
 	def setUp(self):
 		frappe.db.delete("Opportunity")
+=======
+class TestSalesPipelineAnalytics(IntegrationTestCase):
+	def setUp(self):
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 		create_company()
 		create_customer()
 		create_opportunity()
@@ -207,7 +216,11 @@ def create_opportunity():
 		customer_name = frappe.db.get_value("Customer", {"customer_name": "_Test NC"}, ["customer_name"])
 		doc.party_name = customer_name
 		doc.opportunity_amount = 150000
+<<<<<<< HEAD
 		doc.source = "Cold Calling"
+=======
+		doc.utm_source = "Cold Calling"
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 		doc.currency = "INR"
 		doc.expected_closing = "2021-08-31"
 		doc.company = "Best Test"

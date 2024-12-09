@@ -2,12 +2,20 @@
 # See license.txt
 
 import frappe
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 
 from erpnext.stock.report.stock_ageing.stock_ageing import FIFOSlots, format_report_data
 
 
+<<<<<<< HEAD
 class TestStockAgeing(FrappeTestCase):
+=======
+class TestStockAgeing(IntegrationTestCase):
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 	def setUp(self) -> None:
 		self.filters = frappe._dict(company="_Test Company", to_date="2021-12-10", ranges=["30", "60", "90"])
 

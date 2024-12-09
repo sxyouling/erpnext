@@ -5,5 +5,8 @@
 import frappe
 
 # test_ignore = ["Item"]
+<<<<<<< HEAD
 
 test_records = frappe.get_test_records("Price List")
+=======
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)

@@ -50,7 +50,11 @@ def create_customer_or_supplier():
 	party = frappe.new_doc(doctype)
 	fullname = frappe.utils.get_fullname(user)
 
+<<<<<<< HEAD
 	if not doctype == "Customer":
+=======
+	if doctype != "Customer":
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 		party.update(
 			{
 				"supplier_name": fullname,

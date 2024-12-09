@@ -4,7 +4,11 @@
 frappe.listview_settings["Pick List"] = {
 	get_indicator: function (doc) {
 		const status_colors = {
+<<<<<<< HEAD
 			Draft: "red",
+=======
+			Draft: "grey",
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 			Open: "orange",
 			Completed: "green",
 			Cancelled: "red",

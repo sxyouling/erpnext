@@ -2,13 +2,21 @@
 # MIT License. See license.txt
 
 import frappe
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 from frappe.utils import today
 
 from erpnext.accounts.report.trial_balance.trial_balance import execute
 
 
+<<<<<<< HEAD
 class TestTrialBalance(FrappeTestCase):
+=======
+class TestTrialBalance(IntegrationTestCase):
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 	def setUp(self):
 		from erpnext.accounts.doctype.account.test_account import create_account
 		from erpnext.accounts.doctype.cost_center.test_cost_center import create_cost_center

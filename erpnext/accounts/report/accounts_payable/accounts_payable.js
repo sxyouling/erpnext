@@ -126,6 +126,14 @@ frappe.query_reports["Accounts Payable"] = {
 			fieldtype: "Check",
 		},
 		{
+<<<<<<< HEAD
+=======
+			fieldname: "in_party_currency",
+			label: __("In Party Currency"),
+			fieldtype: "Check",
+		},
+		{
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 			fieldname: "for_revaluation_journals",
 			label: __("Revaluation Journals"),
 			fieldtype: "Check",
@@ -136,11 +144,14 @@ frappe.query_reports["Accounts Payable"] = {
 			fieldtype: "Check",
 		},
 		{
+<<<<<<< HEAD
 			fieldname: "in_party_currency",
 			label: __("In Party Currency"),
 			fieldtype: "Check",
 		},
 		{
+=======
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 			fieldname: "handle_employee_advances",
 			label: __("Handle Employee Advances"),
 			fieldtype: "Check",

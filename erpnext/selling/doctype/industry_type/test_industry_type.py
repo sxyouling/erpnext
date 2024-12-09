@@ -2,5 +2,8 @@
 # License: GNU General Public License v3. See license.txt
 
 import frappe
+<<<<<<< HEAD
 
 test_records = frappe.get_test_records("Industry Type")
+=======
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)

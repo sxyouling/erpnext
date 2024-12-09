@@ -1,14 +1,25 @@
 # Copyright (c) 2018, Frappe Technologies Pvt. Ltd. and Contributors
 # See license.txt
+<<<<<<< HEAD
 
 import unittest
 
 import frappe
+=======
+import unittest
+
+import frappe
+from frappe.tests import IntegrationTestCase
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 
 from erpnext.setup.doctype.employee.test_employee import make_employee
 
 
+<<<<<<< HEAD
 class TestEmployeeGroup(unittest.TestCase):
+=======
+class TestEmployeeGroup(IntegrationTestCase):
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 	pass
 
 

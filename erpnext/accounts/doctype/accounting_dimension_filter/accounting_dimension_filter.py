@@ -67,7 +67,10 @@ class AccountingDimensionFilter(Document):
 
 def get_dimension_filter_map():
 	if not frappe.flags.get("dimension_filter_map"):
+<<<<<<< HEAD
 		# nosemgrep
+=======
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 		filters = frappe.db.sql(
 			"""
 			SELECT

@@ -20,7 +20,11 @@
           </div>
         {% else %}
           <span class="indicator-pill {{ " red" if doc.status=="Open" else "darkgrey" }}">
+<<<<<<< HEAD
             {{ _(doc.status) }}</span>
+=======
+            {{ doc.status }}</span>
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
         {% endif %}
       </div>
       {% if doc["_assign"] %}

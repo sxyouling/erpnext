@@ -1,10 +1,17 @@
 # Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 # See license.txt
+<<<<<<< HEAD
 
+=======
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 import datetime
 import unittest
 
 import frappe
+<<<<<<< HEAD
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 from frappe.utils import add_to_date, now_datetime, nowdate
 
 from erpnext.accounts.doctype.sales_invoice.test_sales_invoice import create_sales_invoice
@@ -12,7 +19,11 @@ from erpnext.projects.doctype.timesheet.timesheet import OverlapError, make_sale
 from erpnext.setup.doctype.employee.test_employee import make_employee
 
 
+<<<<<<< HEAD
 class TestTimesheet(unittest.TestCase):
+=======
+class TestTimesheet(IntegrationTestCase):
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 	def setUp(self):
 		frappe.db.delete("Timesheet")
 

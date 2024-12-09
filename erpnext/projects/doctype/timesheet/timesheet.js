@@ -296,6 +296,10 @@ frappe.ui.form.on("Timesheet Detail", {
 
 	hours: function (frm, cdt, cdn) {
 		calculate_end_time(frm, cdt, cdn);
+<<<<<<< HEAD
+=======
+		update_billing_hours(frm, cdt, cdn);
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 		calculate_billing_costing_amount(frm, cdt, cdn);
 		calculate_time_and_amount(frm);
 	},

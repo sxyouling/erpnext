@@ -2,7 +2,10 @@
 *.py~
 .DS_Store
 conf.py
+<<<<<<< HEAD
 locale
+=======
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 latest_updates.json
 .wnf-lang-status
 *.egg-info
@@ -15,5 +18,13 @@ __pycache__
 *~
 .idea/
 .vscode/
+<<<<<<< HEAD
 node_modules/
 .backportrc.json
+=======
+.helix/
+node_modules/
+.backportrc.json
+# Aider AI Chat
+.aider*
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)

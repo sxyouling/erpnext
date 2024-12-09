@@ -26,7 +26,11 @@
   }
  ],
  "links": [],
+<<<<<<< HEAD
  "modified": "2020-04-26 02:23:53.990322",
+=======
+ "modified": "2024-03-27 13:10:21.325199",
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Project Template",
@@ -46,7 +50,13 @@
   }
  ],
  "quick_entry": 1,
+<<<<<<< HEAD
  "sort_field": "modified",
  "sort_order": "DESC",
+=======
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
  "track_changes": 1
 }

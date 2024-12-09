@@ -15,7 +15,11 @@ frappe.listview_settings["Sales Invoice"] = {
 	],
 	get_indicator: function (doc) {
 		const status_colors = {
+<<<<<<< HEAD
 			Draft: "red",
+=======
+			Draft: "grey",
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 			Unpaid: "orange",
 			Paid: "green",
 			Return: "gray",

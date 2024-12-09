@@ -22,7 +22,11 @@ class MaintenanceVisit(TransactionBase):
 			MaintenanceVisitPurpose,
 		)
 
+<<<<<<< HEAD
 		address_display: DF.SmallText | None
+=======
+		address_display: DF.TextEditor | None
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 		amended_from: DF.Link | None
 		company: DF.Link
 		completion_status: DF.Literal["", "Partially Completed", "Fully Completed"]

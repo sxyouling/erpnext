@@ -1,10 +1,17 @@
 # Copyright (c) 2018, Frappe Technologies Pvt. Ltd. and Contributors
 # See license.txt
+<<<<<<< HEAD
 
+=======
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 import json
 import unittest
 
 import frappe
+<<<<<<< HEAD
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 from frappe.utils.response import json_handler
 
 from erpnext.erpnext_integrations.doctype.plaid_settings.plaid_settings import (
@@ -16,7 +23,11 @@ from erpnext.erpnext_integrations.doctype.plaid_settings.plaid_settings import (
 )
 
 
+<<<<<<< HEAD
 class TestPlaidSettings(unittest.TestCase):
+=======
+class TestPlaidSettings(IntegrationTestCase):
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 	def setUp(self):
 		pass
 

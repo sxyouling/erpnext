@@ -202,7 +202,11 @@ def prepare_chart_data(data, filters):
 					"values": [flt(d.get("asset_value"), 2) for d in labels_values_map.values()],
 				},
 				{
+<<<<<<< HEAD
 					"name": _("Depreciatied Amount"),
+=======
+					"name": _("Depreciated Amount"),
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 					"values": [flt(d.get("depreciated_amount"), 2) for d in labels_values_map.values()],
 				},
 			],

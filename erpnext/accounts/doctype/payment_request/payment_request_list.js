@@ -1,7 +1,11 @@
 const INDICATORS = {
 	"Partially Paid": "orange",
 	Cancelled: "red",
+<<<<<<< HEAD
 	Draft: "red",
+=======
+	Draft: "gray",
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 	Failed: "red",
 	Initiated: "green",
 	Paid: "blue",

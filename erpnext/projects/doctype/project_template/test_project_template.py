@@ -1,14 +1,25 @@
 # Copyright (c) 2019, Frappe Technologies Pvt. Ltd. and Contributors
 # See license.txt
+<<<<<<< HEAD
 
 import unittest
 
 import frappe
+=======
+import unittest
+
+import frappe
+from frappe.tests import IntegrationTestCase
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 
 from erpnext.projects.doctype.task.test_task import create_task
 
 
+<<<<<<< HEAD
 class TestProjectTemplate(unittest.TestCase):
+=======
+class TestProjectTemplate(IntegrationTestCase):
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 	pass
 
 

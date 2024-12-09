@@ -22,7 +22,11 @@ def get_columns(filters):
 			"fieldtype": "Link",
 			"fieldname": "account",
 			"options": "Account",
+<<<<<<< HEAD
 			"width": 100,
+=======
+			"width": 200,
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 		},
 		{
 			"label": _("Currency"),
@@ -30,7 +34,11 @@ def get_columns(filters):
 			"fieldname": "currency",
 			"options": "Currency",
 			"hidden": 1,
+<<<<<<< HEAD
 			"width": 50,
+=======
+			"width": 100,
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 		},
 		{
 			"label": _("Balance"),

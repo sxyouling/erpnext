@@ -76,7 +76,11 @@ def get_help_article_list():
 			"Help Article",
 			fields="*",
 			filters={"category": category.name, "published": 1},
+<<<<<<< HEAD
 			order_by="modified desc",
+=======
+			order_by="creation desc",
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 			limit=5,
 		)
 		if help_articles:

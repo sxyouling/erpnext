@@ -37,6 +37,10 @@ class DeliveryNoteItem(Document):
 		description: DF.TextEditor | None
 		discount_amount: DF.Currency
 		discount_percentage: DF.Float
+<<<<<<< HEAD
+=======
+		distributed_discount_amount: DF.Currency
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 		dn_detail: DF.Data | None
 		expense_account: DF.Link | None
 		grant_commission: DF.Check

@@ -282,7 +282,11 @@
    "fieldname": "campaign",
    "fieldtype": "Link",
    "label": "Campaign",
+<<<<<<< HEAD
    "options": "Campaign"
+=======
+   "options": "UTM Campaign"
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
   },
   {
    "depends_on": "eval:doc.applicable_for==\"Supplier\"",
@@ -345,7 +349,11 @@
   {
    "fieldname": "valid_upto",
    "fieldtype": "Date",
+<<<<<<< HEAD
    "label": "Valid Upto"
+=======
+   "label": "Valid Up To"
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
   },
   {
    "fieldname": "col_break1",
@@ -706,7 +714,11 @@
   }
  ],
  "show_name_in_global_search": 1,
+<<<<<<< HEAD
  "sort_field": "modified",
+=======
+ "sort_field": "creation",
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
  "sort_order": "DESC",
  "states": [],
  "title_field": "title"

@@ -1,5 +1,9 @@
 import frappe
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 from frappe.utils import getdate, today
 
 from erpnext.accounts.doctype.sales_invoice.test_sales_invoice import create_sales_invoice
@@ -7,12 +11,19 @@ from erpnext.accounts.report.item_wise_sales_register.item_wise_sales_register i
 from erpnext.accounts.test.accounts_mixin import AccountsTestMixin
 
 
+<<<<<<< HEAD
 class TestItemWiseSalesRegister(AccountsTestMixin, FrappeTestCase):
+=======
+class TestItemWiseSalesRegister(AccountsTestMixin, IntegrationTestCase):
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 	def setUp(self):
 		self.create_company()
 		self.create_customer()
 		self.create_item()
+<<<<<<< HEAD
 		self.clear_old_entries()
+=======
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 
 	def tearDown(self):
 		frappe.db.rollback()

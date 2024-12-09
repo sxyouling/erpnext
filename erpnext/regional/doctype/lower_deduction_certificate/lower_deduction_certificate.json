@@ -64,7 +64,11 @@
   {
    "fieldname": "valid_upto",
    "fieldtype": "Date",
+<<<<<<< HEAD
    "label": "Valid Upto",
+=======
+   "label": "Valid Up To",
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
    "reqd": 1
   },
   {

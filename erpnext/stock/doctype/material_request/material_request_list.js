@@ -28,7 +28,11 @@ frappe.listview_settings["Material Request"] = {
 			} else if (doc.material_request_type == "Purchase") {
 				return [__("Ordered"), "green", "per_ordered,=,100"];
 			} else if (doc.material_request_type == "Material Transfer") {
+<<<<<<< HEAD
 				return [__("Transfered"), "green", "per_ordered,=,100"];
+=======
+				return [__("Transferred"), "green", "per_ordered,=,100"];
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 			} else if (doc.material_request_type == "Material Issue") {
 				return [__("Issued"), "green", "per_ordered,=,100"];
 			} else if (doc.material_request_type == "Customer Provided") {

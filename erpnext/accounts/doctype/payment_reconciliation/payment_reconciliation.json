@@ -41,6 +41,10 @@
   {
    "fieldname": "company",
    "fieldtype": "Link",
+<<<<<<< HEAD
+=======
+   "ignore_user_permissions": 1,
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
    "label": "Company",
    "options": "Company",
    "reqd": 1
@@ -254,7 +258,11 @@
    "write": 1
   }
  ],
+<<<<<<< HEAD
  "sort_field": "modified",
+=======
+ "sort_field": "creation",
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
  "sort_order": "DESC",
  "states": []
 }

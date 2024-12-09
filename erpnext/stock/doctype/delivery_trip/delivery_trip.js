@@ -61,7 +61,10 @@ frappe.ui.form.on("Delivery Trip", {
 							customer: null,
 						},
 						get_query_filters: {
+<<<<<<< HEAD
 							docstatus: 1,
+=======
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 							company: frm.doc.company,
 							status: ["Not In", ["Completed", "Cancelled"]],
 						},

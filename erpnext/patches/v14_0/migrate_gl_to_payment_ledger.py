@@ -189,4 +189,8 @@ def execute():
 						raise err
 				else:
 					break
+<<<<<<< HEAD
 			print(f"{processed} records have been sucessfully migrated")
+=======
+			print(f"{processed} records have been successfully migrated")
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)

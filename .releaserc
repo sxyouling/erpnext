@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
 	"branches": ["version-15"],
+=======
+	"branches": ["version-13"],
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 	"plugins": [
 		"@semantic-release/commit-analyzer", {
 			"preset": "angular",
@@ -21,4 +25,8 @@
 		],
 		"@semantic-release/github"
 	]
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)

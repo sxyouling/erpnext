@@ -2,13 +2,21 @@ import unittest
 from uuid import uuid4 as _uuid4
 
 import frappe
+<<<<<<< HEAD
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 
 
 def uuid4():
 	return str(_uuid4())
 
 
+<<<<<<< HEAD
 class TestTaxes(unittest.TestCase):
+=======
+class TestTaxes(IntegrationTestCase):
+>>>>>>> d847f75ade (chore: remove 'debug' param and linter fix)
 	def setUp(self):
 		self.company = frappe.get_doc(
 			{
