@@ -27,7 +27,11 @@ def get_last_interaction(contact=None, lead=None):
 				FROM `tabCommunication`
 				WHERE `sent_or_received`='Received'
 				AND ({query_condition})
+<<<<<<< HEAD
 				ORDER BY `modified`
+=======
+				ORDER BY `creation`
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 				LIMIT 1
 			""",
 				values,

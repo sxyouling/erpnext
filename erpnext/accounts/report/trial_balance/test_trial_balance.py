@@ -2,13 +2,21 @@
 # MIT License. See license.txt
 
 import frappe
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 from frappe.utils import today
 
 from erpnext.accounts.report.trial_balance.trial_balance import execute
 
 
+<<<<<<< HEAD
 class TestTrialBalance(FrappeTestCase):
+=======
+class TestTrialBalance(IntegrationTestCase):
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 	def setUp(self):
 		from erpnext.accounts.doctype.account.test_account import create_account
 		from erpnext.accounts.doctype.cost_center.test_cost_center import create_cost_center

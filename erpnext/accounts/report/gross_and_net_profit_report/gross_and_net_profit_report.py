@@ -166,7 +166,11 @@ def set_total(node, value, complete_list, totals):
 	totals[node["account"]] += value
 
 	parent = node["parent_account"]
+<<<<<<< HEAD
 	if not parent == "":
+=======
+	if parent != "":
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 		return set_total(
 			next(item for item in complete_list if item["account"] == parent), value, complete_list, totals
 		)

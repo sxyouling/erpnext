@@ -10,6 +10,10 @@ from frappe import _, bold, scrub
 from frappe.model.meta import get_field_precision
 from frappe.query_builder.functions import Sum
 from frappe.utils import (
+<<<<<<< HEAD
+=======
+	add_to_date,
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 	cint,
 	cstr,
 	flt,
@@ -1823,7 +1827,11 @@ def get_valuation_rate(
 		solutions += (
 			"<li>"
 			+ _("If not, you can Cancel / Submit this entry")
+<<<<<<< HEAD
 			+ " {} ".format(frappe.bold("after"))
+=======
+			+ " {} ".format(frappe.bold(_("after")))
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 			+ _("performing either one below:")
 			+ "</li>"
 		)

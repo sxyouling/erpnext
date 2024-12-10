@@ -1,9 +1,16 @@
 import unittest
 
 import frappe
+<<<<<<< HEAD
 
 
 class TestUtils(unittest.TestCase):
+=======
+from frappe.tests import IntegrationTestCase
+
+
+class TestUtils(IntegrationTestCase):
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 	def test_reset_default_field_value(self):
 		doc = frappe.get_doc(
 			{

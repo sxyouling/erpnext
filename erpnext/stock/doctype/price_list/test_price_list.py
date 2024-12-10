@@ -5,5 +5,8 @@
 import frappe
 
 # test_ignore = ["Item"]
+<<<<<<< HEAD
 
 test_records = frappe.get_test_records("Price List")
+=======
+>>>>>>> da09316d4c (fix: precision check for salvage value)

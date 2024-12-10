@@ -76,7 +76,11 @@ def get_help_article_list():
 			"Help Article",
 			fields="*",
 			filters={"category": category.name, "published": 1},
+<<<<<<< HEAD
 			order_by="modified desc",
+=======
+			order_by="creation desc",
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 			limit=5,
 		)
 		if help_articles:

@@ -546,7 +546,11 @@
  "quick_entry": 1,
  "search_fields": "supplier_group",
  "show_name_in_global_search": 1,
+<<<<<<< HEAD
  "sort_field": "modified",
+=======
+ "sort_field": "creation",
+>>>>>>> da09316d4c (fix: precision check for salvage value)
  "sort_order": "ASC",
  "states": [],
  "title_field": "supplier_name",

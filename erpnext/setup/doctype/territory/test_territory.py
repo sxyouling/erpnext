@@ -3,6 +3,10 @@
 
 import frappe
 
+<<<<<<< HEAD
 test_records = frappe.get_test_records("Territory")
 
 test_ignore = ["Item Group"]
+=======
+IGNORE_TEST_RECORD_DEPENDENCIES = ["Item Group"]
+>>>>>>> da09316d4c (fix: precision check for salvage value)

@@ -18,7 +18,11 @@ class WarrantyClaim(TransactionBase):
 	if TYPE_CHECKING:
 		from frappe.types import DF
 
+<<<<<<< HEAD
 		address_display: DF.SmallText | None
+=======
+		address_display: DF.TextEditor | None
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 		amc_expiry_date: DF.Date | None
 		amended_from: DF.Link | None
 		company: DF.Link

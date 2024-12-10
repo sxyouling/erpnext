@@ -33,6 +33,10 @@ class QuotationItem(Document):
 		description: DF.TextEditor | None
 		discount_amount: DF.Currency
 		discount_percentage: DF.Percent
+<<<<<<< HEAD
+=======
+		distributed_discount_amount: DF.Currency
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 		gross_profit: DF.Currency
 		has_alternative_item: DF.Check
 		image: DF.Attach | None

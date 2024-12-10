@@ -36,8 +36,11 @@ def before_tests():
 			}
 		)
 
+<<<<<<< HEAD
 	frappe.db.sql("delete from `tabItem Price`")
 
+=======
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 	_enable_all_roles_for_admin()
 
 	set_defaults_for_tests()

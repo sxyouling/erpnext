@@ -25,9 +25,17 @@ class BOMItem(Document):
 		has_variants: DF.Check
 		image: DF.Attach | None
 		include_item_in_manufacturing: DF.Check
+<<<<<<< HEAD
 		item_code: DF.Link
 		item_name: DF.Data | None
 		operation: DF.Link | None
+=======
+		is_stock_item: DF.Check
+		item_code: DF.Link
+		item_name: DF.Data | None
+		operation: DF.Link | None
+		operation_row_id: DF.Int
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 		original_item: DF.Link | None
 		parent: DF.Data
 		parentfield: DF.Data

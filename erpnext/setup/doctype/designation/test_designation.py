@@ -3,8 +3,11 @@
 
 import frappe
 
+<<<<<<< HEAD
 # test_records = frappe.get_test_records('Designation')
 
+=======
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 
 def create_designation(**args):
 	args = frappe._dict(args)

@@ -64,7 +64,11 @@
   {
    "fieldname": "valid_upto",
    "fieldtype": "Date",
+<<<<<<< HEAD
    "label": "Valid Upto",
+=======
+   "label": "Valid Up To",
+>>>>>>> da09316d4c (fix: precision check for salvage value)
    "reqd": 1
   },
   {

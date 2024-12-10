@@ -39,4 +39,8 @@ def build_tree():
 			}
 		).insert(ignore_permissions=True)
 
+<<<<<<< HEAD
 	rebuild_tree("Supplier Group", "parent_supplier_group")
+=======
+	rebuild_tree("Supplier Group")
+>>>>>>> da09316d4c (fix: precision check for salvage value)

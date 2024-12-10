@@ -43,7 +43,11 @@
    "write": 1
   }
  ],
+<<<<<<< HEAD
  "sort_field": "modified",
+=======
+ "sort_field": "creation",
+>>>>>>> da09316d4c (fix: precision check for salvage value)
  "sort_order": "DESC",
  "states": [],
  "track_changes": 1

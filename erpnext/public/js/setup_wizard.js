@@ -24,7 +24,10 @@ erpnext.setup.slides_settings = [
 				fieldtype: "Data",
 				reqd: 1,
 			},
+<<<<<<< HEAD
 			{ fieldtype: "Column Break" },
+=======
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 			{
 				fieldname: "company_abbr",
 				label: __("Company Abbreviation"),

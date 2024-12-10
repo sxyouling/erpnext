@@ -16,4 +16,8 @@ def execute():
 		where is_group = 0""".format(_("All Departments"))
 	)
 
+<<<<<<< HEAD
 	rebuild_tree("Department", "parent_department")
+=======
+	rebuild_tree("Department")
+>>>>>>> da09316d4c (fix: precision check for salvage value)

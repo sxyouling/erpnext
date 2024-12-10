@@ -13,7 +13,10 @@ frappe.ui.form.on("Task", {
 				}),
 		};
 	},
+<<<<<<< HEAD
 
+=======
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 	onload: function (frm) {
 		frm.set_query("task", "depends_on", function () {
 			let filters = {

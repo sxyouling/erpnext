@@ -2,7 +2,11 @@
 # See license.txt
 
 import frappe
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase, UnitTestCase
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 
 from erpnext.stock.doctype.batch.test_batch import make_new_batch
 from erpnext.stock.doctype.item.test_item import make_item
@@ -16,7 +20,20 @@ from erpnext.stock.doctype.warehouse.test_warehouse import create_warehouse
 from erpnext.stock.get_item_details import get_conversion_factor
 
 
+<<<<<<< HEAD
 class TestPutawayRule(FrappeTestCase):
+=======
+class UnitTestPutawayRule(UnitTestCase):
+	"""
+	Unit tests for PutawayRule.
+	Use this class for testing individual functions and methods.
+	"""
+
+	pass
+
+
+class TestPutawayRule(IntegrationTestCase):
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 	def setUp(self):
 		if not frappe.db.exists("Item", "_Rice"):
 			make_item(

@@ -1,14 +1,25 @@
 # Copyright (c) 2019, Frappe Technologies Pvt. Ltd. and Contributors
 # See license.txt
+<<<<<<< HEAD
 
 import unittest
 
 import frappe
+=======
+import unittest
+
+import frappe
+from frappe.tests import IntegrationTestCase
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 
 from erpnext.projects.doctype.task.test_task import create_task
 
 
+<<<<<<< HEAD
 class TestProjectTemplate(unittest.TestCase):
+=======
+class TestProjectTemplate(IntegrationTestCase):
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 	pass
 
 

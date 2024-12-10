@@ -88,7 +88,13 @@
    "share": 1
   }
  ],
+<<<<<<< HEAD
  "sort_field": "modified",
  "sort_order": "DESC",
+=======
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+>>>>>>> da09316d4c (fix: precision check for salvage value)
  "track_changes": 1
 }

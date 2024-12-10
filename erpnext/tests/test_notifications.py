@@ -1,14 +1,24 @@
 # Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 # MIT License. See license.txt
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 import unittest
 
 import frappe
 from frappe.desk import notifications
+<<<<<<< HEAD
 
 
 class TestNotifications(unittest.TestCase):
+=======
+from frappe.tests import IntegrationTestCase
+
+
+class TestNotifications(IntegrationTestCase):
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 	def test_get_notifications_for_targets(self):
 		"""
 		Test notification config entries for targets as percentages

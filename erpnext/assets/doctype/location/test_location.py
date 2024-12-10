@@ -1,15 +1,25 @@
 # Copyright (c) 2018, Frappe Technologies Pvt. Ltd. and Contributors
 # See license.txt
+<<<<<<< HEAD
 
+=======
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 import json
 import unittest
 
 import frappe
+<<<<<<< HEAD
 
 test_records = frappe.get_test_records("Location")
 
 
 class TestLocation(unittest.TestCase):
+=======
+from frappe.tests import IntegrationTestCase
+
+
+class TestLocation(IntegrationTestCase):
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 	def runTest(self):
 		locations = ["Basil Farm", "Division 1", "Field 1", "Block 1"]
 		area = 0

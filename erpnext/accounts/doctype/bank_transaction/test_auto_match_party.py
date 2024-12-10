@@ -2,13 +2,30 @@
 # License: GNU General Public License v3. See license.txt
 
 import frappe
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase, UnitTestCase
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 from frappe.utils import nowdate
 
 from erpnext.accounts.doctype.bank_transaction.test_bank_transaction import create_bank_account
 
 
+<<<<<<< HEAD
 class TestAutoMatchParty(FrappeTestCase):
+=======
+class UnitTestBankTransaction(UnitTestCase):
+	"""
+	Unit tests for BankTransaction.
+	Use this class for testing individual functions and methods.
+	"""
+
+	pass
+
+
+class TestAutoMatchParty(IntegrationTestCase):
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 	@classmethod
 	def setUpClass(cls):
 		create_bank_account()

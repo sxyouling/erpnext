@@ -1,5 +1,6 @@
 # Copyright (c) 2018, Frappe and Contributors
 # See license.txt
+<<<<<<< HEAD
 
 import unittest
 
@@ -7,6 +8,15 @@ import frappe
 
 
 class TestQualityGoal(unittest.TestCase):
+=======
+import unittest
+
+import frappe
+from frappe.tests import IntegrationTestCase
+
+
+class TestQualityGoal(IntegrationTestCase):
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 	def test_quality_goal(self):
 		# no code, just a basic sanity check
 		goal = get_quality_goal()

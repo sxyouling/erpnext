@@ -39,7 +39,11 @@ class RequestforQuotation(BuyingController):
 
 		amended_from: DF.Link | None
 		billing_address: DF.Link | None
+<<<<<<< HEAD
 		billing_address_display: DF.SmallText | None
+=======
+		billing_address_display: DF.TextEditor | None
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 		company: DF.Link
 		email_template: DF.Link | None
 		incoterm: DF.Link | None
@@ -64,6 +68,10 @@ class RequestforQuotation(BuyingController):
 	def validate(self):
 		self.validate_duplicate_supplier()
 		self.validate_supplier_list()
+<<<<<<< HEAD
+=======
+		super().validate_qty_is_not_zero()
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 		validate_for_items(self)
 		super().set_qty_as_per_stock_uom()
 		self.update_email_id()
@@ -378,8 +386,13 @@ def make_supplier_quotation_from_rfq(source_name, target_doc=None, for_supplier=
 			target_doc.currency = args.currency or get_party_account_currency(
 				"Supplier", for_supplier, source.company
 			)
+<<<<<<< HEAD
 			target_doc.buying_price_list = args.buying_price_list or frappe.db.get_value(
 				"Buying Settings", None, "buying_price_list"
+=======
+			target_doc.buying_price_list = args.buying_price_list or frappe.db.get_single_value(
+				"Buying Settings", "buying_price_list"
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 			)
 		set_missing_values(source, target_doc)
 
@@ -420,7 +433,11 @@ def create_supplier_quotation(doc):
 				"currency": doc.get("currency")
 				or get_party_account_currency("Supplier", doc.get("supplier"), doc.get("company")),
 				"buying_price_list": doc.get("buying_price_list")
+<<<<<<< HEAD
 				or frappe.db.get_value("Buying Settings", None, "buying_price_list"),
+=======
+				or frappe.db.get_single_value("Buying Settings", "buying_price_list"),
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 			}
 		)
 		add_items(sq_doc, doc.get("supplier"), doc.get("items"))

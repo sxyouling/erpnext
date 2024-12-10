@@ -23,7 +23,11 @@ class InstallationNote(TransactionBase):
 			InstallationNoteItem,
 		)
 
+<<<<<<< HEAD
 		address_display: DF.SmallText | None
+=======
+		address_display: DF.TextEditor | None
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 		amended_from: DF.Link | None
 		company: DF.Link
 		contact_display: DF.SmallText | None
@@ -38,6 +42,10 @@ class InstallationNote(TransactionBase):
 		inst_time: DF.Time | None
 		items: DF.Table[InstallationNoteItem]
 		naming_series: DF.Literal["MAT-INS-.YYYY.-"]
+<<<<<<< HEAD
+=======
+		project: DF.Link | None
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 		remarks: DF.SmallText | None
 		status: DF.Literal["Draft", "Submitted", "Cancelled"]
 		territory: DF.Link

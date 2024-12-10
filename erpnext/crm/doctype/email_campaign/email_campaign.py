@@ -144,3 +144,7 @@ def set_email_campaign_status():
 	for entry in email_campaigns:
 		email_campaign = frappe.get_doc("Email Campaign", entry.name)
 		email_campaign.update_status()
+<<<<<<< HEAD
+=======
+		email_campaign.save()
+>>>>>>> da09316d4c (fix: precision check for salvage value)

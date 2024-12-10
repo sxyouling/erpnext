@@ -26,7 +26,11 @@ class MaintenanceSchedule(TransactionBase):
 			MaintenanceScheduleItem,
 		)
 
+<<<<<<< HEAD
 		address_display: DF.SmallText | None
+=======
+		address_display: DF.TextEditor | None
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 		amended_from: DF.Link | None
 		company: DF.Link
 		contact_display: DF.SmallText | None
@@ -221,7 +225,11 @@ class MaintenanceSchedule(TransactionBase):
 
 	def validate_maintenance_detail(self):
 		if not self.get("items"):
+<<<<<<< HEAD
 			throw(_("Please enter Maintaince Details first"))
+=======
+			throw(_("Please enter Maintenance Details first"))
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 
 		for d in self.get("items"):
 			if not d.item_code:

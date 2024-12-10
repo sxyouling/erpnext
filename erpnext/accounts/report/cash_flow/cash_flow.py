@@ -263,7 +263,10 @@ def get_report_summary(summary_data, currency):
 
 def get_chart_data(columns, data, currency):
 	labels = [d.get("label") for d in columns[2:]]
+<<<<<<< HEAD
 	print(data)
+=======
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 	datasets = [
 		{
 			"name": section.get("section").replace("'", ""),

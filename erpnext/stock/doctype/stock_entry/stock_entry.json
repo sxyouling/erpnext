@@ -14,6 +14,10 @@
   "purpose",
   "add_to_transit",
   "work_order",
+<<<<<<< HEAD
+=======
+  "job_card",
+>>>>>>> da09316d4c (fix: precision check for salvage value)
   "purchase_order",
   "subcontracting_order",
   "delivery_note_no",
@@ -80,7 +84,10 @@
   "col5",
   "per_transferred",
   "total_amount",
+<<<<<<< HEAD
   "job_card",
+=======
+>>>>>>> da09316d4c (fix: precision check for salvage value)
   "amended_from",
   "credit_note",
   "is_return",
@@ -308,7 +315,11 @@
   },
   {
    "fieldname": "source_address_display",
+<<<<<<< HEAD
    "fieldtype": "Small Text",
+=======
+   "fieldtype": "Text Editor",
+>>>>>>> da09316d4c (fix: precision check for salvage value)
    "label": "Source Warehouse Address",
    "read_only": 1
   },
@@ -338,7 +349,11 @@
   },
   {
    "fieldname": "target_address_display",
+<<<<<<< HEAD
    "fieldtype": "Small Text",
+=======
+   "fieldtype": "Text Editor",
+>>>>>>> da09316d4c (fix: precision check for salvage value)
    "label": "Target Warehouse Address",
    "read_only": 1
   },
@@ -466,7 +481,11 @@
   },
   {
    "fieldname": "address_display",
+<<<<<<< HEAD
    "fieldtype": "Small Text",
+=======
+   "fieldtype": "Text Editor",
+>>>>>>> da09316d4c (fix: precision check for salvage value)
    "label": "Address"
   },
   {
@@ -765,7 +784,11 @@
  ],
  "search_fields": "posting_date, from_warehouse, to_warehouse, purpose, remarks",
  "show_name_in_global_search": 1,
+<<<<<<< HEAD
  "sort_field": "modified",
+=======
+ "sort_field": "creation",
+>>>>>>> da09316d4c (fix: precision check for salvage value)
  "sort_order": "DESC",
  "states": [],
  "title_field": "stock_entry_type",

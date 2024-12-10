@@ -1,8 +1,12 @@
 # Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors and Contributors
 # See license.txt
 import frappe
+<<<<<<< HEAD
 from frappe.test_runner import make_test_records
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase, UnitTestCase
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 
 from erpnext.manufacturing.doctype.operation.test_operation import make_operation
 from erpnext.manufacturing.doctype.routing.test_routing import create_routing, setup_bom
@@ -12,12 +16,28 @@ from erpnext.manufacturing.doctype.workstation.workstation import (
 	check_if_within_operating_hours,
 )
 
+<<<<<<< HEAD
 test_dependencies = ["Warehouse"]
 test_records = frappe.get_test_records("Workstation")
 make_test_records("Workstation")
 
 
 class TestWorkstation(FrappeTestCase):
+=======
+EXTRA_TEST_RECORD_DEPENDENCIES = ["Warehouse"]
+
+
+class UnitTestWorkstation(UnitTestCase):
+	"""
+	Unit tests for Workstation.
+	Use this class for testing individual functions and methods.
+	"""
+
+	pass
+
+
+class TestWorkstation(IntegrationTestCase):
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 	def test_validate_timings(self):
 		check_if_within_operating_hours(
 			"_Test Workstation 1", "Operation 1", "2013-02-02 11:00:00", "2013-02-02 19:00:00"

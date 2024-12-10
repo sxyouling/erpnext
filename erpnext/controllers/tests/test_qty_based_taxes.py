@@ -2,13 +2,21 @@ import unittest
 from uuid import uuid4 as _uuid4
 
 import frappe
+<<<<<<< HEAD
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 
 
 def uuid4():
 	return str(_uuid4())
 
 
+<<<<<<< HEAD
 class TestTaxes(unittest.TestCase):
+=======
+class TestTaxes(IntegrationTestCase):
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 	def setUp(self):
 		self.company = frappe.get_doc(
 			{

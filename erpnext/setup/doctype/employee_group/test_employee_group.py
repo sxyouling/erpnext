@@ -1,14 +1,25 @@
 # Copyright (c) 2018, Frappe Technologies Pvt. Ltd. and Contributors
 # See license.txt
+<<<<<<< HEAD
 
 import unittest
 
 import frappe
+=======
+import unittest
+
+import frappe
+from frappe.tests import IntegrationTestCase
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 
 from erpnext.setup.doctype.employee.test_employee import make_employee
 
 
+<<<<<<< HEAD
 class TestEmployeeGroup(unittest.TestCase):
+=======
+class TestEmployeeGroup(IntegrationTestCase):
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 	pass
 
 

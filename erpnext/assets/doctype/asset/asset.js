@@ -48,7 +48,11 @@ frappe.ui.form.on("Asset", {
 					method: "erpnext.assets.doctype.asset.asset.make_asset_movement",
 					freeze: true,
 					args: {
+<<<<<<< HEAD
 						assets: [{ name: cur_frm.doc.name }],
+=======
+						assets: [{ name: frm.doc.name }],
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 					},
 					callback: function (r) {
 						if (r.message) {
@@ -802,6 +806,7 @@ frappe.ui.form.on("Asset Finance Book", {
 });
 
 erpnext.asset.scrap_asset = function (frm) {
+<<<<<<< HEAD
 	frappe.confirm(__("Do you really want to scrap this asset?"), function () {
 		frappe.call({
 			args: {
@@ -813,6 +818,35 @@ erpnext.asset.scrap_asset = function (frm) {
 			},
 		});
 	});
+=======
+	var scrap_dialog = new frappe.ui.Dialog({
+		title: __("Enter date to scrap asset"),
+		fields: [
+			{
+				label: __("Select the date"),
+				fieldname: "scrap_date",
+				fieldtype: "Date",
+				reqd: 1,
+			},
+		],
+		size: "medium",
+		primary_action_label: "Submit",
+		primary_action(values) {
+			frappe.call({
+				args: {
+					asset_name: frm.doc.name,
+					scrap_date: values.scrap_date,
+				},
+				method: "erpnext.assets.doctype.asset.depreciation.scrap_asset",
+				callback: function (r) {
+					frm.reload_doc();
+					scrap_dialog.hide();
+				},
+			});
+		},
+	});
+	scrap_dialog.show();
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 };
 
 erpnext.asset.restore_asset = function (frm) {
@@ -822,19 +856,31 @@ erpnext.asset.restore_asset = function (frm) {
 				asset_name: frm.doc.name,
 			},
 			method: "erpnext.assets.doctype.asset.depreciation.restore_asset",
+<<<<<<< HEAD
 			callback: function (r) {
 				cur_frm.reload_doc();
 			},
+=======
+			callback: (r) => frm.reload_doc(),
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 		});
 	});
 };
 
+<<<<<<< HEAD
 erpnext.asset.transfer_asset = function () {
+=======
+erpnext.asset.transfer_asset = function (frm) {
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 	frappe.call({
 		method: "erpnext.assets.doctype.asset.asset.make_asset_movement",
 		freeze: true,
 		args: {
+<<<<<<< HEAD
 			assets: [{ name: cur_frm.doc.name }],
+=======
+			assets: [{ name: frm.doc.name }],
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 			purpose: "Transfer",
 		},
 		callback: function (r) {

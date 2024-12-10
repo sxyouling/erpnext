@@ -2,12 +2,29 @@
 # See license.txt
 
 import frappe
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase, UnitTestCase
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 
 from .quality_procedure import add_node
 
 
+<<<<<<< HEAD
 class TestQualityProcedure(FrappeTestCase):
+=======
+class UnitTestQualityProcedure(UnitTestCase):
+	"""
+	Unit tests for QualityProcedure.
+	Use this class for testing individual functions and methods.
+	"""
+
+	pass
+
+
+class TestQualityProcedure(IntegrationTestCase):
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 	def test_add_node(self):
 		procedure = create_procedure(
 			{

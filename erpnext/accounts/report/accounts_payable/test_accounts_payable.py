@@ -1,5 +1,9 @@
 import frappe
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 from frappe.utils import today
 
 from erpnext.accounts.doctype.purchase_invoice.test_purchase_invoice import make_purchase_invoice
@@ -7,7 +11,11 @@ from erpnext.accounts.report.accounts_payable.accounts_payable import execute
 from erpnext.accounts.test.accounts_mixin import AccountsTestMixin
 
 
+<<<<<<< HEAD
 class TestAccountsPayable(AccountsTestMixin, FrappeTestCase):
+=======
+class TestAccountsPayable(AccountsTestMixin, IntegrationTestCase):
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 	def setUp(self):
 		self.create_company()
 		self.create_customer()

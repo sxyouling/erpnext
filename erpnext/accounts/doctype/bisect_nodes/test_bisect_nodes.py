@@ -2,8 +2,24 @@
 # See license.txt
 
 # import frappe
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
 
 
 class TestBisectNodes(FrappeTestCase):
+=======
+from frappe.tests import IntegrationTestCase, UnitTestCase
+
+
+class UnitTestBisectNodes(UnitTestCase):
+	"""
+	Unit tests for BisectNodes.
+	Use this class for testing individual functions and methods.
+	"""
+
+	pass
+
+
+class TestBisectNodes(IntegrationTestCase):
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 	pass

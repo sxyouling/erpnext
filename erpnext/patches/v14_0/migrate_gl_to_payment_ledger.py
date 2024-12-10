@@ -189,4 +189,8 @@ def execute():
 						raise err
 				else:
 					break
+<<<<<<< HEAD
 			print(f"{processed} records have been sucessfully migrated")
+=======
+			print(f"{processed} records have been successfully migrated")
+>>>>>>> da09316d4c (fix: precision check for salvage value)

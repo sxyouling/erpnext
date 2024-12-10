@@ -22,6 +22,10 @@ erpnext.accounts.dimensions = {
 				});
 				me.default_dimensions = r.message[1];
 				me.setup_filters(frm, doctype);
+<<<<<<< HEAD
+=======
+				me.update_dimension(frm, doctype);
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 			},
 		});
 	},

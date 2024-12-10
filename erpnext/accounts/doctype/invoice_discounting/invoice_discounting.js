@@ -156,7 +156,11 @@ frappe.ui.form.on("Invoice Discounting", {
 					},
 				});
 			},
+<<<<<<< HEAD
 			primary_action_label: __("Get Invocies"),
+=======
+			primary_action_label: __("Get Invoices"),
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 		});
 		d.show();
 	},
@@ -189,7 +193,11 @@ frappe.ui.form.on("Invoice Discounting", {
 
 	show_general_ledger: (frm) => {
 		if (frm.doc.docstatus > 0) {
+<<<<<<< HEAD
 			cur_frm.add_custom_button(
+=======
+			frm.add_custom_button(
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 				__("Accounting Ledger"),
 				function () {
 					frappe.route_options = {

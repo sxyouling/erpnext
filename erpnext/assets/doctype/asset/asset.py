@@ -154,6 +154,10 @@ class Asset(AccountsController):
 	def on_submit(self):
 		self.validate_in_use_date()
 		self.make_asset_movement()
+<<<<<<< HEAD
+=======
+		self.reload()
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 		if not self.booked_fixed_asset and self.validate_make_gl_entry():
 			self.make_gl_entries()
 		if self.calculate_depreciation and not self.split_from:
@@ -410,6 +414,12 @@ class Asset(AccountsController):
 			)
 
 	def validate_asset_finance_books(self, row):
+<<<<<<< HEAD
+=======
+		row.expected_value_after_useful_life = flt(
+			row.expected_value_after_useful_life, self.precision("gross_purchase_amount")
+		)
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 		if flt(row.expected_value_after_useful_life) >= flt(self.gross_purchase_amount):
 			frappe.throw(
 				_("Row {0}: Expected Value After Useful Life must be less than Gross Purchase Amount").format(
@@ -430,7 +440,14 @@ class Asset(AccountsController):
 			self.opening_accumulated_depreciation = 0
 			self.opening_number_of_booked_depreciations = 0
 		else:
+<<<<<<< HEAD
 			depreciable_amount = flt(self.gross_purchase_amount) - flt(row.expected_value_after_useful_life)
+=======
+			depreciable_amount = flt(
+				flt(self.gross_purchase_amount) - flt(row.expected_value_after_useful_life),
+				self.precision("gross_purchase_amount"),
+			)
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 			if flt(self.opening_accumulated_depreciation) > depreciable_amount:
 				frappe.throw(
 					_("Opening Accumulated Depreciation must be less than or equal to {0}").format(
@@ -1065,7 +1082,11 @@ def make_asset_movement(assets, purpose=None):
 		assets = json.loads(assets)
 
 	if len(assets) == 0:
+<<<<<<< HEAD
 		frappe.throw(_("Atleast one asset has to be selected."))
+=======
+		frappe.throw(_("At least one asset has to be selected."))
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 
 	asset_movement = frappe.new_doc("Asset Movement")
 	asset_movement.quantity = len(assets)

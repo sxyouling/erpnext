@@ -218,7 +218,11 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
+<<<<<<< HEAD
  "modified": "2022-10-13 12:29:33.674561",
+=======
+ "modified": "2024-03-27 13:10:22.771484",
+>>>>>>> da09316d4c (fix: precision check for salvage value)
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "Prospect",
@@ -258,7 +262,11 @@
    "share": 1
   }
  ],
+<<<<<<< HEAD
  "sort_field": "modified",
+=======
+ "sort_field": "creation",
+>>>>>>> da09316d4c (fix: precision check for salvage value)
  "sort_order": "DESC",
  "states": [],
  "title_field": "company_name",

@@ -1,9 +1,16 @@
 import unittest
 
 import frappe
+<<<<<<< HEAD
 
 
 class TestAccountsSettings(unittest.TestCase):
+=======
+from frappe.tests import IntegrationTestCase
+
+
+class TestAccountsSettings(IntegrationTestCase):
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 	def tearDown(self):
 		# Just in case `save` method succeeds, we need to take things back to default so that other tests
 		# don't break

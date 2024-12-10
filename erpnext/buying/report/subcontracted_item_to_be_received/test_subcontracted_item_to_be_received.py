@@ -7,7 +7,11 @@
 import copy
 
 import frappe
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 
 from erpnext.buying.report.subcontracted_item_to_be_received.subcontracted_item_to_be_received import (
 	execute,
@@ -24,7 +28,11 @@ from erpnext.subcontracting.doctype.subcontracting_order.subcontracting_order im
 )
 
 
+<<<<<<< HEAD
 class TestSubcontractedItemToBeReceived(FrappeTestCase):
+=======
+class TestSubcontractedItemToBeReceived(IntegrationTestCase):
+>>>>>>> da09316d4c (fix: precision check for salvage value)
 	def test_pending_and_received_qty(self):
 		make_service_item("Subcontracted Service Item 1")
 		service_items = [
