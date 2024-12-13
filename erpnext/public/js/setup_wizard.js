@@ -24,7 +24,10 @@ erpnext.setup.slides_settings = [
 				fieldtype: "Data",
 				reqd: 1,
 			},
+<<<<<<< HEAD
 			{ fieldtype: "Column Break" },
+=======
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 			{
 				fieldname: "company_abbr",
 				label: __("Company Abbreviation"),

@@ -10,7 +10,11 @@ URL_PREFIXES = ("http://", "https://")
 
 @frappe.whitelist()
 def import_genericode():
+<<<<<<< HEAD
 	doctype = "Code List"
+=======
+	doctype = frappe.form_dict.doctype
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 	docname = frappe.form_dict.docname
 	content = frappe.local.uploaded_file
 

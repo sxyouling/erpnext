@@ -227,6 +227,10 @@
    "fieldname": "party_balance",
    "fieldtype": "Currency",
    "label": "Party Balance",
+<<<<<<< HEAD
+=======
+   "no_copy": 1,
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
    "print_hide": 1,
    "read_only": 1
   },
@@ -836,9 +840,17 @@
   }
  ],
  "show_name_in_global_search": 1,
+<<<<<<< HEAD
  "sort_field": "modified",
+=======
+ "sort_field": "creation",
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
  "sort_order": "DESC",
  "states": [],
  "title_field": "title",
  "track_changes": 1
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)

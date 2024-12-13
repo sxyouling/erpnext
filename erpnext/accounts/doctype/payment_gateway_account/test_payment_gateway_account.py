@@ -1,5 +1,6 @@
 # Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 # See license.txt
+<<<<<<< HEAD
 
 import unittest
 
@@ -7,4 +8,14 @@ import unittest
 
 
 class TestPaymentGatewayAccount(unittest.TestCase):
+=======
+import unittest
+
+from frappe.tests import IntegrationTestCase
+
+IGNORE_TEST_RECORD_DEPENDENCIES = ["Payment Gateway"]
+
+
+class TestPaymentGatewayAccount(IntegrationTestCase):
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 	pass

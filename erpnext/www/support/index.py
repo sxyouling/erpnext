@@ -76,7 +76,11 @@ def get_help_article_list():
 			"Help Article",
 			fields="*",
 			filters={"category": category.name, "published": 1},
+<<<<<<< HEAD
 			order_by="modified desc",
+=======
+			order_by="creation desc",
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 			limit=5,
 		)
 		if help_articles:

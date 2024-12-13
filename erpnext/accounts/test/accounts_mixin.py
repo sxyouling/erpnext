@@ -32,8 +32,19 @@ class AccountsTestMixin:
 		else:
 			self.supplier = supplier_name
 
+<<<<<<< HEAD
 	def create_item(self, item_name="_Test Item", is_stock=0, warehouse=None, company=None):
 		item = create_item(item_name, is_stock_item=is_stock, warehouse=warehouse, company=company)
+=======
+	def create_item(self, item_name="_Test Item", is_stock=0, warehouse=None, company=None, valuation_rate=0):
+		item = create_item(
+			item_name,
+			is_stock_item=is_stock,
+			warehouse=warehouse,
+			company=company,
+			valuation_rate=valuation_rate,
+		)
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 		self.item = item.name
 
 	def create_company(self, company_name="_Test Company", abbr="_TC"):
@@ -201,3 +212,26 @@ class AccountsTestMixin:
 		]
 		for doctype in doctype_list:
 			qb.from_(qb.DocType(doctype)).delete().where(qb.DocType(doctype).company == self.company).run()
+<<<<<<< HEAD
+=======
+
+	def create_price_list(self):
+		pl_name = "Mixin Price List"
+		if not frappe.db.exists("Price List", pl_name):
+			self.price_list = (
+				frappe.get_doc(
+					{
+						"doctype": "Price List",
+						"currency": "INR",
+						"enabled": True,
+						"selling": True,
+						"buying": True,
+						"price_list_name": pl_name,
+					}
+				)
+				.insert()
+				.name
+			)
+		else:
+			self.price_list = frappe.get_doc("Price List", pl_name).name
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)

@@ -1,10 +1,17 @@
 # Copyright (c) 2018, Frappe Technologies Pvt. Ltd. and Contributors
 # See license.txt
+<<<<<<< HEAD
 
+=======
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 import json
 import unittest
 
 import frappe
+<<<<<<< HEAD
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 from frappe.utils.response import json_handler
 
 from erpnext.erpnext_integrations.doctype.plaid_settings.plaid_settings import (
@@ -16,7 +23,11 @@ from erpnext.erpnext_integrations.doctype.plaid_settings.plaid_settings import (
 )
 
 
+<<<<<<< HEAD
 class TestPlaidSettings(unittest.TestCase):
+=======
+class TestPlaidSettings(IntegrationTestCase):
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 	def setUp(self):
 		pass
 

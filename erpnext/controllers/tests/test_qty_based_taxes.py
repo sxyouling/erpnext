@@ -2,13 +2,21 @@ import unittest
 from uuid import uuid4 as _uuid4
 
 import frappe
+<<<<<<< HEAD
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 
 
 def uuid4():
 	return str(_uuid4())
 
 
+<<<<<<< HEAD
 class TestTaxes(unittest.TestCase):
+=======
+class TestTaxes(IntegrationTestCase):
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 	def setUp(self):
 		self.company = frappe.get_doc(
 			{

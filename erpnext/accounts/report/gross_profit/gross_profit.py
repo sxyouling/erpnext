@@ -790,10 +790,14 @@ class GrossProfitGenerator:
 			"""
 
 		if self.filters.group_by == "Sales Person":
+<<<<<<< HEAD
 			sales_person_cols = """, sales.sales_person,
 				sales.allocated_percentage * `tabSales Invoice Item`.base_net_amount / 100 as allocated_amount,
 				sales.incentives
 			"""
+=======
+			sales_person_cols = ", sales.sales_person, sales.allocated_amount, sales.incentives"
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 			sales_team_table = "left join `tabSales Team` sales on sales.parent = `tabSales Invoice`.name"
 		else:
 			sales_person_cols = ""

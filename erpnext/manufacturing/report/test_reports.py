@@ -1,6 +1,10 @@
 import unittest
 
 import frappe
+<<<<<<< HEAD
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 
 from erpnext.tests.utils import ReportFilters, ReportName, execute_script_report
 
@@ -50,7 +54,11 @@ OPTIONAL_FILTERS = {
 }
 
 
+<<<<<<< HEAD
 class TestManufacturingReports(unittest.TestCase):
+=======
+class TestManufacturingReports(IntegrationTestCase):
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 	def test_execute_all_manufacturing_reports(self):
 		"""Test that all script report in manufacturing modules are executable with supported filters"""
 		for report, filter in REPORT_FILTER_TEST_CASES:

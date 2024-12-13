@@ -1,5 +1,6 @@
 # Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 # See license.txt
+<<<<<<< HEAD
 
 import unittest
 
@@ -10,6 +11,16 @@ from frappe.utils import random_string
 
 
 class TestVehicle(unittest.TestCase):
+=======
+import unittest
+
+import frappe
+from frappe.tests import IntegrationTestCase
+from frappe.utils import random_string
+
+
+class TestVehicle(IntegrationTestCase):
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 	def test_make_vehicle(self):
 		vehicle = frappe.get_doc(
 			{

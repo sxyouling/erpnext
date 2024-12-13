@@ -2,10 +2,26 @@
 # See license.txt
 
 import frappe
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
 
 
 class TestWorkstationType(FrappeTestCase):
+=======
+from frappe.tests import IntegrationTestCase, UnitTestCase
+
+
+class UnitTestWorkstationType(UnitTestCase):
+	"""
+	Unit tests for WorkstationType.
+	Use this class for testing individual functions and methods.
+	"""
+
+	pass
+
+
+class TestWorkstationType(IntegrationTestCase):
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 	pass
 
 

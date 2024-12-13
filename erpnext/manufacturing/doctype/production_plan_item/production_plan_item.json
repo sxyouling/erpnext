@@ -227,7 +227,11 @@
  "naming_rule": "Random",
  "owner": "Administrator",
  "permissions": [],
+<<<<<<< HEAD
  "sort_field": "modified",
+=======
+ "sort_field": "creation",
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
  "sort_order": "ASC",
  "states": []
 }

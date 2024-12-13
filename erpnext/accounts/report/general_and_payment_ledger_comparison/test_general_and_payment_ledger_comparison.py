@@ -1,6 +1,10 @@
 import frappe
 from frappe import qb
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 from frappe.utils import add_days
 
 from erpnext.accounts.doctype.sales_invoice.test_sales_invoice import create_sales_invoice
@@ -10,7 +14,11 @@ from erpnext.accounts.report.general_and_payment_ledger_comparison.general_and_p
 from erpnext.accounts.test.accounts_mixin import AccountsTestMixin
 
 
+<<<<<<< HEAD
 class TestGeneralAndPaymentLedger(FrappeTestCase, AccountsTestMixin):
+=======
+class TestGeneralAndPaymentLedger(IntegrationTestCase, AccountsTestMixin):
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 	def setUp(self):
 		self.create_company()
 		self.cleanup()

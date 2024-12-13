@@ -22,7 +22,11 @@ class MaintenanceVisit(TransactionBase):
 			MaintenanceVisitPurpose,
 		)
 
+<<<<<<< HEAD
 		address_display: DF.SmallText | None
+=======
+		address_display: DF.TextEditor | None
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 		amended_from: DF.Link | None
 		company: DF.Link
 		completion_status: DF.Literal["", "Partially Completed", "Fully Completed"]

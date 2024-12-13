@@ -13,7 +13,10 @@ frappe.ui.form.on("Task", {
 				}),
 		};
 	},
+<<<<<<< HEAD
 
+=======
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 	onload: function (frm) {
 		frm.set_query("task", "depends_on", function () {
 			let filters = {

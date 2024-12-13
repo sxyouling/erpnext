@@ -139,7 +139,11 @@
   }
  ],
  "show_name_in_global_search": 1,
+<<<<<<< HEAD
  "sort_field": "modified",
+=======
+ "sort_field": "creation",
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
  "sort_order": "ASC",
  "states": []
 }

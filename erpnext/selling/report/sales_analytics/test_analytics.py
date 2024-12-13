@@ -3,13 +3,21 @@
 
 
 import frappe
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 
 from erpnext.selling.doctype.sales_order.test_sales_order import make_sales_order
 from erpnext.selling.report.sales_analytics.sales_analytics import execute
 
 
+<<<<<<< HEAD
 class TestAnalytics(FrappeTestCase):
+=======
+class TestAnalytics(IntegrationTestCase):
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 	def test_sales_analytics(self):
 		frappe.db.sql("delete from `tabSales Order` where company='_Test Company 2'")
 

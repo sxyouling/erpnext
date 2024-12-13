@@ -2,13 +2,21 @@
 # MIT License. See license.txt
 
 import frappe
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 from frappe.utils import today
 
 from erpnext.accounts.report.trial_balance.trial_balance import execute
 
 
+<<<<<<< HEAD
 class TestTrialBalance(FrappeTestCase):
+=======
+class TestTrialBalance(IntegrationTestCase):
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 	def setUp(self):
 		from erpnext.accounts.doctype.account.test_account import create_account
 		from erpnext.accounts.doctype.cost_center.test_cost_center import create_cost_center

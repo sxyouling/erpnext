@@ -50,7 +50,11 @@ def create_customer_or_supplier():
 	party = frappe.new_doc(doctype)
 	fullname = frappe.utils.get_fullname(user)
 
+<<<<<<< HEAD
 	if not doctype == "Customer":
+=======
+	if doctype != "Customer":
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 		party.update(
 			{
 				"supplier_name": fullname,

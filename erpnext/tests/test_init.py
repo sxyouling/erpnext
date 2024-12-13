@@ -1,6 +1,7 @@
 import unittest
 
 import frappe
+<<<<<<< HEAD
 
 from erpnext import encode_company_abbr
 
@@ -8,6 +9,16 @@ test_records = frappe.get_test_records("Company")
 
 
 class TestInit(unittest.TestCase):
+=======
+from frappe.tests import IntegrationTestCase
+
+from erpnext import encode_company_abbr
+
+EXTRA_TEST_RECORD_DEPENDENCIES = ["Company"]
+
+
+class TestInit(IntegrationTestCase):
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 	def test_encode_company_abbr(self):
 		abbr = "NFECT"
 

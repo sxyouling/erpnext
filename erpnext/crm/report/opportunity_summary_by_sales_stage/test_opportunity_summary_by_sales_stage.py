@@ -1,6 +1,10 @@
 import unittest
 
 import frappe
+<<<<<<< HEAD
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 
 from erpnext.crm.report.opportunity_summary_by_sales_stage.opportunity_summary_by_sales_stage import (
 	execute,
@@ -12,10 +16,17 @@ from erpnext.crm.report.sales_pipeline_analytics.test_sales_pipeline_analytics i
 )
 
 
+<<<<<<< HEAD
 class TestOpportunitySummaryBySalesStage(unittest.TestCase):
 	@classmethod
 	def setUpClass(self):
 		frappe.db.delete("Opportunity")
+=======
+class TestOpportunitySummaryBySalesStage(IntegrationTestCase):
+	@classmethod
+	def setUpClass(cls):
+		super().setUpClass()
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 		create_company()
 		create_customer()
 		create_opportunity()
@@ -40,7 +51,11 @@ class TestOpportunitySummaryBySalesStage(unittest.TestCase):
 
 		report = execute(filters)
 
+<<<<<<< HEAD
 		expected_data = [{"source": "Cold Calling", "Prospecting": 1}]
+=======
+		expected_data = [{"utm_source": "Cold Calling", "Prospecting": 1}]
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 
 		self.assertEqual(expected_data, report[1])
 

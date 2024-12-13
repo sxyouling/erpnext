@@ -1,14 +1,25 @@
 # Copyright (c) 2019, Frappe Technologies Pvt. Ltd. and Contributors
 # See license.txt
+<<<<<<< HEAD
 
 import unittest
 
 import frappe
+=======
+import unittest
+
+import frappe
+from frappe.tests import IntegrationTestCase
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 
 from erpnext.projects.doctype.task.test_task import create_task
 
 
+<<<<<<< HEAD
 class TestProjectTemplate(unittest.TestCase):
+=======
+class TestProjectTemplate(IntegrationTestCase):
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 	pass
 
 

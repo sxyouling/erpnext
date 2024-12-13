@@ -67,7 +67,10 @@ class AccountingDimensionFilter(Document):
 
 def get_dimension_filter_map():
 	if not frappe.flags.get("dimension_filter_map"):
+<<<<<<< HEAD
 		# nosemgrep
+=======
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 		filters = frappe.db.sql(
 			"""
 			SELECT

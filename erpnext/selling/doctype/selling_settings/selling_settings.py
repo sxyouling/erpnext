@@ -30,6 +30,10 @@ class SellingSettings(Document):
 		dont_reserve_sales_order_qty_on_sales_return: DF.Check
 		editable_bundle_item_rates: DF.Check
 		editable_price_list_rate: DF.Check
+<<<<<<< HEAD
+=======
+		enable_cutoff_date_on_bulk_delivery_note_creation: DF.Check
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 		enable_discount_accounting: DF.Check
 		hide_tax_id: DF.Check
 		maintain_same_rate_action: DF.Literal["Stop", "Warn"]
@@ -39,6 +43,10 @@ class SellingSettings(Document):
 		selling_price_list: DF.Link | None
 		so_required: DF.Literal["No", "Yes"]
 		territory: DF.Link | None
+<<<<<<< HEAD
+=======
+		use_server_side_reactivity: DF.Check
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 		validate_selling_price: DF.Check
 	# end: auto-generated types
 
@@ -68,15 +76,26 @@ class SellingSettings(Document):
 		)
 
 	def toggle_hide_tax_id(self):
+<<<<<<< HEAD
 		self.hide_tax_id = cint(self.hide_tax_id)
+=======
+		_hide_tax_id = cint(self.hide_tax_id)
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 
 		# Make property setters to hide tax_id fields
 		for doctype in ("Sales Order", "Sales Invoice", "Delivery Note"):
 			make_property_setter(
+<<<<<<< HEAD
 				doctype, "tax_id", "hidden", self.hide_tax_id, "Check", validate_fields_for_doctype=False
 			)
 			make_property_setter(
 				doctype, "tax_id", "print_hide", self.hide_tax_id, "Check", validate_fields_for_doctype=False
+=======
+				doctype, "tax_id", "hidden", _hide_tax_id, "Check", validate_fields_for_doctype=False
+			)
+			make_property_setter(
+				doctype, "tax_id", "print_hide", _hide_tax_id, "Check", validate_fields_for_doctype=False
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 			)
 
 	def toggle_editable_rate_for_bundle_items(self):

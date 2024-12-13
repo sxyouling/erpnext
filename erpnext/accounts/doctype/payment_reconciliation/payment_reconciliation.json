@@ -41,6 +41,10 @@
   {
    "fieldname": "company",
    "fieldtype": "Link",
+<<<<<<< HEAD
+=======
+   "ignore_user_permissions": 1,
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
    "label": "Company",
    "options": "Company",
    "reqd": 1
@@ -254,7 +258,11 @@
    "write": 1
   }
  ],
+<<<<<<< HEAD
  "sort_field": "modified",
+=======
+ "sort_field": "creation",
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
  "sort_order": "DESC",
  "states": []
 }

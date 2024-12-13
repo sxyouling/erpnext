@@ -44,7 +44,11 @@ frappe.query_reports["Opportunity Summary by Sales Stage"] = {
 			fieldname: "opportunity_source",
 			label: __("Opportunity Source"),
 			fieldtype: "Link",
+<<<<<<< HEAD
 			options: "Lead Source",
+=======
+			options: "UTM Source",
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 		},
 		{
 			fieldname: "opportunity_type",

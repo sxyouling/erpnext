@@ -603,9 +603,17 @@
   }
  ],
  "search_fields": "voucher_type,posting_date, due_date, cheque_no",
+<<<<<<< HEAD
  "sort_field": "modified",
+=======
+ "sort_field": "creation",
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
  "sort_order": "DESC",
  "states": [],
  "title_field": "title",
  "track_changes": 1
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)

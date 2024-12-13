@@ -1,9 +1,16 @@
 # Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors and Contributors
 # See license.txt
+<<<<<<< HEAD
 
 import unittest
 
 import frappe
+=======
+import unittest
+
+import frappe
+from frappe.tests import IntegrationTestCase
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 from frappe.utils import now_datetime, random_string, today
 
 from erpnext.crm.doctype.lead.lead import make_customer
@@ -11,10 +18,15 @@ from erpnext.crm.doctype.lead.test_lead import make_lead
 from erpnext.crm.doctype.opportunity.opportunity import make_quotation
 from erpnext.crm.utils import get_linked_communication_list
 
+<<<<<<< HEAD
 test_records = frappe.get_test_records("Opportunity")
 
 
 class TestOpportunity(unittest.TestCase):
+=======
+
+class TestOpportunity(IntegrationTestCase):
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 	def test_opportunity_status(self):
 		doc = make_opportunity(with_items=0)
 		quotation = make_quotation(doc.name)

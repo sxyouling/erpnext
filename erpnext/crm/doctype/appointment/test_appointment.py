@@ -1,10 +1,17 @@
 # Copyright (c) 2019, Frappe Technologies Pvt. Ltd. and Contributors
 # See license.txt
+<<<<<<< HEAD
 
+=======
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 import datetime
 import unittest
 
 import frappe
+<<<<<<< HEAD
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 
 LEAD_EMAIL = "test_appointment_lead@example.com"
 
@@ -26,8 +33,15 @@ def create_test_appointment():
 	return test_appointment
 
 
+<<<<<<< HEAD
 class TestAppointment(unittest.TestCase):
 	def setUpClass():
+=======
+class TestAppointment(IntegrationTestCase):
+	@classmethod
+	def setUpClass(cls):
+		super().setUpClass()
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 		frappe.db.delete("Lead", {"email_id": LEAD_EMAIL})
 
 	def setUp(self):

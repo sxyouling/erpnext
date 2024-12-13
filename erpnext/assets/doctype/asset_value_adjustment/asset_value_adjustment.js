@@ -5,7 +5,10 @@ frappe.provide("erpnext.accounts.dimensions");
 
 frappe.ui.form.on("Asset Value Adjustment", {
 	setup: function (frm) {
+<<<<<<< HEAD
 		frm.add_fetch("company", "cost_center", "cost_center");
+=======
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 		frm.set_query("cost_center", function () {
 			return {
 				filters: {
@@ -22,6 +25,17 @@ frappe.ui.form.on("Asset Value Adjustment", {
 				},
 			};
 		});
+<<<<<<< HEAD
+=======
+		frm.set_query("difference_account", function () {
+			return {
+				filters: {
+					company: frm.doc.company,
+					is_group: 0,
+				},
+			};
+		});
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 	},
 
 	onload: function (frm) {
@@ -37,7 +51,11 @@ frappe.ui.form.on("Asset Value Adjustment", {
 	},
 
 	asset: function (frm) {
+<<<<<<< HEAD
 		frm.trigger("set_current_asset_value");
+=======
+		frm.trigger("set_acc_dimension");
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 	},
 
 	finance_book: function (frm) {
@@ -60,4 +78,18 @@ frappe.ui.form.on("Asset Value Adjustment", {
 			});
 		}
 	},
+<<<<<<< HEAD
+=======
+
+	set_acc_dimension: function (frm) {
+		if (frm.doc.asset) {
+			frm.call({
+				method: "erpnext.assets.doctype.asset_value_adjustment.asset_value_adjustment.get_value_of_accounting_dimensions",
+				args: {
+					asset_name: frm.doc.asset,
+				},
+			});
+		}
+	},
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 });

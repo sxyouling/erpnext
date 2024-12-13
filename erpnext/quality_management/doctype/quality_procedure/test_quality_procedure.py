@@ -2,12 +2,29 @@
 # See license.txt
 
 import frappe
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase, UnitTestCase
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 
 from .quality_procedure import add_node
 
 
+<<<<<<< HEAD
 class TestQualityProcedure(FrappeTestCase):
+=======
+class UnitTestQualityProcedure(UnitTestCase):
+	"""
+	Unit tests for QualityProcedure.
+	Use this class for testing individual functions and methods.
+	"""
+
+	pass
+
+
+class TestQualityProcedure(IntegrationTestCase):
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 	def test_add_node(self):
 		procedure = create_procedure(
 			{

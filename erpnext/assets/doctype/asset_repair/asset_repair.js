@@ -29,8 +29,14 @@ frappe.ui.form.on("Asset Repair", {
 			};
 		});
 
+<<<<<<< HEAD
 		frm.set_query("purchase_invoice", function () {
 			return {
+=======
+		frm.set_query("purchase_invoice", "invoices", function () {
+			return {
+				query: "erpnext.assets.doctype.asset_repair.asset_repair.get_purchase_invoice",
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 				filters: {
 					company: frm.doc.company,
 					docstatus: 1,
@@ -58,6 +64,19 @@ frappe.ui.form.on("Asset Repair", {
 				},
 			};
 		});
+<<<<<<< HEAD
+=======
+
+		frm.set_query("expense_account", "invoices", function () {
+			return {
+				filters: {
+					company: frm.doc.company,
+					is_group: ["=", 0],
+					report_type: ["=", "Profit and Loss"],
+				},
+			};
+		});
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 	},
 
 	refresh: function (frm) {

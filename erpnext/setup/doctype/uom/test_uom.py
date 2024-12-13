@@ -2,5 +2,8 @@
 # License: GNU General Public License v3. See license.txt
 
 import frappe
+<<<<<<< HEAD
 
 test_records = frappe.get_test_records("UOM")
+=======
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)

@@ -1,5 +1,6 @@
 # Copyright (c) 2020, Frappe Technologies Pvt. Ltd. and Contributors
 # See license.txt
+<<<<<<< HEAD
 
 import unittest
 
@@ -7,6 +8,15 @@ import frappe
 
 
 class TestPOSOpeningEntry(unittest.TestCase):
+=======
+import unittest
+
+import frappe
+from frappe.tests import IntegrationTestCase
+
+
+class TestPOSOpeningEntry(IntegrationTestCase):
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 	pass
 
 

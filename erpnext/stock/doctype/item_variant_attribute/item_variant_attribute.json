@@ -92,7 +92,14 @@
  "name": "Item Variant Attribute",
  "owner": "Administrator",
  "permissions": [],
+<<<<<<< HEAD
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []
 }
+=======
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)

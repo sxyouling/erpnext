@@ -70,7 +70,11 @@ class BankAccount(Document):
 
 	def validate_company(self):
 		if self.is_company_account and not self.company:
+<<<<<<< HEAD
 			frappe.throw(_("Company is manadatory for company account"))
+=======
+			frappe.throw(_("Company is mandatory for company account"))
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 
 	def validate_iban(self):
 		"""

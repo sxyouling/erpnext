@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
 	"branches": ["version-15"],
+=======
+	"branches": ["version-13"],
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 	"plugins": [
 		"@semantic-release/commit-analyzer", {
 			"preset": "angular",
@@ -21,4 +25,8 @@
 		],
 		"@semantic-release/github"
 	]
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)

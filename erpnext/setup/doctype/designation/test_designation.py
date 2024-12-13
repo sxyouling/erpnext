@@ -3,8 +3,11 @@
 
 import frappe
 
+<<<<<<< HEAD
 # test_records = frappe.get_test_records('Designation')
 
+=======
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 
 def create_designation(**args):
 	args = frappe._dict(args)

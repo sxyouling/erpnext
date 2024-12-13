@@ -126,6 +126,14 @@ frappe.query_reports["Accounts Payable"] = {
 			fieldtype: "Check",
 		},
 		{
+<<<<<<< HEAD
+=======
+			fieldname: "in_party_currency",
+			label: __("In Party Currency"),
+			fieldtype: "Check",
+		},
+		{
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 			fieldname: "for_revaluation_journals",
 			label: __("Revaluation Journals"),
 			fieldtype: "Check",
@@ -136,11 +144,14 @@ frappe.query_reports["Accounts Payable"] = {
 			fieldtype: "Check",
 		},
 		{
+<<<<<<< HEAD
 			fieldname: "in_party_currency",
 			label: __("In Party Currency"),
 			fieldtype: "Check",
 		},
 		{
+=======
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 			fieldname: "handle_employee_advances",
 			label: __("Handle Employee Advances"),
 			fieldtype: "Check",

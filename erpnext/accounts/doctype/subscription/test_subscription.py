@@ -3,7 +3,11 @@
 
 
 import frappe
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase, UnitTestCase
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 from frappe.utils.data import (
 	add_days,
 	add_months,
@@ -18,10 +22,26 @@ from frappe.utils.data import (
 
 from erpnext.accounts.doctype.subscription.subscription import get_prorata_factor
 
+<<<<<<< HEAD
 test_dependencies = ("UOM", "Item Group", "Item")
 
 
 class TestSubscription(FrappeTestCase):
+=======
+EXTRA_TEST_RECORD_DEPENDENCIES = ("UOM", "Item Group", "Item")
+
+
+class UnitTestSubscription(UnitTestCase):
+	"""
+	Unit tests for Subscription.
+	Use this class for testing individual functions and methods.
+	"""
+
+	pass
+
+
+class TestSubscription(IntegrationTestCase):
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 	def setUp(self):
 		make_plans()
 		create_parties()
@@ -45,7 +65,11 @@ class TestSubscription(FrappeTestCase):
 			get_date_str(subscription.current_invoice_end),
 		)
 		self.assertEqual(subscription.invoices, [])
+<<<<<<< HEAD
 		self.assertEqual(subscription.status, "Trialling")
+=======
+		self.assertEqual(subscription.status, "Trialing")
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 
 	def test_create_subscription_without_trial_with_correct_period(self):
 		subscription = create_subscription()

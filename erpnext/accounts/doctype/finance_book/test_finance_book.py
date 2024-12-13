@@ -1,14 +1,25 @@
 # Copyright (c) 2018, Frappe Technologies Pvt. Ltd. and Contributors
 # See license.txt
+<<<<<<< HEAD
 
 import unittest
 
 import frappe
+=======
+import unittest
+
+import frappe
+from frappe.tests import IntegrationTestCase
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 
 from erpnext.accounts.doctype.journal_entry.test_journal_entry import make_journal_entry
 
 
+<<<<<<< HEAD
 class TestFinanceBook(unittest.TestCase):
+=======
+class TestFinanceBook(IntegrationTestCase):
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 	def test_finance_book(self):
 		finance_book = create_finance_book()
 

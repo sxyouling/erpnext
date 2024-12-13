@@ -25,16 +25,27 @@ class BOMCreatorItem(Document):
 		fg_reference_id: DF.Data | None
 		instruction: DF.SmallText | None
 		is_expandable: DF.Check
+<<<<<<< HEAD
 		item_code: DF.Link
 		item_group: DF.Link | None
 		item_name: DF.Data | None
+=======
+		is_subcontracted: DF.Check
+		item_code: DF.Link
+		item_group: DF.Link | None
+		item_name: DF.Data | None
+		operation: DF.Link | None
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 		parent: DF.Data
 		parent_row_no: DF.Data | None
 		parentfield: DF.Data
 		parenttype: DF.Data
 		qty: DF.Float
 		rate: DF.Currency
+<<<<<<< HEAD
 		source_warehouse: DF.Link | None
+=======
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 		sourced_by_supplier: DF.Check
 		stock_qty: DF.Float
 		stock_uom: DF.Link | None

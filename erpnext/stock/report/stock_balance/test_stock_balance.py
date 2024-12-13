@@ -2,7 +2,11 @@ from typing import Any
 
 import frappe
 from frappe import _dict
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
+=======
+from frappe.tests import IntegrationTestCase
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 from frappe.utils import today
 
 from erpnext.stock.doctype.item.test_item import make_item
@@ -15,7 +19,11 @@ def stock_balance(filters):
 	return [_dict(row) for row in execute(filters)[1]]
 
 
+<<<<<<< HEAD
 class TestStockBalance(FrappeTestCase):
+=======
+class TestStockBalance(IntegrationTestCase):
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 	# ----------- utils
 
 	def setUp(self):

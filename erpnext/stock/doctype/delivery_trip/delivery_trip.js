@@ -61,7 +61,10 @@ frappe.ui.form.on("Delivery Trip", {
 							customer: null,
 						},
 						get_query_filters: {
+<<<<<<< HEAD
 							docstatus: 1,
+=======
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 							company: frm.doc.company,
 							status: ["Not In", ["Completed", "Cancelled"]],
 						},

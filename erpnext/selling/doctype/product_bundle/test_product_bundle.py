@@ -3,8 +3,11 @@
 
 import frappe
 
+<<<<<<< HEAD
 test_records = frappe.get_test_records("Product Bundle")
 
+=======
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 
 def make_product_bundle(parent, items, qty=None):
 	if frappe.db.exists("Product Bundle", parent):

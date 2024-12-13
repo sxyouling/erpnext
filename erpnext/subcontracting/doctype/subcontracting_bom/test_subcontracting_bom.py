@@ -2,10 +2,26 @@
 # See license.txt
 
 import frappe
+<<<<<<< HEAD
 from frappe.tests.utils import FrappeTestCase
 
 
 class TestSubcontractingBOM(FrappeTestCase):
+=======
+from frappe.tests import IntegrationTestCase, UnitTestCase
+
+
+class UnitTestSubcontractingBom(UnitTestCase):
+	"""
+	Unit tests for SubcontractingBom.
+	Use this class for testing individual functions and methods.
+	"""
+
+	pass
+
+
+class TestSubcontractingBOM(IntegrationTestCase):
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 	pass
 
 

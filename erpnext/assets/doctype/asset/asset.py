@@ -154,6 +154,10 @@ class Asset(AccountsController):
 	def on_submit(self):
 		self.validate_in_use_date()
 		self.make_asset_movement()
+<<<<<<< HEAD
+=======
+		self.reload()
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 		if not self.booked_fixed_asset and self.validate_make_gl_entry():
 			self.make_gl_entries()
 		if self.calculate_depreciation and not self.split_from:
@@ -804,10 +808,17 @@ class Asset(AccountsController):
 			):
 				return args.get("rate_of_depreciation")
 
+<<<<<<< HEAD
 			if self.flags.increase_in_asset_value_due_to_repair:
 				if not flt(args.get("expected_value_after_useful_life")):
 					return args.get("rate_of_depreciation")
 
+=======
+			if args.get("rate_of_depreciation") and not flt(args.get("expected_value_after_useful_life")):
+				return args.get("rate_of_depreciation")
+
+			if self.flags.increase_in_asset_value_due_to_repair:
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 				value = flt(args.get("expected_value_after_useful_life")) / flt(
 					args.get("value_after_depreciation")
 				)
@@ -1074,7 +1085,11 @@ def make_asset_movement(assets, purpose=None):
 		assets = json.loads(assets)
 
 	if len(assets) == 0:
+<<<<<<< HEAD
 		frappe.throw(_("Atleast one asset has to be selected."))
+=======
+		frappe.throw(_("At least one asset has to be selected."))
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 
 	asset_movement = frappe.new_doc("Asset Movement")
 	asset_movement.quantity = len(assets)

@@ -4,7 +4,10 @@ import frappe
 def execute():
 	frappe.reload_doc("assets", "doctype", "Asset Depreciation Schedule")
 	frappe.reload_doc("assets", "doctype", "Asset Finance Book")
+<<<<<<< HEAD
 	frappe.reload_doc("assets", "doctype", "Asset")
+=======
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 
 	assets = get_details_of_draft_or_submitted_depreciable_assets()
 

@@ -271,7 +271,11 @@ class EmailDigest(Document):
 		issue_list = frappe.db.sql(
 			"""select *
 			from `tabIssue` where status in ("Replied","Open")
+<<<<<<< HEAD
 			order by modified asc limit 10""",
+=======
+			order by creation asc limit 10""",
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 			as_dict=True,
 		)
 
@@ -295,7 +299,11 @@ class EmailDigest(Document):
 		project_list = frappe.db.sql(
 			"""select *
 			from `tabProject` where status='Open' and project_type='External'
+<<<<<<< HEAD
 			order by modified asc limit 10""",
+=======
+			order by creation asc limit 10""",
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 			as_dict=True,
 		)
 

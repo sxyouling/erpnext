@@ -1,15 +1,25 @@
 # Copyright (c) 2018, Frappe Technologies Pvt. Ltd. and Contributors
 # See license.txt
+<<<<<<< HEAD
 
+=======
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 import json
 import unittest
 
 import frappe
+<<<<<<< HEAD
 
 test_records = frappe.get_test_records("Location")
 
 
 class TestLocation(unittest.TestCase):
+=======
+from frappe.tests import IntegrationTestCase
+
+
+class TestLocation(IntegrationTestCase):
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 	def runTest(self):
 		locations = ["Basil Farm", "Division 1", "Field 1", "Block 1"]
 		area = 0

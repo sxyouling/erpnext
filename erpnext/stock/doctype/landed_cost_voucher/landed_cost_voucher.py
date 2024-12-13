@@ -268,7 +268,15 @@ class LandedCostVoucher(Document):
 				)
 				docs = frappe.db.get_all(
 					"Asset",
+<<<<<<< HEAD
 					filters={receipt_document_type: item.receipt_document, "item_code": item.item_code},
+=======
+					filters={
+						receipt_document_type: item.receipt_document,
+						"item_code": item.item_code,
+						"docstatus": ["!=", 2],
+					},
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
 					fields=["name", "docstatus"],
 				)
 				if not docs or len(docs) < item.qty:

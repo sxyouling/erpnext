@@ -5,5 +5,8 @@
 import frappe
 
 # test_ignore = ["Item"]
+<<<<<<< HEAD
 
 test_records = frappe.get_test_records("Price List")
+=======
+>>>>>>> 325b20491a (fix: make rate of depreciation mandatory)
