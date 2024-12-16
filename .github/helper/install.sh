@@ -4,7 +4,13 @@ set -e
 
 cd ~ || exit
 
+<<<<<<< HEAD
 sudo apt update && sudo apt install redis-server libcups2-dev
+=======
+sudo apt update
+sudo apt remove mysql-server mysql-client
+sudo apt install libcups2-dev redis-server mariadb-client
+>>>>>>> eb1e36ca22 (fix: broken CI)
 
 pip install frappe-bench
 
@@ -43,10 +49,16 @@ fi
 
 
 install_whktml() {
+<<<<<<< HEAD
     wget -O /tmp/wkhtmltox.tar.xz https://github.com/frappe/wkhtmltopdf/raw/master/wkhtmltox-0.12.3_linux-generic-amd64.tar.xz
     tar -xf /tmp/wkhtmltox.tar.xz -C /tmp
     sudo mv /tmp/wkhtmltox/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf
     sudo chmod o+x /usr/local/bin/wkhtmltopdf
+=======
+    wget -O /tmp/wkhtmltox.deb https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.jammy_amd64.deb
+    sudo apt install /tmp/wkhtmltox.deb
+
+>>>>>>> eb1e36ca22 (fix: broken CI)
 }
 install_whktml &
 
