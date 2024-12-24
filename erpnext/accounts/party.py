@@ -740,6 +740,7 @@ def validate_party_frozen_disabled(party_type, party_name):
 				frappe.msgprint(_("{0} {1} is not active").format(party_type, party_name), alert=True)
 
 
+<<<<<<< HEAD
 def get_timeline_data(doctype, name):
 	"""returns timeline data for the past one year"""
 	from frappe.desk.form.load import get_communication_data
@@ -784,6 +785,17 @@ def get_timeline_data(doctype, name):
 		out.update({timestamp: count})
 
 	return out
+=======
+def validate_account_party_type(self):
+	if self.party_type and self.party:
+		account_type = frappe.get_cached_value("Account", self.account, "account_type")
+		if account_type and (account_type not in ["Receivable", "Payable"]):
+			frappe.throw(
+				_(
+					"Party Type and Party can only be set for Receivable / Payable account<br><br>" "{0}"
+				).format(self.account)
+			)
+>>>>>>> c6a2d86ba6 (fix: validate party on non receivable / payable account)
 
 
 def get_dashboard_info(party_type, party, loyalty_program=None):
