@@ -574,11 +574,23 @@ erpnext.PointOfSale.Controller = class {
 			} else {
 				if (!this.frm.doc.customer) return this.raise_customer_selection_alert();
 
-				const { item_code, batch_no, serial_no, rate, uom } = item;
+				const { item_code, batch_no, serial_no, rate, uom, stock_uom } = item;
 
 				if (!item_code) return;
 
+<<<<<<< HEAD
 				const new_item = { item_code, batch_no, rate, uom, [field]: value };
+=======
+				if (rate == undefined || rate == 0) {
+					frappe.show_alert({
+						message: __("Price is not set for the item."),
+						indicator: "orange",
+					});
+					frappe.utils.play_sound("error");
+					return;
+				}
+				const new_item = { item_code, batch_no, rate, uom, [field]: value, stock_uom };
+>>>>>>> d4b21f532a (fix: add `Stock UOM` when adding new item in POS list (#44780))
 
 				if (serial_no) {
 					await this.check_serial_no_availablilty(item_code, this.frm.doc.set_warehouse, serial_no);
