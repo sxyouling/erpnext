@@ -7,6 +7,11 @@ from frappe import _
 from frappe.utils import cint, flt, get_table_name, getdate
 from pypika import functions as fn
 
+<<<<<<< HEAD
+=======
+from erpnext.deprecation_dumpster import deprecated
+from erpnext.stock.doctype.stock_closing_entry.stock_closing_entry import StockClosing
+>>>>>>> c9088f4955 (refactor: stock closing balance -> stock closing entry  (#44489))
 from erpnext.stock.doctype.warehouse.warehouse import apply_warehouse_filter
 
 SLE_COUNT_LIMIT = 10_000
@@ -94,6 +99,41 @@ def get_columns(filters):
 
 # get all details
 def get_stock_ledger_entries(filters):
+<<<<<<< HEAD
+=======
+	entries = []
+
+	stk_cl_obj = StockClosing(filters.company, filters.from_date, filters.from_date)
+	if stk_cl_obj.last_closing_balance:
+		entries += get_stock_closing_balance(stk_cl_obj, filters)
+		filters.start_from = stk_cl_obj.last_closing_balance.to_date
+
+	entries += get_stock_ledger_entries_for_batch_no(filters)
+	entries += get_stock_ledger_entries_for_batch_bundle(filters)
+
+	return entries
+
+
+def get_stock_closing_balance(stk_cl_obj, filters):
+	query_filters = {}
+	for field in ["item_code", "warehouse", "company", "batch_no"]:
+		if filters.get(field):
+			query_filters[field] = filters.get(field)
+
+	if filters.warehouse_type:
+		warehouses = frappe.get_all(
+			"Warehouse",
+			filters={"warehouse_type": filters.warehouse_type, "is_group": 0},
+			pluck="name",
+		)
+		query_filters["warehouse"] = warehouses
+
+	return stk_cl_obj.get_stock_closing_balance(query_filters, for_batch=True)
+
+
+@deprecated(f"{__name__}.get_stock_ledger_entries_for_batch_no", "unknown", "v16", "No known instructions.")
+def get_stock_ledger_entries_for_batch_no(filters):
+>>>>>>> c9088f4955 (refactor: stock closing balance -> stock closing entry  (#44489))
 	if not filters.get("from_date"):
 		frappe.throw(_("'From Date' is required"))
 	if not filters.get("to_date"):
@@ -134,7 +174,63 @@ def get_stock_ledger_entries(filters):
 		if filters.get(field):
 			query = query.where(sle[field] == filters.get(field))
 
+<<<<<<< HEAD
 	return query
+=======
+	if filters.start_from:
+		query = query.where(sle.posting_datetime > get_datetime(filters.start_from))
+
+	return query.run(as_dict=True) or []
+
+
+def get_stock_ledger_entries_for_batch_bundle(filters):
+	sle = frappe.qb.DocType("Stock Ledger Entry")
+	batch_package = frappe.qb.DocType("Serial and Batch Entry")
+
+	query = (
+		frappe.qb.from_(sle)
+		.inner_join(batch_package)
+		.on(batch_package.parent == sle.serial_and_batch_bundle)
+		.select(
+			sle.item_code,
+			sle.warehouse,
+			batch_package.batch_no,
+			sle.posting_date,
+			fn.Sum(batch_package.qty).as_("actual_qty"),
+		)
+		.where(
+			(sle.docstatus < 2)
+			& (sle.is_cancelled == 0)
+			& (sle.has_batch_no == 1)
+			& (sle.posting_date <= filters["to_date"])
+		)
+		.groupby(sle.voucher_no, batch_package.batch_no, batch_package.warehouse)
+		.orderby(sle.item_code, sle.warehouse)
+	)
+
+	query = apply_warehouse_filter(query, sle, filters)
+	if filters.warehouse_type and not filters.warehouse:
+		warehouses = frappe.get_all(
+			"Warehouse",
+			filters={"warehouse_type": filters.warehouse_type, "is_group": 0},
+			pluck="name",
+		)
+
+		if warehouses:
+			query = query.where(sle.warehouse.isin(warehouses))
+
+	for field in ["item_code", "batch_no", "company"]:
+		if filters.get(field):
+			if field == "batch_no":
+				query = query.where(batch_package[field] == filters.get(field))
+			else:
+				query = query.where(sle[field] == filters.get(field))
+
+	if filters.start_from:
+		query = query.where(sle.posting_date > getdate(filters.start_from))
+
+	return query.run(as_dict=True) or []
+>>>>>>> c9088f4955 (refactor: stock closing balance -> stock closing entry  (#44489))
 
 
 def get_item_warehouse_batch_map(filters, float_precision):

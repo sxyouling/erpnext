@@ -368,3 +368,9 @@ erpnext.patches.v14_0.remove_cancelled_asset_capitalization_from_asset
 erpnext.patches.v14_0.enable_set_priority_for_pricing_rules #1
 erpnext.patches.v14_0.update_currency_exchange_settings_for_frankfurter
 erpnext.patches.v14_0.update_stock_uom_in_work_order_item
+<<<<<<< HEAD
+=======
+erpnext.patches.v15_0.enable_allow_existing_serial_no
+erpnext.patches.v15_0.update_cc_in_process_statement_of_accounts
+erpnext.patches.v15_0.refactor_closing_stock_balance #5
+>>>>>>> c9088f4955 (refactor: stock closing balance -> stock closing entry  (#44489))
