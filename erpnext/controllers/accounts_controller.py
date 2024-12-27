@@ -424,6 +424,9 @@ class AccountsController(TransactionBase):
 			self.payment_terms_template = ""
 			self.payment_schedule = []
 
+		if self.is_return:
+			return
+
 		self.validate_payment_schedule_dates()
 		self.set_due_date()
 		self.set_payment_schedule()
@@ -2181,6 +2184,9 @@ class AccountsController(TransactionBase):
 		dates = []
 		li = []
 
+		if self.doctype == "Sales Invoice" and self.is_pos:
+			return
+
 		for d in self.get("payment_schedule"):
 			if self.doctype == "Sales Order" and getdate(d.due_date) < getdate(self.transaction_date):
 				frappe.throw(
@@ -2198,11 +2204,17 @@ class AccountsController(TransactionBase):
 
 	def validate_payment_schedule_amount(self):
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if self.doctype == "Sales Invoice" and self.is_pos:
 			return
 
 =======
 >>>>>>> e1fc239f3d (fix: clear payment schedule in purchase invoice for is_paid)
+=======
+		if (self.doctype == "Sales Invoice" and self.is_pos) or self.get("is_opening") == "Yes":
+			return
+
+>>>>>>> 0589fa7f3e (refactor: early return is always better)
 		party_account_currency = self.get("party_account_currency")
 		if not party_account_currency:
 			party_type, party = self.get_party()
