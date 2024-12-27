@@ -2203,18 +2203,9 @@ class AccountsController(TransactionBase):
 			frappe.throw(_("Rows with duplicate due dates in other rows were found: {0}").format(duplicates))
 
 	def validate_payment_schedule_amount(self):
-<<<<<<< HEAD
-<<<<<<< HEAD
-		if self.doctype == "Sales Invoice" and self.is_pos:
-			return
-
-=======
->>>>>>> e1fc239f3d (fix: clear payment schedule in purchase invoice for is_paid)
-=======
 		if (self.doctype == "Sales Invoice" and self.is_pos) or self.get("is_opening") == "Yes":
 			return
 
->>>>>>> 0589fa7f3e (refactor: early return is always better)
 		party_account_currency = self.get("party_account_currency")
 		if not party_account_currency:
 			party_type, party = self.get_party()
