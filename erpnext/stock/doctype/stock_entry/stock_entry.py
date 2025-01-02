@@ -374,7 +374,6 @@ class StockEntry(StockController):
 					flt(item.qty) * flt(item.conversion_factor), self.precision("transfer_qty", item)
 				)
 
-<<<<<<< HEAD
 			if (
 				self.purpose in ("Material Transfer", "Material Transfer for Manufacture")
 				and not item.serial_no
@@ -385,42 +384,6 @@ class StockEntry(StockController):
 					frappe.MandatoryError,
 				)
 
-	def validate_qty(self):
-		manufacture_purpose = ["Manufacture", "Material Consumption for Manufacture"]
-
-		if self.purpose in manufacture_purpose and self.work_order:
-			if not frappe.get_value("Work Order", self.work_order, "skip_transfer"):
-				item_code = []
-				for item in self.items:
-					if cstr(item.t_warehouse) == "":
-						req_items = frappe.get_all(
-							"Work Order Item",
-							filters={"parent": self.work_order, "item_code": item.item_code},
-							fields=["item_code"],
-						)
-
-						transferred_materials = frappe.db.sql(
-							"""
-									select
-										sum(sed.qty) as qty
-									from `tabStock Entry` se,`tabStock Entry Detail` sed
-									where
-										se.name = sed.parent and se.docstatus=1 and
-										(se.purpose='Material Transfer for Manufacture' or se.purpose='Manufacture')
-										and sed.item_code=%s and se.work_order= %s and ifnull(sed.t_warehouse, '') != ''
-								""",
-							(item.item_code, self.work_order),
-							as_dict=1,
-						)
-
-						stock_qty = flt(item.qty)
-						trans_qty = flt(transferred_materials[0].qty)
-						if req_items:
-							if stock_qty > trans_qty:
-								item_code.append(item.item_code)
-
-=======
->>>>>>> dc5f2d35ac (fix: removed unused code)
 	def validate_fg_completed_qty(self):
 		if self.purpose != "Manufacture":
 			return
