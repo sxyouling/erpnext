@@ -113,7 +113,6 @@ class StockEntry(StockController):
 		self.validate_purpose()
 		self.validate_item()
 		self.validate_customer_provided_item()
-		self.validate_qty()
 		self.set_transfer_qty()
 		self.validate_uom_is_integer("uom", "qty")
 		self.validate_uom_is_integer("stock_uom", "transfer_qty")
@@ -375,6 +374,7 @@ class StockEntry(StockController):
 					flt(item.qty) * flt(item.conversion_factor), self.precision("transfer_qty", item)
 				)
 
+<<<<<<< HEAD
 			if (
 				self.purpose in ("Material Transfer", "Material Transfer for Manufacture")
 				and not item.serial_no
@@ -419,6 +419,8 @@ class StockEntry(StockController):
 							if stock_qty > trans_qty:
 								item_code.append(item.item_code)
 
+=======
+>>>>>>> dc5f2d35ac (fix: removed unused code)
 	def validate_fg_completed_qty(self):
 		if self.purpose != "Manufacture":
 			return
