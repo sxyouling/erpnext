@@ -1433,6 +1433,16 @@ def add_operations_cost(stock_entry, work_order=None, expense_account=None):
 				},
 			)
 
+	if work_order and work_order.corrective_operation_cost:
+		stock_entry.append(
+			"additional_costs",
+			{
+				"expense_account": expense_account,
+				"description": "Total Corrective Operations Cost",
+				"amount": work_order.corrective_operation_cost,
+			},
+		)
+
 
 @frappe.whitelist()
 def get_bom_diff(bom1, bom2):
