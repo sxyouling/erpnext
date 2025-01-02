@@ -658,20 +658,24 @@ class JobCard(Document):
 						d.idx, d.item_code
 					)
 				)
-
-			self.append(
-				"items",
-				{
-					"item_code": d.item_code,
-					"source_warehouse": self.source_warehouse or d.source_warehouse,
-					"uom": frappe.db.get_value("Item", d.item_code, "stock_uom"),
-					"item_name": d.item_name,
-					"description": d.description,
-					"required_qty": (d.required_qty * flt(self.for_quantity)) / doc.qty,
-					"rate": d.rate,
-					"amount": d.amount,
-				},
-			)
+			if (
+				self.get("operation") == d.operation
+				or self.operation_row_id == d.operation_row_id
+				or self.is_corrective_job_card
+			):
+				self.append(
+					"items",
+					{
+						"item_code": d.item_code,
+						"source_warehouse": self.source_warehouse or d.source_warehouse,
+						"uom": frappe.db.get_value("Item", d.item_code, "stock_uom"),
+						"item_name": d.item_name,
+						"description": d.description,
+						"required_qty": (d.required_qty * flt(self.for_quantity)) / doc.qty,
+						"rate": d.rate,
+						"amount": d.amount,
+					},
+				)
 
 	def before_save(self):
 		self.set_expected_and_actual_time()
