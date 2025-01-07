@@ -49,41 +49,39 @@ class AutoMatchbyAccountIBAN:
 		return result
 
 	def match_account_in_party(self) -> tuple | None:
-		"""Check if there is a IBAN/Account No. match in Customer/Supplier/Employee"""
-		result = None
-		parties = get_parties_in_order(self.deposit)
-		or_filters = self.get_or_filters()
+		"""
+		Returns (Party Type, Party) if a matching account is found in Bank Account or Employee:
+		1. Get party from a matching (iban/account no) Bank Account
+		2. If not found, get party from Employee with matching bank account details (iban/account no)
+		"""
+		if not (self.bank_party_account_number or self.bank_party_iban):
+			# Nothing to match
+			return None
 
-		for party in parties:
-			party_result = frappe.db.get_all(
-				"Bank Account", or_filters=or_filters, pluck="party", limit_page_length=1
-			)
+		# Search for a matching Bank Account that has party set
+		party_result = frappe.db.get_all(
+			"Bank Account",
+			or_filters=self.get_or_filters(),
+			filters={"party_type": ("is", "set"), "party": ("is", "set")},
+			fields=["party", "party_type"],
+			limit_page_length=1,
+		)
+		if result := party_result[0] if party_result else None:
+			return (result["party_type"], result["party"])
 
-			if party == "Employee" and not party_result:
-				# Search in Bank Accounts first for Employee, and then Employee record
-				if "bank_account_no" in or_filters:
-					or_filters["bank_ac_no"] = or_filters.pop("bank_account_no")
+		# If no party is found, search in Employee (since it has bank account details)
+		employee_result = frappe.db.get_all(
+			"Employee", or_filters=self.get_or_filters("Employee"), pluck="name", limit_page_length=1
+		)
+		if employee_result:
+			return ("Employee", employee_result[0])
 
-				party_result = frappe.db.get_all(
-					party, or_filters=or_filters, pluck="name", limit_page_length=1
-				)
-
-				if "bank_ac_no" in or_filters:
-					or_filters["bank_account_no"] = or_filters.pop("bank_ac_no")
-
-			if party_result:
-				result = (
-					party,
-					party_result[0],
-				)
-				break
-
-		return result
-
-	def get_or_filters(self) -> dict:
+	def get_or_filters(self, party: str | None = None) -> dict:
+		"""Return OR filters for Bank Account and IBAN"""
 		or_filters = {}
 		if self.bank_party_account_number:
-			or_filters["bank_account_no"] = self.bank_party_account_number
+			bank_ac_field = "bank_ac_no" if party == "Employee" else "bank_account_no"
+			or_filters[bank_ac_field] = self.bank_party_account_number
 
 		if self.bank_party_iban:
 			or_filters["iban"] = self.bank_party_iban
