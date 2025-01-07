@@ -376,8 +376,6 @@
    "fieldname": "disable_rounded_total",
    "fieldtype": "Check",
    "label": "Disable Rounded Total"
-<<<<<<< HEAD
-=======
   },
   {
    "fieldname": "utm_campaign",
@@ -405,7 +403,6 @@
    "fieldname": "print_receipt_on_order_complete",
    "fieldtype": "Check",
    "label": "Print Receipt on Order Complete"
->>>>>>> 2788739c1e (feat: pos configuration for print receipt on complete order (#45024))
   }
  ],
  "icon": "icon-cog",
@@ -433,11 +430,7 @@
    "link_fieldname": "pos_profile"
   }
  ],
-<<<<<<< HEAD
- "modified": "2022-08-10 12:57:06.241439",
-=======
  "modified": "2025-01-01 11:07:03.161950",
->>>>>>> 2788739c1e (feat: pos configuration for print receipt on complete order (#45024))
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Profile",
