@@ -168,6 +168,7 @@ class WorkOrder(Document):
 			validate_bom_no(self.production_item, self.bom_no)
 
 		self.validate_sales_order()
+		self.check_wip_warehouse_skip()
 		self.set_default_warehouse()
 		self.validate_warehouse_belongs_to_company()
 		self.calculate_operating_cost()
@@ -268,6 +269,10 @@ class WorkOrder(Document):
 			self.wip_warehouse = frappe.db.get_single_value("Manufacturing Settings", "default_wip_warehouse")
 		if not self.fg_warehouse:
 			self.fg_warehouse = frappe.db.get_single_value("Manufacturing Settings", "default_fg_warehouse")
+
+	def check_wip_warehouse_skip(self):
+		if self.skip_transfer:
+			self.wip_warehouse = None
 
 	def validate_warehouse_belongs_to_company(self):
 		warehouses = [self.fg_warehouse, self.wip_warehouse]
