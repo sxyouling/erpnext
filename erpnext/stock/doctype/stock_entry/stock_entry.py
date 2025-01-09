@@ -765,7 +765,7 @@ class StockEntry(StockController):
 
 	def get_matched_items(self, item_code):
 		for row in self.items:
-			if row.item_code == item_code:
+			if (row.item_code, row.item_name) == item_code:
 				return row
 
 		return {}

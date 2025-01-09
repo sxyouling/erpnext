@@ -41,8 +41,9 @@ class TestBOM(IntegrationTestCase):
 		items_dict = get_bom_items_as_dict(
 			bom=get_default_bom(), company="_Test Company", qty=1, fetch_exploded=0
 		)
-		self.assertTrue(self.globalTestRecords["BOM"][2]["items"][0]["item_code"] in items_dict)
-		self.assertTrue(self.globalTestRecords["BOM"][2]["items"][1]["item_code"] in items_dict)
+		test_record = self.globalTestRecords["BOM"][2]["items"]
+		self.assertTrue((test_record[0]["item_code"], test_record[0]["item_code"]) in items_dict)
+		self.assertTrue((test_record[1]["item_code"], test_record[1]["item_code"]) in items_dict)
 		self.assertEqual(len(items_dict.values()), 2)
 
 	@timeout
@@ -52,10 +53,34 @@ class TestBOM(IntegrationTestCase):
 		items_dict = get_bom_items_as_dict(
 			bom=get_default_bom(), company="_Test Company", qty=1, fetch_exploded=1
 		)
-		self.assertTrue(self.globalTestRecords["BOM"][2]["items"][0]["item_code"] in items_dict)
-		self.assertFalse(self.globalTestRecords["BOM"][2]["items"][1]["item_code"] in items_dict)
-		self.assertTrue(self.globalTestRecords["BOM"][0]["items"][0]["item_code"] in items_dict)
-		self.assertTrue(self.globalTestRecords["BOM"][0]["items"][1]["item_code"] in items_dict)
+		self.assertTrue(
+			(
+				self.globalTestRecords["BOM"][2]["items"][0]["item_code"],
+				self.globalTestRecords["BOM"][2]["items"][0]["item_code"],
+			)
+			in items_dict
+		)
+		self.assertFalse(
+			(
+				self.globalTestRecords["BOM"][2]["items"][1]["item_code"],
+				self.globalTestRecords["BOM"][2]["items"][1]["item_code"],
+			)
+			in items_dict
+		)
+		self.assertTrue(
+			(
+				self.globalTestRecords["BOM"][0]["items"][0]["item_code"],
+				self.globalTestRecords["BOM"][0]["items"][0]["item_code"],
+			)
+			in items_dict
+		)
+		self.assertTrue(
+			(
+				self.globalTestRecords["BOM"][0]["items"][1]["item_code"],
+				self.globalTestRecords["BOM"][0]["items"][1]["item_code"],
+			)
+			in items_dict
+		)
 		self.assertEqual(len(items_dict.values()), 3)
 
 	@timeout
