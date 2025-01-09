@@ -944,10 +944,10 @@ class BOM(WebsiteGenerator):
 		return erpnext.get_company_currency(self.company)
 
 	def add_to_cur_exploded_items(self, args):
-		if self.cur_exploded_items.get(args.item_code):
-			self.cur_exploded_items[args.item_code]["stock_qty"] += args.stock_qty
+		if self.cur_exploded_items.get((args.item_code, args.item_name)):
+			self.cur_exploded_items[(args.item_code, args.item_name)]["stock_qty"] += args.stock_qty
 		else:
-			self.cur_exploded_items[args.item_code] = args
+			self.cur_exploded_items[(args.item_code, args.item_name)] = args
 
 	def get_child_exploded_items(self, bom_no, stock_qty, operation=None):
 		"""Add all items from Flat BOM of child BOM"""
@@ -1182,16 +1182,16 @@ def get_bom_items_as_dict(
 ):
 	item_dict = {}
 
-	group_by_cond = "group by item_code, stock_uom"
+	group_by_cond = "group by item_code, item_name, stock_uom"
 	if frappe.get_cached_value("BOM", bom, "track_semi_finished_goods"):
 		fetch_exploded = 0
-		group_by_cond = "group by item_code, operation_row_id, stock_uom"
+		group_by_cond = "group by item_code, item_name, operation_row_id, stock_uom"
 
 	# Did not use qty_consumed_per_unit in the query, as it leads to rounding loss
 	query = """select
 				bom_item.item_code,
 				bom_item.idx,
-				item.item_name,
+				bom_item.item_name,
 				sum(bom_item.{qty_field}/ifnull(bom.quantity, 1)) * %(qty)s as qty,
 				item.image,
 				bom.project,
@@ -1259,9 +1259,9 @@ def get_bom_items_as_dict(
 		items = frappe.db.sql(query, {"qty": qty, "bom": bom, "company": company}, as_dict=True)
 
 	for item in items:
-		key = item.item_code
+		key = (item.item_code, item.item_name)
 		if item.operation_row_id:
-			key = (item.item_code, item.operation_row_id)
+			key = (item.item_code, item.item_name, item.operation_row_id)
 
 		if key in item_dict:
 			item_dict[key]["qty"] += flt(item.qty)
