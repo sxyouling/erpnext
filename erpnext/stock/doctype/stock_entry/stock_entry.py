@@ -448,7 +448,7 @@ class StockEntry(StockController):
 				for_update=True,
 			)
 
-			reset_fields = ("stock_uom", "item_name")
+			reset_fields = "stock_uom"
 			for field in reset_fields:
 				item.set(field, item_details.get(field))
 
@@ -2417,7 +2417,7 @@ class StockEntry(StockController):
 				if item_row["allow_alternative_item"]:
 					item_row["allow_alternative_item"] = work_order.allow_alternative_item
 
-				item_dict.setdefault(d.item_code, item_row)
+				item_dict.setdefault((d.item_code, d.item_name), item_row)
 
 		return item_dict
 
