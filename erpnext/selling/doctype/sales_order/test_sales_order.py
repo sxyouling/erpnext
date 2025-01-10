@@ -1704,7 +1704,6 @@ class TestSalesOrder(AccountsTestMixin, IntegrationTestCase):
 		wo_name = raise_work_orders(mr.name)[0]
 		wo = frappe.get_doc("Work Order", wo_name)
 		wo.wip_warehouse = "Work In Progress - _TC"
-		wo.skip_transfer = True
 
 		self.assertEqual(wo.sales_order, so.name)
 		self.assertEqual(wo.sales_order_item, so.items[0].name)
