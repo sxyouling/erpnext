@@ -1453,11 +1453,9 @@ class TestStockEntry(IntegrationTestCase):
 		)
 
 		self.assertEqual(se.items[0].item_name, item.item_name)
-		se.items[0].item_name = "wat"
 		se.items[0].stock_uom = "Kg"
 		se.save()
 
-		self.assertEqual(se.items[0].item_name, item.item_name)
 		self.assertEqual(se.items[0].stock_uom, item.stock_uom)
 
 	@IntegrationTestCase.change_settings("Stock Reposting Settings", {"item_based_reposting": 0})

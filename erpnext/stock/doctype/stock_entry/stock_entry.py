@@ -448,7 +448,7 @@ class StockEntry(StockController):
 				for_update=True,
 			)
 
-			reset_fields = "stock_uom"
+			reset_fields = ["stock_uom"]
 			for field in reset_fields:
 				item.set(field, item_details.get(field))
 
