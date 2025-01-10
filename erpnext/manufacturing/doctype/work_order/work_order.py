@@ -1465,7 +1465,9 @@ def make_stock_entry(work_order_id, purpose, qty=None, target_warehouse=None):
 		stock_entry.to_warehouse = wip_warehouse
 		stock_entry.project = work_order.project
 	else:
-		stock_entry.from_warehouse = wip_warehouse
+		stock_entry.from_warehouse = (
+			wip_warehouse if not work_order.skip_transfer else work_order.source_warehouse
+		)
 		stock_entry.to_warehouse = work_order.fg_warehouse
 		stock_entry.project = work_order.project
 

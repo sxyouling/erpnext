@@ -724,7 +724,12 @@ class TestWorkOrder(IntegrationTestCase):
 				self.assertEqual(row.item_code, fg_item)
 
 		work_order = make_wo_order_test_record(
-			item=fg_item, skip_transfer=True, planned_start_date=now(), qty=30, do_not_save=True
+			item=fg_item,
+			skip_transfer=True,
+			source_warehouse="_Test Warehouse - _TC",
+			planned_start_date=now(),
+			qty=30,
+			do_not_save=True,
 		)
 		work_order.batch_size = 10
 		work_order.insert()
@@ -940,7 +945,6 @@ class TestWorkOrder(IntegrationTestCase):
 			bom_no=bom_no,
 			wip_warehouse=wip_warehouse,
 			qty=qty,
-			skip_transfer=1,
 			stock_uom=fg_item_non_whole.stock_uom,
 		)
 
@@ -2059,6 +2063,7 @@ class TestWorkOrder(IntegrationTestCase):
 		wo = make_wo_order_test_record(
 			production_item=fg_item,
 			bom_no=bom_doc.name,
+			source_warehouse="_Test Warehouse - _TC",
 			qty=1,
 			skip_transfer=1,
 		)
@@ -2112,6 +2117,7 @@ class TestWorkOrder(IntegrationTestCase):
 			production_item="Test Final FG Item",
 			qty=10,
 			use_multi_level_bom=1,
+			source_warehouse="_Test Warehouse - _TC",
 			skip_transfer=1,
 			from_wip_warehouse=1,
 		)
