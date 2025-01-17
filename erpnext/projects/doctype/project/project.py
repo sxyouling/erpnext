@@ -7,8 +7,15 @@ from email_reply_parser import EmailReplyParser
 from frappe import _, qb
 from frappe.desk.reportview import get_match_cond
 from frappe.model.document import Document
+<<<<<<< HEAD
 from frappe.query_builder.functions import Sum
 from frappe.utils import add_days, flt, get_datetime, get_time, get_url, nowtime, today
+=======
+from frappe.query_builder import Interval
+from frappe.query_builder.functions import Count, CurDate, Date, Sum, UnixTimestamp
+from frappe.utils import add_days, flt, get_datetime, get_link_to_form, get_time, get_url, nowtime, today
+from frappe.utils.user import is_website_user
+>>>>>>> 8d66142865 (fix(Project): re-phrase welcome email (#45175))
 
 from erpnext import get_default_company
 from erpnext.controllers.queries import get_filters_cond
@@ -275,24 +282,19 @@ class Project(Document):
 			frappe.db.set_value("Project", new_name, "copied_from", new_name)
 
 	def send_welcome_email(self):
-		url = get_url(f"/project/?name={self.name}")
-		messages = (
-			_("You have been invited to collaborate on the project: {0}").format(self.name),
-			url,
-			_("Join"),
-		)
+		label = f"{self.project_name} ({self.name})"
+		url = get_link_to_form(self.doctype, self.name, label)
 
-		content = """
-		<p>{0}.</p>
-		<p><a href="{1}">{2}</a></p>
-		"""
+		content = "<p>{}</p>".format(
+			_("You have been invited to collaborate on the project {0}.").format(url)
+		)
 
 		for user in self.users:
 			if user.welcome_email_sent == 0:
 				frappe.sendmail(
 					user.user,
 					subject=_("Project Collaboration Invitation"),
-					content=content.format(*messages),
+					content=content,
 				)
 				user.welcome_email_sent = 1
 
