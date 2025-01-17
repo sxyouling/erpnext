@@ -8,7 +8,7 @@ from collections import defaultdict
 import frappe
 from frappe import _, bold, qb, throw
 from frappe.model.workflow import get_workflow_name, is_transition_condition_satisfied
-from frappe.query_builder import Criterion
+from frappe.query_builder import Criterion, DocType
 from frappe.query_builder.custom import ConstantColumn
 from frappe.query_builder.functions import Abs, Sum
 from frappe.utils import (
@@ -250,6 +250,15 @@ class AccountsController(TransactionBase):
 			apply_pricing_rule_on_transaction(self)
 
 		self.set_total_in_words()
+<<<<<<< HEAD
+=======
+		self.set_default_letter_head()
+		self.validate_company_in_accounting_dimension()
+
+	def set_default_letter_head(self):
+		if hasattr(self, "letter_head") and not self.letter_head:
+			self.letter_head = frappe.db.get_value("Company", self.company, "default_letter_head")
+>>>>>>> 60efd3e219 (feat: add company level validation for accounting dimension)
 
 	def init_internal_values(self):
 		# init all the internal values as 0 on sa
@@ -355,6 +364,58 @@ class AccountsController(TransactionBase):
 				(sle.voucher_type == self.doctype) & (sle.voucher_no == self.name)
 			).run()
 
+<<<<<<< HEAD
+=======
+	def remove_serial_and_batch_bundle(self):
+		bundles = frappe.get_all(
+			"Serial and Batch Bundle",
+			filters={"voucher_type": self.doctype, "voucher_no": self.name, "docstatus": ("!=", 1)},
+		)
+
+		for bundle in bundles:
+			frappe.delete_doc("Serial and Batch Bundle", bundle.name)
+
+		batches = frappe.get_all(
+			"Batch", filters={"reference_doctype": self.doctype, "reference_name": self.name}
+		)
+		for row in batches:
+			frappe.delete_doc("Batch", row.name)
+
+	def validate_company_in_accounting_dimension(self):
+		doc_field = DocType("DocField")
+		accounting_dimension = DocType("Accounting Dimension")
+		query = (
+			frappe.qb.from_(accounting_dimension)
+			.select(accounting_dimension.document_type)
+			.join(doc_field)
+			.on(doc_field.parent == accounting_dimension.document_type)
+			.where(doc_field.fieldname == "company")
+		).run(as_list=True)
+
+		dimension_list = sum(query, ["Project"])
+		self.validate_company(dimension_list)
+
+		if childs := self.get_all_children():
+			for child in childs:
+				self.validate_company(dimension_list, child)
+
+	def validate_company(self, dimension_list, child=None):
+		for dimension in dimension_list:
+			if not child:
+				dimension_value = self.get(frappe.scrub(dimension))
+			else:
+				dimension_value = child.get(frappe.scrub(dimension))
+
+			if dimension_value:
+				company = frappe.get_cached_value(dimension, dimension_value, "company")
+				if company and company != self.company:
+					frappe.throw(
+						_("{0}: {1} does not belong to the Company: {2}").format(
+							dimension, frappe.bold(dimension_value), self.company
+						)
+					)
+
+>>>>>>> 60efd3e219 (feat: add company level validation for accounting dimension)
 	def validate_return_against_account(self):
 		if self.doctype in ["Sales Invoice", "Purchase Invoice"] and self.is_return and self.return_against:
 			cr_dr_account_field = "debit_to" if self.doctype == "Sales Invoice" else "credit_to"
