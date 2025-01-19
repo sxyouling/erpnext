@@ -859,9 +859,11 @@ class TestPickList(FrappeTestCase):
 		).name
 
 		se = make_stock_entry(item=item, to_warehouse=warehouse, qty=10)
-		batch1 = get_batch_from_bundle(se.items[0].serial_and_batch_bundle)
+		se.reload()
+		batch1 = se.items[0].batch_no
 		se = make_stock_entry(item=item, to_warehouse=warehouse, qty=10)
-		batch2 = get_batch_from_bundle(se.items[0].serial_and_batch_bundle)
+		se.reload()
+		batch2 = se.items[0].batch_no
 
 		so = make_sales_order(item_code=item, qty=10, rate=100)
 
