@@ -4,6 +4,7 @@
  "allow_rename": 1,
  "autoname": "field:supplier_group_name",
  "creation": "2013-01-10 16:34:24",
+ "default_view": "Tree",
  "doctype": "DocType",
  "document_type": "Setup",
  "engine": "InnoDB",
@@ -107,7 +108,11 @@
  "idx": 1,
  "is_tree": 1,
  "links": [],
+<<<<<<< HEAD
  "modified": "2022-12-24 11:16:12.486719",
+=======
+ "modified": "2025-01-22 10:49:27.066443",
+>>>>>>> 5207917993 (feat: set default view as tree-view (#45365))
  "modified_by": "Administrator",
  "module": "Setup",
  "name": "Supplier Group",

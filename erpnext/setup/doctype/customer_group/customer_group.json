@@ -4,6 +4,7 @@
  "allow_rename": 1,
  "autoname": "field:customer_group_name",
  "creation": "2013-01-10 16:34:23",
+ "default_view": "Tree",
  "doctype": "DocType",
  "document_type": "Setup",
  "engine": "InnoDB",
@@ -139,7 +140,11 @@
  "idx": 1,
  "is_tree": 1,
  "links": [],
+<<<<<<< HEAD
  "modified": "2023-06-02 13:40:34.435822",
+=======
+ "modified": "2025-01-22 10:48:10.186637",
+>>>>>>> 5207917993 (feat: set default view as tree-view (#45365))
  "modified_by": "Administrator",
  "module": "Setup",
  "name": "Customer Group",
