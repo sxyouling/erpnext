@@ -1443,6 +1443,41 @@ erpnext.TransactionController = class TransactionController extends erpnext.taxe
 		}
 	}
 
+<<<<<<< HEAD
+=======
+	remove_pricing_rule_for_item(item) {
+		// capture pricing rule before removing it to delete free items
+		let removed_pricing_rule = item.pricing_rules;
+		if (item.pricing_rules){
+			let me = this;
+			return this.frm.call({
+				method: "erpnext.accounts.doctype.pricing_rule.pricing_rule.remove_pricing_rule_for_item",
+				args: {
+					pricing_rules: item.pricing_rules,
+					item_details: {
+						"doctype": item.doctype,
+						"name": item.name,
+						"item_code": item.item_code,
+						"pricing_rules": item.pricing_rules,
+						"parenttype": item.parenttype,
+						"parent": item.parent,
+						"price_list_rate": item.price_list_rate
+					},
+					item_code: item.item_code,
+					rate: item.price_list_rate,
+				},
+				callback: function(r) {
+					if (!r.exc && r.message) {
+						me.remove_pricing_rule(r.message, removed_pricing_rule, item.name);
+						me.calculate_taxes_and_totals();
+						if(me.frm.doc.apply_discount_on) me.frm.trigger("apply_discount_on");
+					}
+				}
+			});
+		}
+	}
+
+>>>>>>> 50223c6bec (fix: remove applied pricing rule)
 	apply_pricing_rule(item, calculate_taxes_and_totals) {
 		var me = this;
 		var args = this._get_args(item);
@@ -1705,7 +1740,11 @@ erpnext.TransactionController = class TransactionController extends erpnext.taxe
 		});
 	}
 
+<<<<<<< HEAD
 	remove_pricing_rule(item) {
+=======
+	remove_pricing_rule(item, removed_pricing_rule, row_name) {
+>>>>>>> 50223c6bec (fix: remove applied pricing rule)
 		let me = this;
 		const fields = ["discount_percentage",
 			"discount_amount", "margin_rate_or_amount", "rate_with_margin"];
@@ -1738,6 +1777,13 @@ erpnext.TransactionController = class TransactionController extends erpnext.taxe
 			});
 
 			me.trigger_price_list_rate();
+		}
+		else if(!item.is_free_item && row_name){
+			me.frm.doc.items.forEach(d => {
+				if (d.name != row_name) return;
+
+				Object.assign(d, item);
+			});
 		}
 	}
 
