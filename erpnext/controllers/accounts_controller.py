@@ -2767,6 +2767,7 @@ def get_advance_payment_entries(
 		condition.append(pe.name.like(f"%%{payment_name}%%"))
 
 	if order_list or against_all_orders:
+<<<<<<< HEAD
 		orders_condition = []
 		if order_list:
 			orders_condition.append(per.reference_name.isin(order_list))
@@ -2784,6 +2785,87 @@ def get_advance_payment_entries(
 				pe.posting_date,
 				pe[currency_field].as_("currency"),
 				pe[exchange_rate_field].as_("exchange_rate"),
+=======
+		q = get_common_query(
+			party_type,
+			party,
+			party_account,
+			default_advance_account,
+			limit,
+			condition,
+		)
+		payment_ref = frappe.qb.DocType("Payment Entry Reference")
+
+		q = q.inner_join(payment_ref).on(payment_entry.name == payment_ref.parent)
+		q = q.select(
+			(payment_ref.allocated_amount).as_("amount"),
+			(payment_ref.name).as_("reference_row"),
+			(payment_ref.reference_name).as_("against_order"),
+			(payment_entry.book_advance_payments_in_separate_party_account),
+		)
+
+		q = q.where(payment_ref.reference_doctype == order_doctype)
+		if order_list:
+			q = q.where(payment_ref.reference_name.isin(order_list))
+
+		allocated = list(q.run(as_dict=True))
+		payment_entries += allocated
+	if include_unallocated:
+		q = get_common_query(
+			party_type,
+			party,
+			party_account,
+			default_advance_account,
+			limit,
+			condition,
+		)
+		q = q.select((payment_entry.unallocated_amount).as_("amount"))
+		q = q.where(payment_entry.unallocated_amount > 0)
+
+		unallocated = list(q.run(as_dict=True))
+		payment_entries += unallocated
+	return payment_entries
+
+
+def get_common_query(
+	party_type,
+	party,
+	party_account,
+	default_advance_account,
+	limit,
+	condition,
+):
+	account_type = frappe.db.get_value("Party Type", party_type, "account_type")
+	payment_type = "Receive" if account_type == "Receivable" else "Pay"
+	payment_entry = frappe.qb.DocType("Payment Entry")
+
+	q = (
+		frappe.qb.from_(payment_entry)
+		.select(
+			ConstantColumn("Payment Entry").as_("reference_type"),
+			(payment_entry.name).as_("reference_name"),
+			payment_entry.posting_date,
+			(payment_entry.remarks).as_("remarks"),
+			(payment_entry.book_advance_payments_in_separate_party_account),
+		)
+		.where(payment_entry.payment_type == payment_type)
+		.where(payment_entry.party_type == party_type)
+		.where(payment_entry.party == party)
+		.where(payment_entry.docstatus == 1)
+	)
+
+	field = "paid_from" if payment_type == "Receive" else "paid_to"
+
+	q = q.select((payment_entry[f"{field}_account_currency"]).as_("currency"))
+	q = q.select(payment_entry[field])
+	account_condition = payment_entry[field].isin(party_account)
+	if default_advance_account:
+		q = q.where(
+			account_condition
+			| (
+				(payment_entry[field] == default_advance_account)
+				& (payment_entry.book_advance_payments_in_separate_party_account == 1)
+>>>>>>> b2c3da135e (refactor: only apply configuration on normal payments)
 			)
 			.where(
 				(pe[party_account_field] == party_account)
