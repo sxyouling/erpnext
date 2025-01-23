@@ -537,8 +537,12 @@
    "fieldname": "exchange_gain_loss_posting_date",
    "fieldtype": "Select",
    "label": "Posting Date Inheritance for Exchange Gain / Loss",
+<<<<<<< HEAD
    "options": "Invoice\nPayment"
 >>>>>>> 3fbd2ca0d9 (refactor: configurable posting date for Exc Gain / Loss journal)
+=======
+   "options": "Invoice\nPayment\nReconciliation Date"
+>>>>>>> 95af63e305 (refactor: allow reconciliation date for exchange gain / loss)
   }
  ],
  "icon": "icon-cog",
@@ -547,10 +551,14 @@
  "issingle": 1,
  "links": [],
 <<<<<<< HEAD
+<<<<<<< HEAD
  "modified": "2024-01-22 12:10:10.151819",
 =======
  "modified": "2025-01-22 17:53:47.968079",
 >>>>>>> 3fbd2ca0d9 (refactor: configurable posting date for Exc Gain / Loss journal)
+=======
+ "modified": "2025-01-23 13:15:44.077853",
+>>>>>>> 95af63e305 (refactor: allow reconciliation date for exchange gain / loss)
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Accounts Settings",
