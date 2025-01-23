@@ -9,6 +9,7 @@ from frappe import qb
 from frappe.query_builder.functions import Sum
 from frappe.tests.utils import FrappeTestCase
 from frappe.utils import add_days, getdate, nowdate
+from frappe.utils.data import getdate as convert_to_date
 
 from erpnext.accounts.doctype.payment_entry.payment_entry import get_payment_entry
 from erpnext.accounts.doctype.payment_entry.test_payment_entry import create_payment_entry
@@ -707,6 +708,135 @@ class TestAccountsController(FrappeTestCase):
 		self.assertEqual(exc_je_for_si, [])
 		self.assertEqual(exc_je_for_pe, [])
 
+<<<<<<< HEAD
+=======
+	@IntegrationTestCase.change_settings(
+		"Stock Settings", {"allow_internal_transfer_at_arms_length_price": 1}
+	)
+	def test_16_internal_transfer_at_arms_length_price(self):
+		from erpnext.accounts.doctype.sales_invoice.sales_invoice import make_inter_company_purchase_invoice
+		from erpnext.stock.doctype.warehouse.test_warehouse import create_warehouse
+
+		prepare_data_for_internal_transfer()
+		company = "_Test Company with perpetual inventory"
+		target_warehouse = create_warehouse("_Test Internal Warehouse New 1", company=company)
+		warehouse = create_warehouse("_Test Internal Warehouse New 2", company=company)
+		arms_length_price = 40
+
+		si = create_sales_invoice(
+			company=company,
+			customer="_Test Internal Customer 2",
+			debit_to="Debtors - TCP1",
+			target_warehouse=target_warehouse,
+			warehouse=warehouse,
+			income_account="Sales - TCP1",
+			expense_account="Cost of Goods Sold - TCP1",
+			cost_center="Main - TCP1",
+			update_stock=True,
+			do_not_save=True,
+			do_not_submit=True,
+		)
+
+		si.items[0].rate = arms_length_price
+		si.save()
+		# rate should not reset to incoming rate
+		self.assertEqual(si.items[0].rate, arms_length_price)
+
+		frappe.db.set_single_value("Stock Settings", "allow_internal_transfer_at_arms_length_price", 0)
+		si.items[0].rate = arms_length_price
+		si.save()
+		# rate should reset to incoming rate
+		self.assertEqual(si.items[0].rate, 100)
+
+		si.update_stock = 0
+		si.save()
+		si.submit()
+
+		pi = make_inter_company_purchase_invoice(si.name)
+		pi.update_stock = 1
+		pi.items[0].rate = arms_length_price
+		pi.items[0].warehouse = target_warehouse
+		pi.items[0].from_warehouse = warehouse
+		pi.save()
+
+		self.assertEqual(pi.items[0].rate, 100)
+		self.assertEqual(pi.items[0].valuation_rate, 100)
+
+		frappe.db.set_single_value("Stock Settings", "allow_internal_transfer_at_arms_length_price", 1)
+		pi = make_inter_company_purchase_invoice(si.name)
+		pi.update_stock = 1
+		pi.items[0].rate = arms_length_price
+		pi.items[0].warehouse = target_warehouse
+		pi.items[0].from_warehouse = warehouse
+		pi.save()
+
+		self.assertEqual(pi.items[0].rate, arms_length_price)
+		self.assertEqual(pi.items[0].valuation_rate, 100)
+
+	@IntegrationTestCase.change_settings(
+		"Accounts Settings", {"exchange_gain_loss_posting_date": "Reconciliation Date"}
+	)
+	def test_17_gain_loss_posting_date_for_normal_payment(self):
+		# Sales Invoice in Foreign Currency
+		rate = 80
+		rate_in_account_currency = 1
+
+		adv_date = convert_to_date(add_days(nowdate(), -2))
+		inv_date = convert_to_date(add_days(nowdate(), -1))
+
+		si = self.create_sales_invoice(posting_date=inv_date, qty=1, rate=rate_in_account_currency)
+
+		# Test payments with different exchange rates
+		pe = self.create_payment_entry(posting_date=adv_date, amount=1, source_exc_rate=75.1).save().submit()
+
+		pr = self.create_payment_reconciliation()
+		pr.from_invoice_date = add_days(nowdate(), -1)
+		pr.to_invoice_date = nowdate()
+		pr.from_payment_date = add_days(nowdate(), -2)
+		pr.to_payment_date = nowdate()
+
+		pr.get_unreconciled_entries()
+		self.assertEqual(len(pr.invoices), 1)
+		self.assertEqual(len(pr.payments), 1)
+		invoices = [x.as_dict() for x in pr.invoices]
+		payments = [x.as_dict() for x in pr.payments]
+		pr.allocate_entries(frappe._dict({"invoices": invoices, "payments": payments}))
+		pr.reconcile()
+		self.assertEqual(len(pr.invoices), 0)
+		self.assertEqual(len(pr.payments), 0)
+
+		# Outstanding in both currencies should be '0'
+		si.reload()
+		self.assertEqual(si.outstanding_amount, 0)
+		self.assert_ledger_outstanding(si.doctype, si.name, 0.0, 0.0)
+
+		# Exchange Gain/Loss Journal should've been created.
+		exc_je_for_si = self.get_journals_for(si.doctype, si.name)
+		exc_je_for_pe = self.get_journals_for(pe.doctype, pe.name)
+		self.assertNotEqual(exc_je_for_si, [])
+		self.assertEqual(len(exc_je_for_si), 1)
+		self.assertEqual(len(exc_je_for_pe), 1)
+		self.assertEqual(exc_je_for_si[0], exc_je_for_pe[0])
+
+		self.assertEqual(
+			getdate(nowdate()), frappe.db.get_value("Journal Entry", exc_je_for_pe[0].parent, "posting_date")
+		)
+		# Cancel Payment
+		pe.reload()
+		pe.cancel()
+
+		# outstanding should be same as grand total
+		si.reload()
+		self.assertEqual(si.outstanding_amount, rate_in_account_currency)
+		self.assert_ledger_outstanding(si.doctype, si.name, rate, rate_in_account_currency)
+
+		# Exchange Gain/Loss Journal should've been cancelled
+		exc_je_for_si = self.get_journals_for(si.doctype, si.name)
+		exc_je_for_pe = self.get_journals_for(pe.doctype, pe.name)
+		self.assertEqual(exc_je_for_si, [])
+		self.assertEqual(exc_je_for_pe, [])
+
+>>>>>>> 2f3281579a (test: exc gain/loss posting date based on configuration)
 	def test_20_journal_against_sales_invoice(self):
 		# Invoice in Foreign Currency
 		si = self.create_sales_invoice(qty=1, conversion_rate=80, rate=1)
