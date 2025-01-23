@@ -74,25 +74,8 @@ class AutoMatchbyAccountIBAN:
 		):
 			return ("Employee", employee_result[0])
 
-<<<<<<< HEAD
-				party_result = frappe.db.get_all(
-					party, or_filters=or_filters, pluck="name", limit_page_length=1
-				)
-
-			if party_result:
-				result = (
-					party,
-					party_result[0],
-				)
-				break
-
-		return result
-
-	def get_or_filters(self) -> dict:
-=======
 	def get_or_filters(self, party: str | None = None) -> dict:
 		"""Return OR filters for Bank Account and IBAN"""
->>>>>>> 8521796811 (fix: Wrong `bank_ac_no` filter + simplify convoluted logic)
 		or_filters = {}
 		if self.bank_party_account_number:
 			bank_ac_field = "bank_ac_no" if party == "Employee" else "bank_account_no"
