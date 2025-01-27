@@ -250,15 +250,7 @@ class AccountsController(TransactionBase):
 			apply_pricing_rule_on_transaction(self)
 
 		self.set_total_in_words()
-<<<<<<< HEAD
-=======
-		self.set_default_letter_head()
 		self.validate_company_in_accounting_dimension()
-
-	def set_default_letter_head(self):
-		if hasattr(self, "letter_head") and not self.letter_head:
-			self.letter_head = frappe.db.get_value("Company", self.company, "default_letter_head")
->>>>>>> 60efd3e219 (feat: add company level validation for accounting dimension)
 
 	def init_internal_values(self):
 		# init all the internal values as 0 on sa
@@ -364,23 +356,6 @@ class AccountsController(TransactionBase):
 				(sle.voucher_type == self.doctype) & (sle.voucher_no == self.name)
 			).run()
 
-<<<<<<< HEAD
-=======
-	def remove_serial_and_batch_bundle(self):
-		bundles = frappe.get_all(
-			"Serial and Batch Bundle",
-			filters={"voucher_type": self.doctype, "voucher_no": self.name, "docstatus": ("!=", 1)},
-		)
-
-		for bundle in bundles:
-			frappe.delete_doc("Serial and Batch Bundle", bundle.name)
-
-		batches = frappe.get_all(
-			"Batch", filters={"reference_doctype": self.doctype, "reference_name": self.name}
-		)
-		for row in batches:
-			frappe.delete_doc("Batch", row.name)
-
 	def validate_company_in_accounting_dimension(self):
 		doc_field = DocType("DocField")
 		accounting_dimension = DocType("Accounting Dimension")
@@ -414,7 +389,6 @@ class AccountsController(TransactionBase):
 						)
 					)
 
->>>>>>> 60efd3e219 (feat: add company level validation for accounting dimension)
 	def validate_return_against_account(self):
 		if self.doctype in ["Sales Invoice", "Purchase Invoice"] and self.is_return and self.return_against:
 			cr_dr_account_field = "debit_to" if self.doctype == "Sales Invoice" else "credit_to"
