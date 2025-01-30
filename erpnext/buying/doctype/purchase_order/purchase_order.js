@@ -205,9 +205,18 @@ erpnext.buying.PurchaseOrderController = class PurchaseOrderController extends e
 					}
 				}
 
+<<<<<<< HEAD
 				if(is_drop_ship && doc.status!="Delivered") {
 					this.frm.add_custom_button(__('Delivered'),
 						this.delivered_by_supplier, __("Status"));
+=======
+				if (is_drop_ship && doc.status != "Delivered") {
+					this.frm.add_custom_button(
+						__("Delivered"),
+						this.delivered_by_supplier.bind(this),
+						__("Status")
+					);
+>>>>>>> 41649cf52d (fix: bind this to function)
 
 					this.frm.page.set_inner_btn_group_as_primary(__("Status"));
 				}
