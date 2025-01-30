@@ -134,7 +134,65 @@ def get_stock_ledger_entries(filters):
 		if filters.get(field):
 			query = query.where(sle[field] == filters.get(field))
 
+<<<<<<< HEAD
 	return query
+=======
+	if filters.start_from:
+		query = query.where(sle.posting_datetime > get_datetime(filters.start_from))
+
+	return query.run(as_dict=True) or []
+
+
+def get_stock_ledger_entries_for_batch_bundle(filters):
+	sle = frappe.qb.DocType("Stock Ledger Entry")
+	batch_package = frappe.qb.DocType("Serial and Batch Entry")
+
+	to_date = get_datetime(filters.to_date + " 23:59:59")
+
+	query = (
+		frappe.qb.from_(sle)
+		.inner_join(batch_package)
+		.on(batch_package.parent == sle.serial_and_batch_bundle)
+		.select(
+			sle.item_code,
+			sle.warehouse,
+			batch_package.batch_no,
+			sle.posting_date,
+			fn.Sum(batch_package.qty).as_("actual_qty"),
+		)
+		.where(
+			(sle.docstatus < 2)
+			& (sle.is_cancelled == 0)
+			& (sle.has_batch_no == 1)
+			& (sle.posting_datetime <= to_date)
+		)
+		.groupby(sle.voucher_no, batch_package.batch_no, batch_package.warehouse)
+		.orderby(sle.item_code, sle.warehouse)
+	)
+
+	query = apply_warehouse_filter(query, sle, filters)
+	if filters.warehouse_type and not filters.warehouse:
+		warehouses = frappe.get_all(
+			"Warehouse",
+			filters={"warehouse_type": filters.warehouse_type, "is_group": 0},
+			pluck="name",
+		)
+
+		if warehouses:
+			query = query.where(sle.warehouse.isin(warehouses))
+
+	for field in ["item_code", "batch_no", "company"]:
+		if filters.get(field):
+			if field == "batch_no":
+				query = query.where(batch_package[field] == filters.get(field))
+			else:
+				query = query.where(sle[field] == filters.get(field))
+
+	if filters.start_from:
+		query = query.where(sle.posting_date > getdate(filters.start_from))
+
+	return query.run(as_dict=True) or []
+>>>>>>> e61ab48145 (fix: posting_date to posting_datetime in stock related queries)
 
 
 def get_item_warehouse_batch_map(filters, float_precision):
