@@ -4,13 +4,8 @@
 
 import frappe
 from frappe import _
-<<<<<<< HEAD
 from frappe.query_builder.functions import CombineDatetime
-from frappe.utils import cint, flt
-=======
-from frappe.query_builder.functions import CombineDatetime, Sum
 from frappe.utils import cint, flt, get_datetime
->>>>>>> e61ab48145 (fix: posting_date to posting_datetime in stock related queries)
 
 from erpnext.stock.doctype.inventory_dimension.inventory_dimension import get_inventory_dimensions
 from erpnext.stock.doctype.serial_no.serial_no import get_serial_nos
