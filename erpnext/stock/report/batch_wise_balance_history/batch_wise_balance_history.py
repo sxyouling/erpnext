@@ -4,7 +4,7 @@
 
 import frappe
 from frappe import _
-from frappe.utils import cint, flt, get_table_name, getdate, get_datetime
+from frappe.utils import cint, flt, get_datetime, get_table_name, getdate
 from pypika import functions as fn
 
 from erpnext.stock.doctype.warehouse.warehouse import apply_warehouse_filter
@@ -135,7 +135,6 @@ def get_stock_ledger_entries(filters):
 	for field in ["item_code", "batch_no", "company"]:
 		if filters.get(field):
 			query = query.where(sle[field] == filters.get(field))
-
 
 	return query
 
