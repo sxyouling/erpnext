@@ -7,7 +7,7 @@ from datetime import datetime
 import frappe
 from frappe import qb
 from frappe.query_builder.functions import Sum
-from frappe.tests.utils import FrappeTestCase
+from frappe.tests.utils import FrappeTestCase, change_settings
 from frappe.utils import add_days, getdate, nowdate
 from frappe.utils.data import getdate as convert_to_date
 
@@ -708,74 +708,7 @@ class TestAccountsController(FrappeTestCase):
 		self.assertEqual(exc_je_for_si, [])
 		self.assertEqual(exc_je_for_pe, [])
 
-<<<<<<< HEAD
-=======
-	@IntegrationTestCase.change_settings(
-		"Stock Settings", {"allow_internal_transfer_at_arms_length_price": 1}
-	)
-	def test_16_internal_transfer_at_arms_length_price(self):
-		from erpnext.accounts.doctype.sales_invoice.sales_invoice import make_inter_company_purchase_invoice
-		from erpnext.stock.doctype.warehouse.test_warehouse import create_warehouse
-
-		prepare_data_for_internal_transfer()
-		company = "_Test Company with perpetual inventory"
-		target_warehouse = create_warehouse("_Test Internal Warehouse New 1", company=company)
-		warehouse = create_warehouse("_Test Internal Warehouse New 2", company=company)
-		arms_length_price = 40
-
-		si = create_sales_invoice(
-			company=company,
-			customer="_Test Internal Customer 2",
-			debit_to="Debtors - TCP1",
-			target_warehouse=target_warehouse,
-			warehouse=warehouse,
-			income_account="Sales - TCP1",
-			expense_account="Cost of Goods Sold - TCP1",
-			cost_center="Main - TCP1",
-			update_stock=True,
-			do_not_save=True,
-			do_not_submit=True,
-		)
-
-		si.items[0].rate = arms_length_price
-		si.save()
-		# rate should not reset to incoming rate
-		self.assertEqual(si.items[0].rate, arms_length_price)
-
-		frappe.db.set_single_value("Stock Settings", "allow_internal_transfer_at_arms_length_price", 0)
-		si.items[0].rate = arms_length_price
-		si.save()
-		# rate should reset to incoming rate
-		self.assertEqual(si.items[0].rate, 100)
-
-		si.update_stock = 0
-		si.save()
-		si.submit()
-
-		pi = make_inter_company_purchase_invoice(si.name)
-		pi.update_stock = 1
-		pi.items[0].rate = arms_length_price
-		pi.items[0].warehouse = target_warehouse
-		pi.items[0].from_warehouse = warehouse
-		pi.save()
-
-		self.assertEqual(pi.items[0].rate, 100)
-		self.assertEqual(pi.items[0].valuation_rate, 100)
-
-		frappe.db.set_single_value("Stock Settings", "allow_internal_transfer_at_arms_length_price", 1)
-		pi = make_inter_company_purchase_invoice(si.name)
-		pi.update_stock = 1
-		pi.items[0].rate = arms_length_price
-		pi.items[0].warehouse = target_warehouse
-		pi.items[0].from_warehouse = warehouse
-		pi.save()
-
-		self.assertEqual(pi.items[0].rate, arms_length_price)
-		self.assertEqual(pi.items[0].valuation_rate, 100)
-
-	@IntegrationTestCase.change_settings(
-		"Accounts Settings", {"exchange_gain_loss_posting_date": "Reconciliation Date"}
-	)
+	@change_settings("Accounts Settings", {"exchange_gain_loss_posting_date": "Reconciliation Date"})
 	def test_17_gain_loss_posting_date_for_normal_payment(self):
 		# Sales Invoice in Foreign Currency
 		rate = 80
@@ -836,7 +769,6 @@ class TestAccountsController(FrappeTestCase):
 		self.assertEqual(exc_je_for_si, [])
 		self.assertEqual(exc_je_for_pe, [])
 
->>>>>>> 2f3281579a (test: exc gain/loss posting date based on configuration)
 	def test_20_journal_against_sales_invoice(self):
 		# Invoice in Foreign Currency
 		si = self.create_sales_invoice(qty=1, conversion_rate=80, rate=1)
