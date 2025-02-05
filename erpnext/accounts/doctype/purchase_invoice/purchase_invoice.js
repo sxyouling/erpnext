@@ -302,15 +302,11 @@ erpnext.accounts.PurchaseInvoice = class PurchaseInvoice extends erpnext.buying.
 
 		if (this.frm.doc.__onload && this.frm.doc.__onload.load_after_mapping) return;
 
-<<<<<<< HEAD
-		erpnext.utils.get_party_details(this.frm, "erpnext.accounts.party.get_party_details",
-=======
 		let payment_terms_template = this.frm.doc.payment_terms_template;
 
 		erpnext.utils.get_party_details(
 			this.frm,
 			"erpnext.accounts.party.get_party_details",
->>>>>>> fb3f08a441 (fix: payment schedule table is empty while duplicating record)
 			{
 				posting_date: this.frm.doc.posting_date,
 				bill_date: this.frm.doc.bill_date,
@@ -328,9 +324,6 @@ erpnext.accounts.PurchaseInvoice = class PurchaseInvoice extends erpnext.buying.
 				me.frm.doc.tax_withholding_category = me.frm.supplier_tds;
 				me.frm.set_df_property("apply_tds", "read_only", me.frm.supplier_tds ? 0 : 1);
 				me.frm.set_df_property("tax_withholding_category", "hidden", me.frm.supplier_tds ? 0 : 1);
-<<<<<<< HEAD
-			})
-=======
 
 				// while duplicating, don't change payment terms
 				if (me.frm.doc.__run_link_triggers === false) {
@@ -339,7 +332,6 @@ erpnext.accounts.PurchaseInvoice = class PurchaseInvoice extends erpnext.buying.
 				}
 			}
 		);
->>>>>>> fb3f08a441 (fix: payment schedule table is empty while duplicating record)
 	}
 
 	apply_tds(frm) {
