@@ -311,15 +311,11 @@ def get_tax_amount(party_type, parties, inv, tax_details, posting_date, pan_no=N
 
 
 def get_invoice_vouchers(parties, tax_details, company, party_type="Supplier"):
-<<<<<<< HEAD
 	doctype = "Purchase Invoice" if party_type == "Supplier" else "Sales Invoice"
 	field = (
 		"base_tax_withholding_net_total as base_net_total" if party_type == "Supplier" else "base_net_total"
 	)
 	voucher_wise_amount = {}
-	vouchers = []
-=======
-	voucher_wise_amount = []
 	vouchers = []
 
 	ldcs = frappe.db.get_all(
@@ -340,7 +336,6 @@ def get_invoice_vouchers(parties, tax_details, company, party_type="Supplier"):
 		"grand_total",
 		"posting_date",
 	]
->>>>>>> 325c4e3536 (fix: '0' rate LDC's Invoice net totals should be ignored)
 
 	filters = {
 		"company": company,
@@ -358,10 +353,6 @@ def get_invoice_vouchers(parties, tax_details, company, party_type="Supplier"):
 	invoices_details = frappe.get_all(doctype, filters=filters, fields=["name", field])
 
 	for d in invoices_details:
-<<<<<<< HEAD
-		vouchers.append(d.name)
-		voucher_wise_amount.update({d.name: {"amount": d.base_net_total, "voucher_type": doctype}})
-=======
 		d = frappe._dict(
 			{
 				"voucher_name": d.name,
@@ -371,7 +362,6 @@ def get_invoice_vouchers(parties, tax_details, company, party_type="Supplier"):
 				"posting_date": d.posting_date,
 			}
 		)
->>>>>>> 325c4e3536 (fix: '0' rate LDC's Invoice net totals should be ignored)
 
 		if ldc := [x for x in ldcs if d.posting_date >= x.valid_from and d.posting_date <= x.valid_upto]:
 			if ldc[0].supplier in parties and ldc[0].rate == 0:
